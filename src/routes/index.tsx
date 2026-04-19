@@ -3,12 +3,20 @@ import { motion } from "framer-motion";
 import portrait from "@/assets/portrait.jpg";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
+import project5 from "@/assets/project-5.jpg";
+import project4 from "@/assets/project-4.jpg";
+import project6 from "@/assets/project-6.jpg";
+import project7 from "@/assets/project-7.jpg";
+import project3 from "@/assets/project-3.jpg";
+import project8 from "@/assets/project-8.jpg";
+
 import { SectionLabel } from "@/components/SectionLabel";
+import { title } from "process";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Junior.dev — Desenvolvedor Fullstack em Transição" },
+      { title: "Paulo Henrique / Dev  — Desenvolvedor Fullstack" },
       {
         name: "description",
         content:
@@ -26,13 +34,13 @@ function HomePage() {
       <section className="relative overflow-hidden border-b-[3px] border-ink">
         <div className="pointer-events-none absolute inset-0 grid-noise" />
 
-        <div className="relative mx-auto grid max-w-[1400px] gap-10 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-12 lg:gap-6 lg:py-32">
+        <div className="relative mx-auto grid max-w-350 gap-10 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-12 lg:gap-6 lg:py-32">
           {/* meta strip */}
           <div className="lg:col-span-12">
             <div className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase">
               <span className="bg-ink px-2 py-1 text-paper">Edição 01</span>
               <span>—</span>
-              <span>Portfólio / 2025</span>
+              <span>Portfólio / 2026</span>
               <span className="ml-auto flex items-center gap-2">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-destructive" />
                 Aberto a oportunidades
@@ -86,11 +94,11 @@ function HomePage() {
 
         {/* bottom info bar */}
         <div className="border-t-[3px] border-ink bg-ink text-paper">
-          <div className="mx-auto grid max-w-[1400px] grid-cols-2 divide-x divide-paper/30 md:grid-cols-4">
+          <div className="mx-auto grid max-w-350 grid-cols-2 divide-x divide-paper/30 md:grid-cols-4">
             {[
               { k: "Foco", v: "Fullstack" },
-              { k: "Stack", v: "TS · React · Node" },
-              { k: "Local", v: "São Paulo, BR" },
+              { k: "Stack", v: "TS · React · Node . PostgreSQL . Prisma .  Docker . ApisRest" },
+              { k: "Local", v: "Salvador, BA . Brasil" },
               { k: "Status", v: "Disponível" },
             ].map((i) => (
               <div key={i.k} className="px-6 py-5 md:px-10">
@@ -104,7 +112,7 @@ function HomePage() {
 
       {/* MANIFESTO */}
       <section className="border-b-[3px] border-ink py-20 md:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+        <div className="mx-auto max-w-350 px-6 md:px-10">
           <SectionLabel index="01">Manifesto</SectionLabel>
           <div className="grid gap-10 lg:grid-cols-12">
             <p className="font-display text-4xl uppercase leading-[0.95] md:text-6xl lg:col-span-9 lg:text-7xl">
@@ -127,7 +135,7 @@ function HomePage() {
 
       {/* SELECTED WORK PREVIEW */}
       <section className="border-b-[3px] border-ink bg-ink py-20 text-paper md:py-28">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+        <div className="mx-auto max-w-350 px-6 md:px-10">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="font-mono text-xs uppercase opacity-60">02 / Trabalhos selecionados</p>
@@ -143,15 +151,21 @@ function HomePage() {
 
           <div className="grid gap-6 md:grid-cols-2">
             {[
-              { img: project1, title: "Task Hector", tag: "App SaaS", year: "2025" },
-              { img: project2, title: "People Magazine Clone", tag: "Frontend", year: "2024" },
+              { img: project1, title: "Sisrtema de gestão de estoque", tag: "Fullstack ", year: "2026" },
+              { img: project2, title: "Sistema de rastreamento", tag: "Frontend", year: "2026" },
+              {img: project5, title:"SyntaxWear E-commerce", tag: "Fullstack", year: "2025"},
+              { img: project4, title: "Laboratório de estudo Hacker", tag: "Frontend", year: "2025" },
+              { img: project3, title: "Langing Page Tatto", tag: "Fullstack", year: "2025" },
+              { img: project6, title: "App Task Kamban", tag: "Frontend", year: "2025" },
+              { img: project7, title: "Studio Ghibli  ", tag: "Frontend", year: "2024" },
+              { img: project8, title: "Barber Shoop  ", tag: "Fullstack", year: "2025" },
             ].map((p) => (
               <Link
                 key={p.title}
                 to="/projetos"
                 className="group block overflow-hidden border-2 border-paper bg-paper text-ink"
               >
-                <div className="aspect-[4/3] overflow-hidden border-b-2 border-ink bg-secondary">
+                <div className="aspect-4/3 overflow-hidden border-b-2 border-ink bg-secondary">
                   <img
                     src={p.img}
                     alt={p.title}
@@ -178,7 +192,7 @@ function HomePage() {
 
       {/* CTA */}
       <section className="py-24 md:py-40">
-        <div className="mx-auto max-w-[1400px] px-6 text-center md:px-10">
+        <div className="mx-auto max-w-350 px-6 text-center md:px-10">
           <SectionLabel index="03">Próximo passo</SectionLabel>
           <h2 className="font-display text-[14vw] leading-[0.85] md:text-[9rem]">
             Vamos

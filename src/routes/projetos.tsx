@@ -26,10 +26,10 @@ export const Route = createFileRoute("/projetos")({
 const projects = [
   {
     n: "01",
-    title: "Task Hector",
-    sub: "Gerenciador de tarefas em equipe",
+    title: "Sistema de Gestão Almoxarifado",
+    sub: "Sistema de Gestão de estoque",
     desc: "App fullstack com auth, real-time e drag-and-drop. Backend em Node + Postgres.",
-    tags: ["React", "Node", "Postgres", "WebSocket"],
+    tags: ["React", "Node", "Postgres", "WebSocket", "JWT", "Prisma"],
     year: "2025",
     img: project1,
     accent: "highlight",
