@@ -12,19 +12,19 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <div className="mx-auto grid max-w-[1400px] gap-8 px-6 py-12 md:grid-cols-3 md:px-10">
+      <div className="mx-auto grid max-w-350 gap-8 px-6 py-12 md:grid-cols-3 md:px-10">
         <div>
           <p className="font-mono text-xs uppercase opacity-60">Localização</p>
-          <p className="mt-2 font-display text-2xl">São Paulo, BR</p>
+          <p className="mt-2 font-display text-2xl">Salvador, BA</p>
           <p className="font-mono text-sm opacity-70">UTC −03:00</p>
         </div>
         <div>
-          <p className="font-mono text-xs uppercase opacity-60">Email</p>
+          <p className="font-mono text-xs uppercase opacity-60">Contact</p>
           <a
             href="mailto:ola@junior.dev"
             className="mt-2 inline-block font-display text-2xl underline decoration-highlight decoration-4 underline-offset-4 hover:text-highlight"
           >
-            ola@junior.dev
+            71 99306-1316
           </a>
         </div>
         <div>
@@ -39,7 +39,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-paper/20 px-6 py-4 text-center font-mono text-xs uppercase opacity-60 md:px-10">
-        © {year} — Construído com obsessão. Sem templates.
+        © {year} — paulohenriqueferreirafranca2@gmail.com
       </div>
     </footer>
   );

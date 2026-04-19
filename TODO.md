@@ -1,11 +1,10 @@
-# TODO: Corrigir 404 no Vercel/Deploy - UPDATE Tailwind Fix
+# TODO: Transform TanStack Start → React SPA Vite (Vercel compat)
 
-## Plano Atualizado
-1. [x] vercel.json SPA fallback
-2. [x] Build local test
-3. [x] Deploy instrux
-4. [x] Fix src/styles.css Tailwind resolve error (removido @import \"./src\"; reorder fonts)
-
-5. [x] Test `npm run dev` (SSR local OK)
-
-6. [x] Concluída
+## Plano SPA React
+1. [ ] Update package.json (remove TanStack SSR, add React Router SPA)
+2. [ ] npm install deps new
+3. [ ] Simplificar vite.config.ts (no SSR/Cloudflare)
+4. [ ] Remove wrangler.jsonc, routeTree.gen.ts, src/router.tsx, routes/ → App.tsx com Router SPA
+5. [ ] Migrate content routes para SPA pages
+6. [ ] Test `npm run dev` / build / preview
+7. [ ] Concluída

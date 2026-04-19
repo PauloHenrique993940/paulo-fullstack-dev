@@ -6,9 +6,6 @@
 /* No Tailwind v4, este único comando substitui os antigos @tailwind base/components/utilities */
 @import "tailwindcss";
 
-/* Importações de plugins */
-@import "tw-animate-css";
-
 /* 2. CONFIGURAÇÕES DE VARIANTE */
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -16,6 +13,8 @@
 
 /* 3. TEMA E VARIÁVEIS DO TAILWIND V4 */
 @theme inline {
+  --color-brand: #ff5f1f;
+  --font-mono: "JetBrains Mono", monospace;
   --font-display: "Archivo Black", system-ui, sans-serif;
   --font-sans: "Space Grotesk", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -119,11 +118,12 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
+    background-color: white;
+    color: black;
+    font-family: var(--font-mono), monospace;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    @apply bg-white text-black font-mono antialiased;
   }
 
   ::selection {
@@ -139,6 +139,12 @@
     letter-spacing: -0.03em;
     line-height: 0.92;
     text-transform: uppercase;
+    @apply uppercase font-bold border-b-2 border-black mb-4;
+  }
+
+  section {
+    @apply border-2 border-black p-6 mb-8;
+    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
   }
 }
 
