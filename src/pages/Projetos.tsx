@@ -8,6 +8,7 @@ import project8 from "@/assets/project-8.jpg";
 import project5 from "@/assets/project-5.jpg";
 import project9 from "@/assets/project-9.png";
 import project10 from "@/assets/project-10.png";
+import project11 from "@/assets/project-11.png";
 
 import { Terminal } from "lucide-react";
 import { de } from "date-fns/locale";
@@ -108,7 +109,7 @@ const projects = [
         desc: "Desenvolvi uma aplicação front-end com React, TanStack Router, Vite e Tailwind para transformar dados históricos da seleção brasileira em uma experiência visual imersiva. O projeto reúne páginas sobre Copas, artilheiros e trajetória do Brasil, com animações, navegação fluida e organização por rotas.",
         tags: ["Vite", "Tailwind Router", "TanStack Start", "TypeScript", "Framer Motion", "Zod", "Otimização de build e divisão de chunks"],
         year: "2026",
-        img: project10,
+        img: project11,
         deploy: "https://canarinho-chronicles-selecao.netlify.app/", // Adicione o link real aqui
         github: "https://github.com/PauloHenrique993940/canarinho-chronicles.git" // Adicione o link real aqui
     },
