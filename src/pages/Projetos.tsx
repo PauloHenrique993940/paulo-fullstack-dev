@@ -6,6 +6,8 @@ import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
 import project8 from "@/assets/project-8.jpg";
 import project5 from "@/assets/project-5.jpg";
+import project9 from "@/assets/project-9.png";
+
 import { Terminal } from "lucide-react";
 
 const projects = [
@@ -74,6 +76,17 @@ const projects = [
         img: project5,
         deploy: "https://syntax-wear-app.vercel.app/", // Adicione o link real aqui
         github: "https://github.com/PauloHenrique993940/syntax-wear-app.git" // Adicione o link real aqui
+    },
+    {
+        n: "07",
+        title: "Restaurante Luxury",
+        sub: "Site institucional para restaurante",
+        desc: "Landing page responsiva para um restaurante de sushi premium, desenvolvida com React, TypeScript e Vite. O projeto foi construído com foco em apresentação visual, tipografia elegante, atmosfera escura com detalhes dourados e adaptação para desktop e mobile.",
+        tags: ["React", "API", "TypeScript", "Tailwind", "Framer Motion", "Terminal", "TanStack", "Vencel"],
+        year: "2026",
+        img: project9,
+        deploy: "https://restaurante-luxury.netflify.app/", // Adicione o link real aqui
+        github: "https://github.com/PauloHenrique993940/restaurante-luxury.git" // Adicione o link real aqui
     },
     
 ];
