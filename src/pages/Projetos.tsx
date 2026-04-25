@@ -7,13 +7,15 @@ import project4 from "@/assets/project-4.jpg";
 import project8 from "@/assets/project-8.jpg";
 import project5 from "@/assets/project-5.jpg";
 import project9 from "@/assets/project-9.png";
+import project10 from "@/assets/project-10.png";
 
 import { Terminal } from "lucide-react";
+import { de } from "date-fns/locale";
 
 const projects = [
     {
         n: "01",
-        title: "Sistema de Gestão Almoxarifado",
+        title: "Almoxarif",
         sub: "Sistema de Gestão de estoque",
         desc: "App fullstack com auth, real-time e drag-and-drop. Backend em Node + Postgres.",
         tags: ["React", "Node", "Postgres", "Prisma", "TanStack", "WebSocket", "API REST"],
@@ -24,7 +26,7 @@ const projects = [
     },
     {
         n: "02",
-        title: "Sistema de Rastreamento",
+        title: "Rastre",
         sub: "Plataforma de rastreamento de encomendas",
         desc: "Recriação fiel de uma plataforma de rastreamento de rastreio via socket. Chat, utilização de google maps para monitoramento em tempo real.",
         tags: ["React", "TypeScript", "WebSocket", "Google Maps API"],
@@ -46,7 +48,7 @@ const projects = [
     },
     {
         n: "04",
-        title: "Plataforma de estudo para curso de Hacker",
+        title: "Hacker Platform",
         sub: "App para ensino de hacking ético",
         desc: "Plataforma de estudo para curso de Hacker Ético, com quizzes interativos, desafios práticos e monitoramento de progresso.",
         tags: ["React", "API", "TypeScript", "Tailwind", "Framer Motion", "Terminal"],
@@ -79,16 +81,37 @@ const projects = [
     },
     {
         n: "07",
-        title: "Restaurante Luxury",
+        title: "E-commerce de Sushi",
         sub: "Site institucional para restaurante",
         desc: "Landing page responsiva para um restaurante de sushi premium, desenvolvida com React, TypeScript e Vite. O projeto foi construído com foco em apresentação visual, tipografia elegante, atmosfera escura com detalhes dourados e adaptação para desktop e mobile.",
         tags: ["React", "API", "TypeScript", "Tailwind", "Framer Motion", "Terminal", "TanStack", "Vencel"],
         year: "2026",
         img: project9,
-        deploy: "https://restaurante-luxury.netflify.app/", // Adicione o link real aqui
+        deploy: "https://restaurante-luxury.netlify.app/", // Adicione o link real aqui
         github: "https://github.com/PauloHenrique993940/restaurante-luxury.git" // Adicione o link real aqui
     },
-    
+    {
+        n: "08",
+        title: "Barbearia",
+        sub: "Website para Barbearia Premium",
+        desc: "Desenvolvi um site moderno e responsivo para uma barbearia, com foco em experiência do usuário, identidade visual elegante e conversão de clientes. O layout utiliza uma estética escura com detalhes em dourado, transmitindo sofisticação e profissionalismo.A página inicial conta com uma seção hero impactante, incluindo um botão de chamada para ação(“Agendar Horário”), incentivando o usuário a realizar reservas rapidamente.Na seção “Sobre”, destaquei informações institucionais da barbearia junto a uma composição visual com imagens sobrepostas, criando dinamismo e reforçando o branding do negócio.A seção “Serviços” apresenta os principais atendimentos oferecidos, organizados em cards com imagens de alta qualidade, facilitando a leitura e a escolha do cliente.",
+        tags: ["Design responsivo (adaptado para mobile e desktop)", "Interface moderna com foco em UX/UI", "Estrutura organizada em seções (Hero, Sobre, Serviços)", "Tailwind", "Framer Motion", "Terminal", "TanStack", "Vencel","Netlify", "GitHub", "Vite", "React", "TypeScript"],
+        year: "2026",
+        img: project10,
+        deploy: "https://barbearia-premium-styles.netlify.app/", // Adicione o link real aqui
+        github: "https://github.com/PauloHenrique993940/restaurante-luxury.git" // Adicione o link real aqui
+    },
+    {
+        n: "09",
+        title: "Canarinho Chronicles",
+        sub: "Website para Barbearia Premium",
+        desc: "Desenvolvi uma aplicação front-end com React, TanStack Router, Vite e Tailwind para transformar dados históricos da seleção brasileira em uma experiência visual imersiva. O projeto reúne páginas sobre Copas, artilheiros e trajetória do Brasil, com animações, navegação fluida e organização por rotas.",
+        tags: ["Vite", "Tailwind Router", "TanStack Start", "TypeScript", "Framer Motion", "Zod", "Otimização de build e divisão de chunks"],
+        year: "2026",
+        img: project10,
+        deploy: "https://canarinho-chronicles-selecao.netlify.app/", // Adicione o link real aqui
+        github: "https://github.com/PauloHenrique993940/canarinho-chronicles.git" // Adicione o link real aqui
+    },
 ];
 
 export default function Projetos() {
