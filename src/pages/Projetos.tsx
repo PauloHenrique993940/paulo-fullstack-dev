@@ -1,141 +1,113 @@
-import { Link } from "react-router-dom";
 import { SectionLabel } from "@/components/SectionLabel";
 import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
-import project8 from "@/assets/project-8.jpg";
 import project5 from "@/assets/project-5.jpg";
 import project9 from "@/assets/project-9.png";
 import project10 from "@/assets/project-10.png";
 import project11 from "@/assets/project-11.png";
 
-import { Terminal } from "lucide-react";
-import { de } from "date-fns/locale";
-
 const projects = [
     {
         n: "01",
         title: "Almoxarif",
-        sub: "Sistema de Gestão de estoque",
-        desc: "App fullstack com auth, real-time e drag-and-drop. Backend em Node + Postgres.",
+        sub: "Sistema fullstack de gestão de estoque",
+        problem: "Centralizar movimentações de estoque e reduzir retrabalho operacional em um fluxo mais confiável.",
+        solution: "Desenvolvi uma aplicação com autenticação, painel administrativo, controle de itens e integração entre frontend e backend.",
+        result: "O projeto demonstra domínio de um fluxo de mercado completo, com rastreabilidade, organização de dados e base escalável.",
         tags: ["React", "Node", "Postgres", "Prisma", "TanStack", "WebSocket", "API REST"],
-        year: "2025",
+        year: "2026",
         img: project1,
         deploy: "https://gestao-almoxarifado-frontend.vercel.app/login",
         github: "https://github.com/PauloHenrique993940/GestaoAlmoxarifadoFrontend.git"
     },
     {
         n: "02",
-        title: "Rastre",
-        sub: "Plataforma de rastreamento de encomendas",
-        desc: "Recriação fiel de uma plataforma de rastreamento de rastreio via socket. Chat, utilização de google maps para monitoramento em tempo real.",
-        tags: ["React", "TypeScript", "WebSocket", "Google Maps API"],
+        title: "Ink Art Studio",
+        sub: "Site institucional para estúdio de tatuagem",
+        problem: "O negócio precisava apresentar portfólio, fortalecer marca e abrir espaço para conversão online.",
+        solution: "Criei um site institucional com visual forte, navegação responsiva e organização clara para serviços e agendamento.",
+        result: "O projeto mostra cuidado com branding, experiência do usuário e adaptação para diferentes telas.",
+        tags: ["React", "TypeScript", "Tailwind", "UI Responsiva", "Deploy"],
         year: "2024",
-        img: project2,
-        deploy: "#", // Adicione o link real aqui
-        github: "#" // Adicione o link real aqui
+        img: project3,
+        deploy: "https://tattoo-tapestry-explore.lovable.app",
+        github: "https://github.com/PauloHenrique993940/tattoo-tapestry-explore.git"
     },
     {
         n: "03",
-        title: "Ink Art Studio",
-        sub: "Site Instucional para empresa de tatuagem",
-        desc: "Site institucional para estúdio de tatuagem, com portfólio dinâmico, agendamento online e blog integrado. Design moderno e responsivo.",
-        tags: ["React", "TypeScript", "Tailwind", "Animation CSS"],
+        title: "Hacker Platform",
+        sub: "Plataforma educacional com interface temática",
+        problem: "Criar uma experiência de aprendizado mais envolvente do que uma página estática de conteúdo.",
+        solution: "Estruturei uma plataforma com quizzes, desafios práticos e identidade visual consistente com o tema do produto.",
+        result: "O case reforça minha capacidade de unir UX, narrativa visual e componentes reutilizáveis em uma aplicação moderna.",
+        tags: ["React", "TypeScript", "Tailwind", "Framer Motion", "UX/UI"],
         year: "2024",
-        img: project3,
-        deploy: "https://tattoo-tapestry-explore.lovable.app", // 
-        github: "https://github.com/PauloHenrique993940/tattoo-tapestry-explore.git" // Adicione o link real aqui
+        img: project4,
+        deploy: "https://hacker-platform.vercel.app",
+        github: "https://github.com/PauloHenrique993940/hacker-platform"
     },
     {
         n: "04",
-        title: "Hacker Platform",
-        sub: "App para ensino de hacking ético",
-        desc: "Plataforma de estudo para curso de Hacker Ético, com quizzes interativos, desafios práticos e monitoramento de progresso.",
-        tags: ["React", "API", "TypeScript", "Tailwind", "Framer Motion", "Terminal"],
-        year: "2024",
-        img: project4,
-        deploy: "https://hacker-platform.vercel.app", // Adicione o link real aqui
-        github: "https://github.com/PauloHenrique993940/hacker-platform" // Adicione o link real aqui
+        title: "Syntax Wear",
+        sub: "E-commerce com foco em experiência de compra",
+        problem: "Simular um fluxo de e-commerce com catálogo, navegação clara e interface preparada para conversão.",
+        solution: "Desenvolvi a vitrine, estrutura de catálogo e interações com foco em usabilidade, organização visual e performance.",
+        result: "O projeto evidencia domínio de front-end aplicado a produto digital, incluindo responsividade e composição de interface.",
+        tags: ["React", "TypeScript", "Tailwind", "TanStack", "E-commerce"],
+        year: "2026",
+        img: project5,
+        deploy: "https://syntax-wear-app.vercel.app/",
+        github: "https://github.com/PauloHenrique993940/syntax-wear-app.git"
     },
     {
         n: "05",
-        title: "Site para Barbearia",
-        sub: "Site institucional para barbearia",
-        desc: "Site institucional para barbearia, com portfólio dinâmico, agendamento online e blog integrado. Design moderno e responsivo.",
-        tags: ["React", "API", "TypeScript", "Tailwind", "Framer Motion", "Terminal"],
-        year: "2025",
-        img: project8,
-        deploy: "https://shave-ease-system.lovable.app", // Adicione o link real aqui
-        github: "https://github.com/PauloHenrique993940/barbershop-hub.git" // Adicione o link real aqui
+        title: "Barbearia Premium",
+        sub: "Website institucional orientado à conversão",
+        problem: "Dar presença digital mais forte a um negócio local e facilitar o caminho até o agendamento.",
+        solution: "Projetei uma landing page com hero de alto contraste, seções de serviços e CTA direto para reserva.",
+        result: "O resultado é um site mais convincente para captar clientes, com branding mais sólido e navegação objetiva.",
+        tags: ["React", "TypeScript", "Tailwind", "UX/UI", "Deploy"],
+        year: "2026",
+        img: project10,
+        deploy: "https://barbearia-premium-styles.netlify.app/",
+        github: "https://github.com/PauloHenrique993940/restaurante-luxury.git"
     },
     {
         n: "06",
-        title: "Syntax Wear",
-        sub: "E-commerce de moda masculina",
-        desc: "E-commerce de moda masculina, com catálogo de produtos, carrinho de compras e integração com carrinho de compras. Design moderno e responsivo.",
-        tags: ["React", "API", "TypeScript", "Tailwind", "Framer Motion", "Terminal", "TanStack"],
-        year: "2026",
-        img: project5,
-        deploy: "https://syntax-wear-app.vercel.app/", // Adicione o link real aqui
-        github: "https://github.com/PauloHenrique993940/syntax-wear-app.git" // Adicione o link real aqui
-    },
-    {
-        n: "07",
-        title: "E-commerce de Sushi",
-        sub: "Site institucional para restaurante",
-        desc: "Landing page responsiva para um restaurante de sushi premium, desenvolvida com React, TypeScript e Vite. O projeto foi construído com foco em apresentação visual, tipografia elegante, atmosfera escura com detalhes dourados e adaptação para desktop e mobile.",
-        tags: ["React", "API", "TypeScript", "Tailwind", "Framer Motion", "Terminal", "TanStack", "Vencel"],
-        year: "2026",
-        img: project9,
-        deploy: "https://restaurante-luxury.netlify.app/", // Adicione o link real aqui
-        github: "https://github.com/PauloHenrique993940/restaurante-luxury.git" // Adicione o link real aqui
-    },
-    {
-        n: "08",
-        title: "Barbearia",
-        sub: "Website para Barbearia Premium",
-        desc: "Desenvolvi um site moderno e responsivo para uma barbearia, com foco em experiência do usuário, identidade visual elegante e conversão de clientes. O layout utiliza uma estética escura com detalhes em dourado, transmitindo sofisticação e profissionalismo.A página inicial conta com uma seção hero impactante, incluindo um botão de chamada para ação(“Agendar Horário”), incentivando o usuário a realizar reservas rapidamente.Na seção “Sobre”, destaquei informações institucionais da barbearia junto a uma composição visual com imagens sobrepostas, criando dinamismo e reforçando o branding do negócio.A seção “Serviços” apresenta os principais atendimentos oferecidos, organizados em cards com imagens de alta qualidade, facilitando a leitura e a escolha do cliente.",
-        tags: ["Design responsivo (adaptado para mobile e desktop)", "Interface moderna com foco em UX/UI", "Estrutura organizada em seções (Hero, Sobre, Serviços)", "Tailwind", "Framer Motion", "Terminal", "TanStack", "Vencel","Netlify", "GitHub", "Vite", "React", "TypeScript"],
-        year: "2026",
-        img: project10,
-        deploy: "https://barbearia-premium-styles.netlify.app/", // Adicione o link real aqui
-        github: "https://github.com/PauloHenrique993940/restaurante-luxury.git" // Adicione o link real aqui
-    },
-    {
-        n: "09",
         title: "Canarinho Chronicles",
-        sub: "Website para Barbearia Premium",
-        desc: "Desenvolvi uma aplicação front-end com React, TanStack Router, Vite e Tailwind para transformar dados históricos da seleção brasileira em uma experiência visual imersiva. O projeto reúne páginas sobre Copas, artilheiros e trajetória do Brasil, com animações, navegação fluida e organização por rotas.",
-        tags: ["Vite", "Tailwind Router", "TanStack Start", "TypeScript", "Framer Motion", "Zod", "Otimização de build e divisão de chunks"],
+        sub: "Aplicação front-end orientada a conteúdo e performance",
+        problem: "Organizar dados históricos densos de forma interessante e fácil de explorar.",
+        solution: "Criei uma aplicação com rotas bem definidas, animações, estrutura visual consistente e atenção à divisão de build.",
+        result: "O case destaca capacidade de transformar conteúdo em produto navegável, performático e visualmente memorável.",
+        tags: ["React", "TypeScript", "TanStack Router", "Tailwind", "Framer Motion", "Zod"],
         year: "2026",
         img: project11,
-        deploy: "https://canarinho-chronicles-selecao.netlify.app/", // Adicione o link real aqui
-        github: "https://github.com/PauloHenrique993940/canarinho-chronicles.git" // Adicione o link real aqui
+        deploy: "https://canarinho-chronicles-selecao.netlify.app/",
+        github: "https://github.com/PauloHenrique993940/canarinho-chronicles.git"
     },
 ];
 
 export default function Projetos() {
     return (
         <>
-            {/* Header */}
             <section className="border-b-[3px] border-ink py-16 md:py-24">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <p className="font-mono text-xs uppercase">Capítulo 03 / Projetos</p>
                     <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
-                        <span className="bg-highlight px-3">Coisas</span>
+                        <span className="bg-highlight px-3">Cases</span>
                         <br />
-                        que <span className="italic">eu</span>
+                        com foco
                         <br />
-                        construí.
+                        em resultado.
                     </h1>
-                    <p className="mt-6 max-w-2xl font-mono text-sm uppercase">
-                        {projects.length} selecionados · 2024 — 2025 · Cronológica reversa
+                    <p className="mt-6 max-w-3xl text-lg leading-relaxed">
+                        Em vez de listar tecnologia solta, organizei os projetos como estudos de caso: qual problema existia,
+                        qual solução foi construída, quais tecnologias sustentaram a entrega e qual resultado o projeto gera.
                     </p>
                 </div>
             </section>
 
-            {/* Projects */}
             <section className="border-b-[3px] border-ink">
                 {projects.map((p, idx) => (
                     <article
@@ -159,10 +131,15 @@ export default function Projetos() {
                                     <div className="flex items-center gap-3 font-mono text-xs uppercase">
                                         <span className="bg-ink px-2 py-1 text-paper">{p.n}</span>
                                         <span>{p.year}</span>
+                                        {p.n === "01" && <span className="bg-highlight px-2 py-1 text-ink">Projeto destaque</span>}
                                     </div>
                                     <h2 className="font-display text-5xl leading-none md:text-7xl">{p.title}.</h2>
                                     <p className="font-display text-xl uppercase text-muted-foreground">{p.sub}</p>
-                                    <p className="text-lg leading-relaxed">{p.desc}</p>
+                                    <div className="space-y-3 text-base leading-relaxed">
+                                        <p><span className="font-mono text-xs uppercase opacity-60">Problema</span><br />{p.problem}</p>
+                                        <p><span className="font-mono text-xs uppercase opacity-60">Solução</span><br />{p.solution}</p>
+                                        <p><span className="font-mono text-xs uppercase opacity-60">Resultado</span><br />{p.result}</p>
+                                    </div>
                                     <div className="flex flex-wrap gap-2">
                                         {p.tags.map((t) => (
                                             <span key={t} className="brutal-border bg-paper px-3 py-1 font-mono text-xs uppercase">
@@ -195,12 +172,11 @@ export default function Projetos() {
                 ))}
             </section>
 
-            {/* More */}
             <section className="py-20 md:py-28">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
-                    <SectionLabel index="∞">Em andamento</SectionLabel>
-                    <p className="font-display text-4xl uppercase md:text-6xl">
-                        Mais projetos a caminho.
+                    <SectionLabel index="∞">Critério de curadoria</SectionLabel>
+                    <p className="max-w-3xl font-display text-4xl uppercase md:text-6xl">
+                        Menos volume. Mais clareza, contexto e percepção de mercado.
                     </p>
                 </div>
             </section>

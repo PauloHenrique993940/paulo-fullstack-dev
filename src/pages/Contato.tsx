@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 
+const contactLinks = [
+    { label: "GitHub", href: "https://github.com/PauloHenrique993940" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/paulo-henrique-ferreira-fran%C3%A7a-751256262/" },
+    { label: "Portfólio publicado", href: "https://paulo-front-emd.vercel.app" },
+];
+
 function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
     return (
         <div>
@@ -28,7 +34,6 @@ export default function Contato() {
 
     return (
         <>
-            {/* Header */}
             <section className="border-b-[3px] border-ink py-16 md:py-24">
                 <div className="mx-auto max-w-[1400px] px-6 md:px-10">
                     <p className="font-mono text-xs uppercase">Capítulo 04 / Contato</p>
@@ -38,15 +43,13 @@ export default function Contato() {
                         <span className="bg-highlight px-3">olá</span>.
                     </h1>
                     <p className="mt-6 max-w-xl text-xl">
-                        Freela, projeto ou café? Respondo todos emails.
+                        Aberto a vagas, freelas e conversas sobre produto, front-end, fullstack e interfaces de alta conversão.
                     </p>
                 </div>
             </section>
 
-            {/* Contact */}
             <section className="py-20 md:py-28">
                 <div className="mx-auto grid max-w-[1400px] gap-10 px-6 md:px-10 lg:grid-cols-12">
-                    {/* Form */}
                     <div className="lg:col-span-7">
                         <SectionLabel index="01">Formulário</SectionLabel>
                         <form onSubmit={handleSubmit} className="space-y-6">
@@ -74,25 +77,24 @@ export default function Contato() {
                         </form>
                     </div>
 
-                    {/* Info */}
                     <aside className="space-y-6 lg:col-span-5">
                         <SectionLabel index="02">Canais</SectionLabel>
                         <div className="brutal-border brutal-shadow bg-highlight p-6">
                             <p className="font-mono text-xs uppercase">Email</p>
                             <a
-                                href="mailto:ola@junior.dev"
+                                href="mailto:paulohenriqueferreirafranca2@gmail.com"
                                 className="mt-1 block font-display text-3xl underline decoration-ink decoration-4 underline-offset-4"
                             >
-                                ola@junior.dev
+                                paulohenriqueferreirafranca2@gmail.com
                             </a>
                         </div>
                         <div className="brutal-border bg-paper p-6">
                             <p className="font-mono text-xs uppercase opacity-60">Redes</p>
                             <ul className="mt-3 space-y-2 font-mono text-sm">
-                                {["GitHub", "LinkedIn", "Twitter", "Read.cv"].map((s) => (
-                                    <li key={s} className="flex items-center justify-between border-b border-ink/20 pb-2">
-                                        <span className="uppercase">{s}</span>
-                                        <a href="#" className="hover:bg-ink hover:text-paper">
+                                {contactLinks.map((link) => (
+                                    <li key={link.label} className="flex items-center justify-between border-b border-ink/20 pb-2">
+                                        <span className="uppercase">{link.label}</span>
+                                        <a href={link.href} target="_blank" rel="noopener noreferrer" className="hover:bg-ink hover:text-paper">
                                             ↗
                                         </a>
                                     </li>
@@ -100,9 +102,9 @@ export default function Contato() {
                             </ul>
                         </div>
                         <div className="brutal-border bg-ink p-6 text-paper">
-                            <p className="font-mono text-xs uppercase opacity-60">Resposta</p>
-                            <p className="mt-1 font-display text-2xl">48h</p>
-                            <p className="mt-2 font-mono text-xs opacity-70">Dias úteis</p>
+                            <p className="font-mono text-xs uppercase opacity-60">Disponibilidade</p>
+                            <p className="mt-1 font-display text-2xl">Vagas e freelas</p>
+                            <p className="mt-2 font-mono text-xs opacity-70">Resposta em até 48h úteis</p>
                         </div>
                     </aside>
                 </div>

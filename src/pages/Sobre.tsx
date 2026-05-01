@@ -1,50 +1,55 @@
-import { Link } from "react-router-dom";
 import { SectionLabel } from "@/components/SectionLabel";
 import portrait from "@/assets/portrait.jpg";
 
 const skills = {
     Frontend: ["React", "TypeScript", "Tailwind", "Framer Motion", "Vite"],
-    Backend: ["Node.js", "PostgreSQL", "Prisma", "REST APIs"],
-    Ferramentas: ["Git", "Docker", "Bun", "VSCode"],
-    Aprendendo: ["Deploy", "AWS", "IA Generativa", ],
+    Backend: ["Node.js", "PostgreSQL", "Prisma", "REST APIs", "Autenticação"],
+    Entrega: ["Responsividade", "Deploy", "Performance", "Arquitetura de interface"],
+    Colaboração: ["Git", "Documentação", "Metodologias ágeis", "Organização de código"],
 };
 
 const timeline = [
     {
-        year: "2025",
-        title: "Estudando Fullstack TypeScript",
-        desc: "React, Node, TypeScript moderno, NextJs, PostgreSQL, Prisma, REST APIs, Docker, Ajax, Deploy, Supabase, Render, Vencel, Railway",
+        year: "2026",
+        title: "Portfólio orientado a produto",
+        desc: "Passei a estruturar projetos como cases completos, com problema, solução, stack, deploy e resultado percebido.",
     },
     {
-        year: "2023",
-        title: "Primeiros projetos",
-        desc: "Clones de Páginas estáticas, ferramentas Vscode, open-source(Git/Github).",
+        year: "2025",
+        title: "Consolidação fullstack",
+        desc: "Aprofundei o uso de React, TypeScript, Node.js, PostgreSQL, Prisma, APIs REST, autenticação e fluxos com cara de mercado real.",
     },
     {
         year: "2022",
         title: "Virada de carreira",
-        desc: "Comecei do zero com HTML/CSS/JS/Sass/Less/Tawilwind/Ferramentas de Build (Parcel, Grunt, Gulp), fiz cursos, li livros, pratiquei muito e mergulhei de cabeça no universo dev. Lógica de programação, estruturas de dados, algoritmos, padrões de projeto, boas práticas, arquitetura de software, metodologias ágeis, versionamento com Git, deploy e tudo mais que pudesse me tornar um desenvolvedor completo.",
+        desc: "Saí de outras áreas para construir uma base sólida em desenvolvimento web, lógica, boas práticas, Git, deploy e evolução contínua.",
     },
+];
+
+const workStyle = [
+    "Versionamento com Git para manter entregas organizadas e fáceis de evoluir.",
+    "Estruturação de interfaces pensando em clareza, responsividade e navegação objetiva.",
+    "Documentação e organização do código para facilitar manutenção e colaboração.",
+    "Projetos com deploy e contexto de negócio, evitando portfólio baseado apenas em telas soltas.",
 ];
 
 export default function Sobre() {
     return (
         <>
-            {/* Header */}
             <section className="border-b-[3px] border-ink py-16 md:py-24">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <p className="font-mono text-xs uppercase">Capítulo 02 / Sobre</p>
                     <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
-                        Quem eu<span className="text-destructive">/</span>
+                        Perfil
+                        <span className="text-destructive">/</span>
                         <br />
-                        <span className="bg-highlight px-3">sou</span>
+                        <span className="bg-highlight px-3">profissional</span>
                         <span className="text-destructive">,</span>
-                        afinal?
+                        direto.
                     </h1>
                 </div>
             </section>
 
-            {/* Bio */}
             <section className="border-b-[3px] border-ink py-20">
                 <div className="mx-auto grid max-w-350 gap-10 px-6 md:px-10 lg:grid-cols-12">
                     <div className="lg:col-span-5">
@@ -59,18 +64,18 @@ export default function Sobre() {
                         </div>
                     </div>
                     <div className="space-y-6 lg:col-span-7">
-                        <SectionLabel index="01">A história curta</SectionLabel>
+                        <SectionLabel index="01">Resumo executivo</SectionLabel>
                         <p className="text-2xl leading-snug md:text-3xl">
-                            Antes de entrar no mundo da programação, eu me encontrava explorando outros caminhos — passava horas navegando por sites, descobrindo páginas e me perdendo na curiosidade digital. Foi em 2021 que decidi virar a chave e transformar esse interesse em propósito.
+                            Desenvolvedor em evolução com foco em aplicações web modernas. Busco oportunidades para atuar com React, Node.js e TypeScript, contribuindo com soluções eficientes, bem estruturadas e escaláveis.
                         </p>
                         <p className="text-lg leading-relaxed text-muted-foreground">
-                            Hoje junto curiosidade, estética e lógica. Interfaces que respeitam usuários, código que respeita quem mantém.
+                            Meu diferencial está em conectar interface, lógica de negócio e organização do código para entregar produtos que não parecem exercício, mas sim software pronto para uso real.
                         </p>
                         <div className="grid grid-cols-3 gap-4 pt-4">
                             {[
-                                { n: "12+", l: "Projetos" },
-                                { n: "365", l: "Dias commitando" },
-                                { n: "∞", l: "Cafés" },
+                                { n: "6", l: "Cases principais" },
+                                { n: "3", l: "Stacks centrais" },
+                                { n: "100%", l: "Projetos com narrativa" },
                             ].map((s) => (
                                 <div key={s.l} className="brutal-border bg-paper p-4">
                                     <p className="font-display text-4xl">{s.n}</p>
@@ -82,7 +87,6 @@ export default function Sobre() {
                 </div>
             </section>
 
-            {/* Timeline */}
             <section className="border-b-[3px] border-ink bg-ink py-20 text-paper">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <div className="mb-10 flex items-center gap-3 font-mono text-xs uppercase">
@@ -105,10 +109,23 @@ export default function Sobre() {
                 </div>
             </section>
 
-            {/* Skills */}
+            <section className="border-b-[3px] border-ink py-20 md:py-24">
+                <div className="mx-auto max-w-350 px-6 md:px-10">
+                    <SectionLabel index="03">Como eu atuo</SectionLabel>
+                    <div className="grid gap-4 md:grid-cols-2">
+                        {workStyle.map((item, index) => (
+                            <div key={item} className="brutal-border brutal-hover bg-paper p-5">
+                                <p className="font-mono text-xs uppercase opacity-60">0{index + 1}</p>
+                                <p className="mt-3 text-lg leading-relaxed">{item}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <section className="py-20 md:py-28">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
-                    <SectionLabel index="03">Stack & Skills</SectionLabel>
+                    <SectionLabel index="04">Stack & Skills</SectionLabel>
                     <h2 className="mb-12 font-display text-5xl uppercase md:text-7xl">
                         O que eu uso<span className="text-destructive">.</span>
                     </h2>
