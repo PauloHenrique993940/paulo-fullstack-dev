@@ -83,7 +83,7 @@ export default function Home() {
                                     GitHub ↗
                                 </a>
                                 <a
-                                    href="https://www.linkedin.com/in/paulo-henrique-ferreira-fran%C3%A7a-751256262/"
+                                    href="https://www.linkedin.com/in/paulohenriquefranca/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="brutal-border brutal-shadow-sm brutal-hover inline-flex items-center gap-2 bg-highlight px-5 py-3 font-mono text-sm uppercase"
