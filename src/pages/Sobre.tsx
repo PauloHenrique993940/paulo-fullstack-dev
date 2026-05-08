@@ -3,7 +3,7 @@ import portrait from "@/assets/portrait.jpg";
 
 const skills = {
     Frontend: ["React", "TypeScript", "Tailwind", "Framer Motion", "Vite"],
-    Backend: ["Node.js", "PostgreSQL", "Prisma", "REST APIs", "Autenticação"],
+    Backend: ["Node.js", "PostgreSQL", "Prisma", "REST APIs", "Autenticação", "Express"],
     Entrega: ["Responsividade", "Deploy", "Performance", "Arquitetura de interface"],
     Colaboração: ["Git", "Documentação", "Metodologias ágeis", "Organização de código"],
 };

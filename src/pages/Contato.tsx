@@ -3,8 +3,8 @@ import { SectionLabel } from "@/components/SectionLabel";
 
 const contactLinks = [
     { label: "GitHub", href: "https://github.com/PauloHenrique993940" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/paulo-henrique-ferreira-fran%C3%A7a-751256262/" },
-    { label: "Portfólio publicado", href: "https://paulo-front-emd.vercel.app" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/paulohenriquefranca/" },
+    { label: "Portfólio publicado", href: "https://paulo-fullstack-dev.vercel.app/" },
 ];
 
 function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
