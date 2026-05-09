@@ -2,29 +2,29 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import portrait from "@/assets/portrait.jpg";
 import project1 from "@/assets/project-1.jpg";
-import project11 from "@/assets/project-11.png";
+import project11 from "@/assets/project-5.jpg";
 import { SectionLabel } from "@/components/SectionLabel";
 
 const proofPoints = [
     {
         title: "Quem eu sou",
-        text: "Paulo Henrique Ferreira França, desenvolvedor fullstack com foco em produtos web modernos e bem estruturados.",
+        text: "Paulo Henrique Ferreira França, desenvolvedor full stack júnior com base prática em React.js, Node.js, TypeScript e PostgreSQL.",
     },
     {
         title: "O que eu faço",
-        text: "Transformo ideias em aplicações com React, TypeScript, Node.js, PostgreSQL, APIs REST, autenticação e deploy.",
+        text: "Construo interfaces responsivas em React e APIs RESTful com Node.js e Express, conectando front-end, regra de negócio e banco de dados.",
     },
     {
         title: "Valor que eu entrego",
-        text: "Crio experiências rápidas, responsivas e fáceis de manter, conectando interface, regra de negócio e organização de código.",
+        text: "Entrego aplicações com foco em usabilidade, organização de código, escalabilidade e contexto real de operação.",
     },
 ];
 
 const marketSignals = [
-    "Autenticação e controle de acesso",
-    "CRUD completo com API e banco de dados",
-    "Dashboards, filtros e fluxos administrativos",
-    "Responsividade, performance e deploy online",
+    "React.js, TypeScript e Tailwind para interfaces mobile first",
+    "Node.js, Express e APIs REST integrando front-end e back-end",
+    "PostgreSQL, Prisma e Supabase na camada de dados",
+    "Deploy em produção com foco em UX, performance e manutenção",
 ];
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
                         <div className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase">
                             <span className="bg-ink px-2 py-1 text-paper">Edição 01</span>
                             <span>—</span>
-                            <span>Portfólio / 2026</span>
+                            <span>Portfólio profissional / 2026</span>
                             <span className="ml-auto flex items-center gap-2">
                                 <span className="h-2 w-2 animate-pulse rounded-full bg-destructive" />
                                 Aberto a oportunidades
@@ -55,24 +55,24 @@ export default function Home() {
                         >
                             Full<span className="text-destructive">-</span>
                             <br />
-                            stack com
+                            stack
                             <br />
-                            <span className="bg-highlight px-2">impacto</span>
+                            <span className="bg-highlight px-2">júnior</span>
                             <span className="blink">.</span>
                         </motion.h1>
                         <div className="mt-8 max-w-4xl space-y-5">
                             <p className="text-2xl leading-tight md:text-4xl">
-                                Desenvolvedor fullstack focado em criar aplicações rápidas, escaláveis e com ótima experiência do usuário.
+                                Desenvolvedor Full Stack Júnior focado em aplicações web modernas, escaláveis e orientadas à experiência do usuário.
                             </p>
                             <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                                Construo soluções com React, TypeScript, Node.js, PostgreSQL e APIs REST para resolver problemas reais de operação, atendimento e gestão com interface clara e código sustentável.
+                                Atuo com React.js, TypeScript, Node.js, Express, PostgreSQL, Prisma e Supabase para criar soluções com interface responsiva, APIs RESTful e estrutura pronta para evolução.
                             </p>
                             <div className="flex flex-wrap gap-3 pt-2">
                                 <Link
                                     to="/projetos"
                                     className="brutal-border brutal-shadow brutal-hover inline-flex items-center gap-2 bg-ink px-5 py-3 font-mono text-sm uppercase text-paper"
                                 >
-                                    Ver projeto destaque →
+                                    Ver projetos em destaque →
                                 </Link>
                                 <a
                                     href="https://github.com/PauloHenrique993940"
@@ -107,14 +107,14 @@ export default function Home() {
                         <div className="space-y-4">
                             <p className="font-mono text-xs uppercase opacity-60">Posicionamento</p>
                             <p className="text-lg leading-snug">
-                                Meu foco é entregar produtos que pareçam prontos para mercado: autenticação, integrações,
-                                dashboards, deploy, responsividade e uma navegação que faz sentido para quem usa.
+                                Minha proposta é clara: transformar aprendizado técnico em software utilizável, com autenticação,
+                                integração entre camadas, experiência responsiva e organização de código alinhada a boas práticas.
                             </p>
                             <div className="brutal-border bg-paper p-4">
-                                <p className="font-mono text-xs uppercase opacity-60">Busco agora</p>
+                                <p className="font-mono text-xs uppercase opacity-60">Objetivo profissional</p>
                                 <p className="mt-2 text-base leading-relaxed">
-                                    Oportunidades para atuar com React, Node.js e TypeScript em times que valorizam
-                                    produto, organização e evolução técnica.
+                                    Atuar como Desenvolvedor Full Stack Júnior com foco em React.js, Node.js, TypeScript e PostgreSQL,
+                                    contribuindo com soluções eficientes, escaláveis e bem estruturadas.
                                 </p>
                             </div>
                         </div>
@@ -124,10 +124,10 @@ export default function Home() {
                 <div className="border-t-[3px] border-ink bg-ink text-paper">
                     <div className="mx-auto grid max-w-350 grid-cols-2 divide-x divide-paper/30 md:grid-cols-4">
                         {[
-                            { k: "Foco", v: "React · Node.js · TypeScript" },
-                            { k: "Entrega", v: "UX, performance e código sustentável" },
-                            { k: "Mercado", v: "Auth, CRUD, APIs REST, deploy" },
-                            { k: "Status", v: "Disponível para oportunidades" },
+                            { k: "Foco", v: "React.js · Node.js · TypeScript" },
+                            { k: "Dados", v: "PostgreSQL · Prisma · Supabase" },
+                            { k: "Entrega", v: "APIs REST · UX responsiva · Deploy" },
+                            { k: "Status", v: "Remoto, híbrido ou presencial" },
                         ].map((i) => (
                             <div key={i.k} className="px-6 py-5 md:px-10">
                                 <p className="font-mono text-[10px] uppercase opacity-60">{i.k}</p>
@@ -160,8 +160,8 @@ export default function Home() {
                             Almoxarif<span className="text-destructive">.</span>
                         </h2>
                         <p className="mt-6 text-lg leading-relaxed">
-                            Um sistema de gestão de estoque pensado para simular cenário real: autenticação, painel administrativo,
-                            movimentação de itens, rastreabilidade e integração entre frontend e backend.
+                            Plataforma de gestão de almoxarifado criada para um cenário real de logística e suprimentos,
+                            com autenticação, controle de materiais, rastreabilidade e integração completa entre front-end e back-end.
                         </p>
                         <div className="mt-6 flex flex-wrap gap-3">
                             <a
@@ -191,19 +191,19 @@ export default function Home() {
                             {[
                                 {
                                     label: "Problema",
-                                    text: "Processos de estoque espalhados, pouca visibilidade operacional e alta chance de retrabalho manual.",
+                                    text: "Centralizar estoque, inventário e movimentações para reduzir retrabalho e melhorar a visibilidade operacional.",
                                 },
                                 {
                                     label: "Solução",
-                                    text: "Painel web com autenticação, gestão de itens e fluxo centralizado para consulta e atualização de dados.",
+                                    text: "Aplicação full stack com interface responsiva, APIs RESTful, autenticação e fluxo centralizado de consulta e atualização.",
                                 },
                                 {
                                     label: "Tecnologias",
-                                    text: "React, TypeScript, Node.js, PostgreSQL, Prisma, TanStack Query e APIs REST.",
+                                    text: "React.js, TypeScript, Node.js, Express, PostgreSQL, Prisma e Supabase.",
                                 },
                                 {
                                     label: "Resultado",
-                                    text: "Um case completo de mercado, com arquitetura fullstack, rastreabilidade e base pronta para evolução.",
+                                    text: "Case aderente ao meu currículo, mostrando arquitetura full stack, modelagem relacional e foco em produtividade operacional.",
                                 },
                             ].map((item) => (
                                 <div key={item.label} className="brutal-border bg-paper p-5">
@@ -235,19 +235,19 @@ export default function Home() {
                     <div className="lg:col-span-7">
                         <SectionLabel index="04">Outro case forte</SectionLabel>
                         <h2 className="font-display text-5xl uppercase md:text-7xl">
-                            Canarinho Chronicles.
+                            Syntax Wear.
                         </h2>
                         <p className="mt-6 text-lg leading-relaxed">
-                            Uma aplicação front-end que transforma dados históricos da seleção brasileira em uma experiência visual imersiva,
-                            com navegação fluida, organização por rotas e atenção à performance de build.
+                            Um e-commerce front-end construído para demonstrar navegação fluida, formulários estruturados,
+                            integração com APIs REST e atenção real a UX responsiva.
                         </p>
                         <p className="mt-4 max-w-3xl font-mono text-sm uppercase">
-                            React · TypeScript · TanStack Router · Tailwind · Framer Motion · Zod
+                            React.js · TypeScript · Tailwind CSS · React Hook Form · TanStack Router · Zod
                         </p>
                     </div>
                     <div className="lg:col-span-5">
                         <div className="brutal-border brutal-shadow-lg overflow-hidden bg-paper">
-                            <img src={project11} alt="Projeto Canarinho Chronicles" className="aspect-4/3 w-full object-cover" />
+                            <img src={project11} alt="Projeto Syntax Wear" className="aspect-4/3 w-full object-cover" />
                         </div>
                     </div>
                 </div>

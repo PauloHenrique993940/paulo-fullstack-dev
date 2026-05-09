@@ -11,11 +11,11 @@ const projects = [
     {
         n: "01",
         title: "Almoxarif",
-        sub: "Sistema fullstack de gestão de estoque",
-        problem: "Centralizar movimentações de estoque e reduzir retrabalho operacional em um fluxo mais confiável.",
-        solution: "Desenvolvi uma aplicação com autenticação, painel administrativo, controle de itens e integração entre frontend e backend.",
-        result: "O projeto demonstra domínio de um fluxo de mercado completo, com rastreabilidade, organização de dados e base escalável.",
-        tags: ["React", "Node", "Postgres", "Prisma", "TanStack", "WebSocket", "API REST"],
+        sub: "Plataforma full stack para gestão de almoxarifado",
+        problem: "Centralizar estoque, inventário e rastreabilidade de materiais em um fluxo confiável para operação logística.",
+        solution: "Desenvolvi uma aplicação com autenticação, painel administrativo, controle de itens e APIs RESTful integrando front-end, back-end e banco de dados.",
+        result: "O projeto evidencia experiência prática com arquitetura full stack, modelagem relacional e contexto operacional real.",
+        tags: ["React.js", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma", "Supabase"],
         year: "2026",
         img: project1,
         deploy: "https://gestao-almoxarifado-frontend.vercel.app/login",
@@ -50,12 +50,12 @@ const projects = [
     {
         n: "04",
         title: "Syntax Wear",
-        sub: "E-commerce com foco em experiência de compra",
-        problem: "Simular um fluxo de e-commerce com catálogo, navegação clara e interface preparada para conversão.",
-        solution: "Desenvolvi a vitrine, estrutura de catálogo e interações com foco em usabilidade, organização visual e performance.",
-        result: "O projeto evidencia domínio de front-end aplicado a produto digital, incluindo responsividade e composição de interface.",
-        tags: ["React", "TypeScript", "Tailwind", "TanStack", "E-commerce"],
-        year: "2026",
+        sub: "E-commerce responsivo com foco em UX e navegação",
+        problem: "Construir um fluxo de compra moderno com catálogo, roteamento consistente, formulários robustos e integração com APIs REST.",
+        solution: "Estruturei o front-end com React.js, TypeScript, Tailwind CSS, TanStack Router, React Hook Form e Zod para garantir navegação e validação mais sólidas.",
+        result: "O case reforça minha capacidade de desenvolver interfaces de produto com usabilidade, organização de código e experiência responsiva.",
+        tags: ["React.js", "TypeScript", "Tailwind CSS", "TanStack Router", "React Hook Form", "Zod"],
+        year: "2025",
         img: project5,
         deploy: "https://syntax-wear-app.vercel.app/",
         github: "https://github.com/PauloHenrique993940/syntax-wear-app.git"
@@ -99,11 +99,11 @@ export default function Projetos() {
                         <br />
                         com foco
                         <br />
-                        em resultado.
+                        em aderência.
                     </h1>
                     <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-                        Em vez de listar tecnologia solta, organizei os projetos como estudos de caso: qual problema existia,
-                        qual solução foi construída, quais tecnologias sustentaram a entrega e qual resultado o projeto gera.
+                        Os projetos abaixo foram priorizados para refletir o meu currículo com mais precisão: problema de negócio,
+                        solução construída, stack utilizada e competência prática demonstrada em cada entrega.
                     </p>
                 </div>
             </section>
@@ -176,7 +176,7 @@ export default function Projetos() {
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <SectionLabel index="∞">Critério de curadoria</SectionLabel>
                     <p className="max-w-3xl font-display text-4xl uppercase md:text-6xl">
-                        Menos volume. Mais clareza, contexto e percepção de mercado.
+                        Menos vitrine genérica. Mais contexto real, stack consistente e leitura de recrutador.
                     </p>
                 </div>
             </section>

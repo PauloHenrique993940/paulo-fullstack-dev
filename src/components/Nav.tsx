@@ -21,7 +21,7 @@ export function Nav() {
             PH
           </div>
           <span className="font-display text-sm uppercase tracking-tight">
-            Paulo Henrique<span className="text-destructive">/</span> Fullstack
+            Paulo Henrique<span className="text-destructive">/</span> Full Stack Júnior
           </span>
         </Link>
 

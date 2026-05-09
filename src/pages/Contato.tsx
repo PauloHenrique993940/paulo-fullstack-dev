@@ -38,12 +38,12 @@ export default function Contato() {
                 <div className="mx-auto max-w-[1400px] px-6 md:px-10">
                     <p className="font-mono text-xs uppercase">Capítulo 04 / Contato</p>
                     <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
-                        Diga<span className="text-destructive">/</span>
+                        Vamos<span className="text-destructive">/</span>
                         <br />
-                        <span className="bg-highlight px-3">olá</span>.
+                        <span className="bg-highlight px-3">conversar</span>.
                     </h1>
                     <p className="mt-6 max-w-xl text-xl">
-                        Aberto a vagas, freelas e conversas sobre produto, front-end, fullstack e interfaces de alta conversão.
+                        Aberto a oportunidades como Desenvolvedor Full Stack Júnior, atuação em projetos front-end ou full stack e conversas sobre produtos web modernos.
                     </p>
                 </div>
             </section>
@@ -103,8 +103,8 @@ export default function Contato() {
                         </div>
                         <div className="brutal-border bg-ink p-6 text-paper">
                             <p className="font-mono text-xs uppercase opacity-60">Disponibilidade</p>
-                            <p className="mt-1 font-display text-2xl">Vagas e freelas</p>
-                            <p className="mt-2 font-mono text-xs opacity-70">Resposta em até 48h úteis</p>
+                            <p className="mt-1 font-display text-2xl">Remoto, híbrido ou presencial</p>
+                            <p className="mt-2 font-mono text-xs opacity-70">Resposta em até 48h úteis para vagas, freelas e parcerias</p>
                         </div>
                     </aside>
                 </div>

@@ -1,7 +1,7 @@
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/PauloHenrique993940" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/paulo-henrique-ferreira-fran%C3%A7a-751256262/" },
-  { label: "Portfólio", href: "https://paulo-front-emd.vercel.app" },
+  { label: "Portfólio", href: "https://paulo-fullstack-dev.vercel.app/" },
 ];
 
 export function Footer() {
@@ -12,7 +12,7 @@ export function Footer() {
         <div className="marquee-track flex whitespace-nowrap font-display text-5xl uppercase md:text-7xl">
           {Array.from({ length: 6 }).map((_, i) => (
             <span key={i} className="mx-8 flex items-center gap-8">
-              Disponível para projetos
+              Disponível para oportunidades
               <span className="text-highlight">★</span>
             </span>
           ))}
@@ -57,7 +57,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-paper/20 px-6 py-4 text-center font-mono text-xs uppercase opacity-60 md:px-10">
-        © {year} — React, TypeScript, Node.js, APIs REST e deploys prontos para avaliação.
+        © {year} — Desenvolvedor Full Stack Júnior | React.js, Node.js, TypeScript, PostgreSQL e APIs REST.
       </div>
     </footer>
   );

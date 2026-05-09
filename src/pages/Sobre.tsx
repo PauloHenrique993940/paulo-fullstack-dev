@@ -2,35 +2,35 @@ import { SectionLabel } from "@/components/SectionLabel";
 import portrait from "@/assets/portrait.jpg";
 
 const skills = {
-    Frontend: ["React", "TypeScript", "Tailwind", "Framer Motion", "Vite"],
-    Backend: ["Node.js", "PostgreSQL", "Prisma", "REST APIs", "Autenticação", "Express"],
-    Entrega: ["Responsividade", "Deploy", "Performance", "Arquitetura de interface"],
-    Colaboração: ["Git", "Documentação", "Metodologias ágeis", "Organização de código"],
+    "Front-end": ["React.js", "TypeScript", "JavaScript ES6+", "Tailwind CSS", "React Hook Form", "TanStack Router", "Zod"],
+    "Back-end": ["Node.js", "Express.js", "APIs RESTful", "Autenticação"],
+    "Dados & Cloud": ["PostgreSQL", "Prisma ORM", "Supabase"],
+    "Ferramentas": ["Git", "GitHub", "Vercel", "Mobile First", "Responsividade", "UX/UI"],
 };
 
 const timeline = [
     {
         year: "2026",
-        title: "Portfólio orientado a produto",
-        desc: "Passei a estruturar projetos como cases completos, com problema, solução, stack, deploy e resultado percebido.",
+        title: "Pós em Desenvolvimento Front-end",
+        desc: "Especialização em andamento na Anhanguera, aprofundando arquitetura de interfaces, experiência do usuário e práticas modernas de front-end.",
     },
     {
-        year: "2025",
-        title: "Consolidação fullstack",
-        desc: "Aprofundei o uso de React, TypeScript, Node.js, PostgreSQL, Prisma, APIs REST, autenticação e fluxos com cara de mercado real.",
+        year: "2024",
+        title: "ADS concluído e consolidação prática",
+        desc: "Conclusão do tecnólogo em Análise e Desenvolvimento de Sistemas e construção de projetos completos com React, Node.js, PostgreSQL e Prisma.",
     },
     {
-        year: "2022",
-        title: "Virada de carreira",
-        desc: "Saí de outras áreas para construir uma base sólida em desenvolvimento web, lógica, boas práticas, Git, deploy e evolução contínua.",
+        year: "2020 - atual",
+        title: "Experiência profissional em operação",
+        desc: "Atuação na Secretaria da Segurança Pública da Bahia, fortalecendo organização de processos, análise de dados, rastreabilidade e visão operacional aplicada à tecnologia.",
     },
 ];
 
 const workStyle = [
-    "Versionamento com Git para manter entregas organizadas e fáceis de evoluir.",
-    "Estruturação de interfaces pensando em clareza, responsividade e navegação objetiva.",
-    "Documentação e organização do código para facilitar manutenção e colaboração.",
-    "Projetos com deploy e contexto de negócio, evitando portfólio baseado apenas em telas soltas.",
+    "Desenvolvo interfaces responsivas com foco em clareza, usabilidade e experiência mobile first.",
+    "Estruturo APIs e camada de dados pensando em escalabilidade, manutenção e integração limpa entre front-end e back-end.",
+    "Uso Git, GitHub e organização de código para sustentar evolução contínua e colaboração.",
+    "Prefiro projetos com contexto operacional real, conectando tecnologia, processo e necessidade de negócio.",
 ];
 
 export default function Sobre() {
@@ -66,16 +66,16 @@ export default function Sobre() {
                     <div className="space-y-6 lg:col-span-7">
                         <SectionLabel index="01">Resumo executivo</SectionLabel>
                         <p className="text-2xl leading-snug md:text-3xl">
-                            Desenvolvedor em evolução com foco em aplicações web modernas. Busco oportunidades para atuar com React, Node.js e TypeScript, contribuindo com soluções eficientes, bem estruturadas e escaláveis.
+                            Desenvolvedor Full Stack com formação em ADS, pós-graduação em andamento e atuação prática na construção de aplicações web modernas, escaláveis e orientadas à experiência do usuário.
                         </p>
                         <p className="text-lg leading-relaxed text-muted-foreground">
-                            Meu diferencial está em conectar interface, lógica de negócio e organização do código para entregar produtos que não parecem exercício, mas sim software pronto para uso real.
+                            Tenho domínio prático do ecossistema JavaScript e TypeScript, com interfaces em React.js, APIs RESTful em Node.js e Express, modelagem com PostgreSQL e Prisma, além de integração com Supabase e deploy em produção.
                         </p>
                         <div className="grid grid-cols-3 gap-4 pt-4">
                             {[
-                                { n: "6", l: "Cases principais" },
-                                { n: "3", l: "Stacks centrais" },
-                                { n: "100%", l: "Projetos com narrativa" },
+                                { n: "3", l: "Formações acadêmicas" },
+                                { n: "2024", l: "ADS concluído" },
+                                { n: "2", l: "Cases aderentes ao currículo" },
                             ].map((s) => (
                                 <div key={s.l} className="brutal-border bg-paper p-4">
                                     <p className="font-display text-4xl">{s.n}</p>
@@ -127,7 +127,7 @@ export default function Sobre() {
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <SectionLabel index="04">Stack & Skills</SectionLabel>
                     <h2 className="mb-12 font-display text-5xl uppercase md:text-7xl">
-                        O que eu uso<span className="text-destructive">.</span>
+                        Competências<span className="text-destructive">.</span>
                     </h2>
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {Object.entries(skills).map(([cat, items]) => (
