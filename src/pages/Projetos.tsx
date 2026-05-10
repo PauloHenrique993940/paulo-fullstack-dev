@@ -221,7 +221,7 @@ export default function Projetos() {
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <SectionLabel index="∞">Critério de curadoria</SectionLabel>
                     <p className="max-w-3xl font-display text-4xl uppercase md:text-6xl">
-                        Menos vitrine genérica. Mais contexto real, stack consistente e leitura de recrutador.
+                        Menos vitrine, mais resultado. Cada projeto foi cuidadosamente selecionado para evidenciar minha capacidade de transformar problemas reais em soluções funcionais, unindo contexto de negócio, arquitetura bem definida, stack consistente e aplicação prática — oferecendo uma visão clara do meu potencial técnico e da minha forma de pensar como desenvolvedor.
                     </p>
                 </div>
             </section>
