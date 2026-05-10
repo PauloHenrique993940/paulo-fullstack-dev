@@ -7,6 +7,7 @@ import project9 from "@/assets/project-9.png";
 import project10 from "@/assets/project-10.png";
 import project11 from "@/assets/project-11.png";
 import rastreio from "@/assets/rastreio.png";
+import ativoControl from "@/assets/ativoControl.png";
 
 const projects = [
     {
@@ -102,6 +103,20 @@ const projects = [
         
         
     },
+    {
+        n: "08",
+        title: "Ativo Control",
+        sub: "Plataforma em produção para controle de ativos",
+        problem: "Centralizar a gestão de ativos em um fluxo único, com visibilidade operacional e acompanhamento mais confiável.",
+        solution: "A estrutura do projeto está sendo produzida para reunir interface, regras de negócio e organização de dados em uma aplicação full stack.",
+        result: "Este case será publicado em breve como parte do portfólio, assim que a primeira versão de produção estiver pronta para apresentação.",
+        tags: ["React", "TypeScript", "Tailwind", "Em produção"],
+        year: "2026",
+        img: ativoControl,
+        deploy: "#",
+        github: "#",
+        upcoming: true,
+    },
 ];
 
 export default function Projetos() {
@@ -133,13 +148,20 @@ export default function Projetos() {
                             <div className="grid items-center gap-10 lg:grid-cols-12">
                                 <div className="lg:col-span-7">
                                     <div className="brutal-border brutal-shadow-lg overflow-hidden bg-paper">
-                                        <img
-                                            src={p.img}
-                                            alt={p.title}
-                                            width={1024}
-                                            height={768}
-                                            className="aspect-4/3 w-full object-cover"
-                                        />
+                                        <div className="relative">
+                                            <img
+                                                src={p.img}
+                                                alt={p.title}
+                                                width={1024}
+                                                height={768}
+                                                className="aspect-4/3 w-full object-cover"
+                                            />
+                                            {p.upcoming && (
+                                                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-y-[3px] border-ink bg-highlight px-4 py-4 text-center font-mono text-sm font-bold uppercase tracking-[0.25em] text-ink md:text-base">
+                                                    Em breve • projeto em fase de produção
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="space-y-5 lg:col-span-5">
@@ -163,22 +185,30 @@ export default function Projetos() {
                                         ))}
                                     </div>
                                     <div className="flex gap-3 pt-2">
-                                        <a
-                                            href={p.deploy}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="brutal-border brutal-shadow-sm brutal-hover bg-ink px-5 py-3 font-mono text-sm uppercase text-paper"
-                                        >
-                                            Ver demo →
-                                        </a>
-                                        <a
-                                            href={p.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="brutal-border brutal-shadow-sm brutal-hover bg-paper px-5 py-3 font-mono text-sm uppercase"
-                                        >
-                                            Código ↗
-                                        </a>
+                                        {p.upcoming ? (
+                                            <span className="brutal-border bg-paper px-5 py-3 font-mono text-sm uppercase text-muted-foreground">
+                                                Lançamento em breve
+                                            </span>
+                                        ) : (
+                                            <>
+                                                <a
+                                                    href={p.deploy}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="brutal-border brutal-shadow-sm brutal-hover bg-ink px-5 py-3 font-mono text-sm uppercase text-paper"
+                                                >
+                                                    Ver demo →
+                                                </a>
+                                                <a
+                                                    href={p.github}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="brutal-border brutal-shadow-sm brutal-hover bg-paper px-5 py-3 font-mono text-sm uppercase"
+                                                >
+                                                    Código ↗
+                                                </a>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             </div>
