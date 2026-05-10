@@ -118,8 +118,7 @@ export default function Projetos() {
                         em aderência.
                     </h1>
                     <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-                        Os projetos abaixo foram priorizados para refletir o meu currículo com mais precisão: problema de negócio,
-                        solução construída, stack utilizada e competência prática demonstrada em cada entrega.
+                        Os projetos abaixo foram selecionados e estruturados para refletir com maior precisão minha experiência e alinhamento com o currículo, destacando o problema de negócio identificado, a solução desenvolvida, a stack utilizada e as competências práticas aplicadas em cada entrega — evidenciando minha capacidade de construir soluções reais do zero, com foco em resultado e qualidade técnica.
                     </p>
                 </div>
             </section>
