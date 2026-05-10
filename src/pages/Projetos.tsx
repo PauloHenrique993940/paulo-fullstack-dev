@@ -6,6 +6,7 @@ import project5 from "@/assets/project-5.jpg";
 import project9 from "@/assets/project-9.png";
 import project10 from "@/assets/project-10.png";
 import project11 from "@/assets/project-11.png";
+import rastreio from "@/assets/rastreio.png";
 
 const projects = [
     {
@@ -85,6 +86,21 @@ const projects = [
         img: project11,
         deploy: "https://canarinho-chronicles-selecao.netlify.app/",
         github: "https://github.com/PauloHenrique993940/canarinho-chronicles.git"
+    },
+    {
+        n: "07",
+        title: "Rastreio de Encomendas",
+        sub: "Aplicação para rastreamento de pacotes em tempo real",
+        problem: "Fornecer informações precisas e atualizadas sobre o status de entregas.",
+        solution: "Desenvolvi uma interface intuitiva com integração a APIs de rastreamento e notificações em tempo real.",
+        result: "O case demonstra habilidade em criar soluções práticas e eficientes para problemas do dia a dia.",
+        tags: ["React", "TypeScript", "Tailwind", "API Integration", "Real-time Updates", "Prisma ORM", "SUpabase"],
+        year: "2026",
+        img: rastreio,
+        deploy: "https://sistemarastreio-front.vercel.app/",
+        github: "https://github.com/PauloHenrique993940/sistemaRastriobackend.git",
+        
+        
     },
 ];
 
