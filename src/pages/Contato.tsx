@@ -83,7 +83,7 @@ export default function Contato() {
                             <p className="font-mono text-xs uppercase">Email</p>
                             <a
                                 href="mailto:paulohenriqueferreirafranca2@gmail.com"
-                                className="mt-1 block font-display text-3xl underline decoration-ink decoration-4 underline-offset-4"
+                                className="mt-1 block font-display text-font  underline decoration-ink decoration-4 underline-offset-4"
                             >
                                 paulohenriqueferreirafranca2@gmail.com
                             </a>

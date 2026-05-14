@@ -28,7 +28,7 @@ export function Footer() {
           <p className="font-mono text-xs uppercase opacity-60">Contato</p>
           <a
             href="mailto:paulohenriqueferreirafranca2@gmail.com"
-            className="mt-2 inline-block font-display text-2xl underline decoration-highlight decoration-4 underline-offset-4 hover:text-highlight"
+            className="mt-2 inline-block font-display text-1xl underline decoration-highlight decoration-4 underline-offset-4 hover:text-highlight"
           >
             paulohenriqueferreirafranca2@gmail.com
           </a>
