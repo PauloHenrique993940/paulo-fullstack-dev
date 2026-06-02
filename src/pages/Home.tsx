@@ -27,6 +27,83 @@ const marketSignals = [
     "Deploy em produção com foco em UX, performance e manutenção",
 ];
 
+const feedbacks = [
+    {
+        name: "Keven Matheus",
+        role: "FullStack Developer | Artificial Intelligence & Automation Specialist",
+        context: "Estudava com Paulo Henrique na mesma instituição",
+        text: [
+            "Paulo é um estudante extremamente comprometido, responsável e dedicado, com grande facilidade de aprendizado e trabalho em equipe.",
+            "Também se destaca pelo domínio técnico, organização e determinação em evoluir na área de tecnologia.",
+        ],
+    },
+    {
+        name: "Eliane Pereira Tavares",
+        role: "Tecnologia | Cibersegurança | Engenharia de Software | Experiência com Cliente",
+        context: "Trabalhava com Paulo Henrique na mesma equipe",
+        text: [
+            "Paulo está em transição para tecnologia com um diferencial competitivo claro: inteligência emocional e espírito colaborativo.",
+            "Compartilha conhecimento com generosidade, incentiva quem está ao redor e demonstra comunicação clara, proatividade e senso de comunidade.",
+        ],
+    },
+    {
+        name: "Renan Carlo Siebert",
+        role: "Desenvolvedor Front-End | HTML | CSS | JavaScript | React",
+        context: "Estudava com Paulo Henrique na mesma instituição",
+        text: [
+            "Paulo se tornou uma referência no meu desenvolvimento profissional, contribuindo com sugestões valiosas de design, organização e apresentação de projetos.",
+            "Sua experiência prática e vontade de compartilhar conhecimento fazem diferença para quem está evoluindo na área de tecnologia.",
+        ],
+    },
+    {
+        name: "Rafaela de Sousa",
+        role: "Desenvolvedora Front-end | HTML | CSS | JavaScript | GitHub",
+        context: "Acompanhou o trabalho de Paulo Henrique",
+        text: [
+            "Destaco a forte atuação em Front-End, especialmente com React.js e JavaScript, com atenção a performance e organização de código.",
+            "Além do domínio técnico, Paulo demonstra foco em UX, clareza visual e postura colaborativa para entregar projetos bem construídos.",
+        ],
+    },
+];
+
+const revealUp = {
+    hidden: { opacity: 0, y: 56, scale: 0.94, filter: "blur(8px)" },
+    show: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: { type: "spring" as const, stiffness: 120, damping: 18, mass: 0.8 },
+    },
+};
+
+const revealSideLeft = {
+    hidden: { opacity: 0, x: -56, scale: 0.95, filter: "blur(8px)" },
+    show: {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: { type: "spring" as const, stiffness: 120, damping: 18, mass: 0.8 },
+    },
+};
+
+const revealSideRight = {
+    hidden: { opacity: 0, x: 56, scale: 0.95, filter: "blur(8px)" },
+    show: {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: { type: "spring" as const, stiffness: 120, damping: 18, mass: 0.8 },
+    },
+};
+
+const staggerGrid = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+};
+
 export default function Home() {
     return (
         <>
@@ -141,20 +218,31 @@ export default function Home() {
             <section className="border-b-[3px] border-ink py-20 md:py-24">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <SectionLabel index="01">Leitura rápida</SectionLabel>
-                    <div className="grid gap-6 lg:grid-cols-3">
+                    <motion.div
+                        className="grid gap-6 lg:grid-cols-3"
+                        variants={staggerGrid}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
                         {proofPoints.map((item) => (
-                            <article key={item.title} className="brutal-border brutal-shadow bg-paper p-6">
+                            <motion.article key={item.title} className="brutal-border brutal-shadow bg-paper p-6" variants={revealUp}>
                                 <p className="font-mono text-xs uppercase opacity-60">{item.title}</p>
                                 <p className="mt-4 text-lg leading-relaxed">{item.text}</p>
-                            </article>
+                            </motion.article>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             <section className="border-b-[3px] border-ink bg-secondary py-20 md:py-24">
-                <div className="mx-auto grid max-w-350 gap-10 px-6 md:px-10 lg:grid-cols-12">
-                    <div className="lg:col-span-5">
+                <motion.div
+                    className="mx-auto grid max-w-350 gap-10 px-6 md:px-10 lg:grid-cols-12"
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
+                    <motion.div className="lg:col-span-5" variants={revealSideLeft}>
                         <SectionLabel index="02">Projeto principal</SectionLabel>
                         <h2 className="font-display text-5xl uppercase md:text-7xl">
                             Almoxarif<span className="text-destructive">.</span>
@@ -181,13 +269,19 @@ export default function Home() {
                                 Ver código ↗
                             </a>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="lg:col-span-7">
+                    <motion.div className="lg:col-span-7" variants={revealSideRight}>
                         <div className="brutal-border brutal-shadow-lg overflow-hidden bg-paper">
                             <img src={project1} alt="Projeto Almoxarif" className="aspect-4/3 w-full object-cover" />
                         </div>
-                        <div className="mt-6 grid gap-4 md:grid-cols-2">
+                        <motion.div
+                            className="mt-6 grid gap-4 md:grid-cols-2"
+                            variants={staggerGrid}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true, amount: 0.25 }}
+                        >
                             {[
                                 {
                                     label: "Problema",
@@ -206,34 +300,77 @@ export default function Home() {
                                     text: "Case aderente ao meu currículo, mostrando arquitetura full stack, modelagem relacional e foco em produtividade operacional.",
                                 },
                             ].map((item) => (
-                                <div key={item.label} className="brutal-border bg-paper p-5">
+                                <motion.div key={item.label} className="brutal-border bg-paper p-5" variants={revealUp}>
                                     <p className="font-mono text-xs uppercase opacity-60">{item.label}</p>
                                     <p className="mt-3 text-base leading-relaxed">{item.text}</p>
-                                </div>
+                                </motion.div>
                             ))}
-                        </div>
-                    </div>
-                </div>
+                        </motion.div>
+                    </motion.div>
+                </motion.div>
             </section>
 
             <section className="border-b-[3px] border-ink py-20 md:py-24">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <SectionLabel index="03">Sinais de maturidade</SectionLabel>
-                    <div className="grid gap-4 md:grid-cols-2">
+                    <motion.div
+                        className="grid gap-4 md:grid-cols-2"
+                        variants={staggerGrid}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
                         {marketSignals.map((item, index) => (
-                            <div key={item} className="brutal-border brutal-hover bg-paper p-5">
+                            <motion.div key={item} className="brutal-border brutal-hover bg-paper p-5" variants={revealUp}>
                                 <p className="font-mono text-xs uppercase opacity-60">0{index + 1}</p>
                                 <p className="mt-3 text-lg leading-relaxed">{item}</p>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            <section className="border-b-[3px] border-ink bg-secondary py-20 md:py-24">
+                <div className="mx-auto max-w-350 px-6 md:px-10">
+                    <SectionLabel index="04">Feedback profissional</SectionLabel>
+                    <motion.div
+                        className="grid gap-6 lg:grid-cols-2"
+                        variants={staggerGrid}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.15 }}
+                    >
+                        {feedbacks.map((feedback, index) => (
+                            <motion.article key={feedback.name} className="brutal-border brutal-shadow bg-paper p-6" variants={revealUp}>
+                                <div className="flex items-center justify-between gap-3">
+                                    <p className="font-mono text-xs uppercase opacity-60">Depoimento 0{index + 1}</p>
+                                    <span className="h-2 w-2 rounded-full bg-green-600" aria-hidden="true" />
+                                </div>
+                                <h3 className="mt-3 text-2xl leading-tight">{feedback.name}</h3>
+                                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feedback.role}</p>
+                                <p className="mt-1 font-mono text-xs uppercase opacity-60">{feedback.context}</p>
+
+                                <div className="mt-5 space-y-3 text-base leading-relaxed">
+                                    {feedback.text.map((paragraph) => (
+                                        <p key={paragraph}>{paragraph}</p>
+                                    ))}
+                                </div>
+                            </motion.article>
+                        ))}
+                    </motion.div>
                 </div>
             </section>
 
             <section className="py-20 md:py-24">
                 <div className="mx-auto grid max-w-350 gap-10 px-6 md:px-10 lg:grid-cols-12">
-                    <div className="lg:col-span-7">
-                        <SectionLabel index="04">Outro case forte</SectionLabel>
+                    <motion.div
+                        className="lg:col-span-7"
+                        variants={revealSideLeft}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.25 }}
+                    >
+                        <SectionLabel index="05">Outro case forte</SectionLabel>
                         <h2 className="font-display text-5xl uppercase md:text-7xl">
                             Syntax Wear.
                         </h2>
@@ -244,12 +381,18 @@ export default function Home() {
                         <p className="mt-4 max-w-3xl font-mono text-sm uppercase">
                             React.js · TypeScript · Tailwind CSS · React Hook Form · TanStack Router · Zod
                         </p>
-                    </div>
-                    <div className="lg:col-span-5">
+                    </motion.div>
+                    <motion.div
+                        className="lg:col-span-5"
+                        variants={revealSideRight}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.25 }}
+                    >
                         <div className="brutal-border brutal-shadow-lg overflow-hidden bg-paper">
                             <img src={project11} alt="Projeto Syntax Wear" className="aspect-4/3 w-full object-cover" />
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </>

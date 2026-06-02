@@ -1,5 +1,6 @@
 import { SectionLabel } from "@/components/SectionLabel";
 import portrait from "@/assets/portrait.jpg";
+import { motion } from "framer-motion";
 
 const skills = {
     "Front-end": ["React.js", "TypeScript", "JavaScript ES6+", "Tailwind CSS", "React Hook Form", "TanStack Router", "Zod"],
@@ -33,11 +34,32 @@ const workStyle = [
     "Prefiro projetos com contexto operacional real, conectando tecnologia, processo e necessidade de negócio.",
 ];
 
+const revealUp = {
+    hidden: { opacity: 0, y: 56, scale: 0.94, filter: "blur(8px)" },
+    show: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: { type: "spring" as const, stiffness: 120, damping: 18, mass: 0.8 },
+    },
+};
+
+const staggerGrid = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+};
+
 export default function Sobre() {
     return (
         <>
             <section className="border-b-[3px] border-ink py-16 md:py-24">
-                <div className="mx-auto max-w-350 px-6 md:px-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
+                    className="mx-auto max-w-350 px-6 md:px-10"
+                >
                     <p className="font-mono text-xs uppercase">Capítulo 02 / Sobre</p>
                     <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
                         Perfil
@@ -47,12 +69,18 @@ export default function Sobre() {
                         <span className="text-destructive">,</span>
                         direto.
                     </h1>
-                </div>
+                </motion.div>
             </section>
 
             <section className="border-b-[3px] border-ink py-20">
                 <div className="mx-auto grid max-w-350 gap-10 px-6 md:px-10 lg:grid-cols-12">
-                    <div className="lg:col-span-5">
+                    <motion.div
+                        className="lg:col-span-5"
+                        variants={revealUp}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.25 }}
+                    >
                         <div className="brutal-border brutal-shadow-lg overflow-hidden">
                             <img
                                 src={portrait}
@@ -62,8 +90,14 @@ export default function Sobre() {
                                 className="h-full w-full object-cover"
                             />
                         </div>
-                    </div>
-                    <div className="space-y-6 lg:col-span-7">
+                    </motion.div>
+                    <motion.div
+                        className="space-y-6 lg:col-span-7"
+                        variants={revealUp}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.25 }}
+                    >
                         <SectionLabel index="01">Resumo executivo</SectionLabel>
                         <p className="text-2xl leading-snug md:text-3xl">
                             Desenvolvedor Full Stack com formação em ADS, pós-graduação em andamento e atuação prática na construção de aplicações web modernas, escaláveis e orientadas à experiência do usuário.
@@ -71,19 +105,25 @@ export default function Sobre() {
                         <p className="text-lg leading-relaxed text-muted-foreground">
                             Tenho domínio prático do ecossistema JavaScript e TypeScript, com interfaces em React.js, APIs RESTful em Node.js e Express, modelagem com PostgreSQL e Prisma, além de integração com Supabase e deploy em produção.
                         </p>
-                        <div className="grid grid-cols-3 gap-4 pt-4">
+                        <motion.div
+                            className="grid grid-cols-3 gap-4 pt-4"
+                            variants={staggerGrid}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true, amount: 0.3 }}
+                        >
                             {[
                                 { n: "3", l: "Formações acadêmicas" },
                                 { n: "2024", l: "ADS concluído" },
                                 { n: "2", l: "Cases aderentes ao currículo" },
                             ].map((s) => (
-                                <div key={s.l} className="brutal-border bg-paper p-4">
+                                <motion.div key={s.l} className="brutal-border bg-paper p-4" variants={revealUp}>
                                     <p className="font-display text-4xl">{s.n}</p>
                                     <p className="font-mono text-xs uppercase opacity-60">{s.l}</p>
-                                </div>
+                                </motion.div>
                             ))}
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -94,32 +134,51 @@ export default function Sobre() {
                         <span className="h-0.5 flex-1 bg-paper" />
                         <span>Linha do tempo</span>
                     </div>
-                    <div className="space-y-6">
-                        {timeline.map((t) => (
-                            <div
+                    <motion.div
+                        className="space-y-6"
+                        variants={staggerGrid}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
+                        {timeline.map((t, index) => (
+                            <motion.div
                                 key={t.year}
                                 className="grid items-start gap-4 border-b border-paper/30 pb-6 md:grid-cols-12"
+                                variants={revealUp}
+                                transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.8, delay: index * 0.04 }}
                             >
                                 <p className="font-display text-5xl text-highlight md:col-span-2">{t.year}</p>
                                 <h3 className="font-display text-3xl uppercase md:col-span-4">{t.title}</h3>
                                 <p className="text-base text-paper/80 md:col-span-6">{t.desc}</p>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             <section className="border-b-[3px] border-ink py-20 md:py-24">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <SectionLabel index="03">Como eu atuo</SectionLabel>
-                    <div className="grid gap-4 md:grid-cols-2">
+                    <motion.div
+                        className="grid gap-4 md:grid-cols-2"
+                        variants={staggerGrid}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
                         {workStyle.map((item, index) => (
-                            <div key={item} className="brutal-border brutal-hover bg-paper p-5">
+                            <motion.div
+                                key={item}
+                                className="brutal-border brutal-hover bg-paper p-5"
+                                variants={revealUp}
+                                transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.8, delay: index * 0.03 }}
+                            >
                                 <p className="font-mono text-xs uppercase opacity-60">0{index + 1}</p>
                                 <p className="mt-3 text-lg leading-relaxed">{item}</p>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -129,11 +188,19 @@ export default function Sobre() {
                     <h2 className="mb-12 font-display text-5xl uppercase md:text-7xl">
                         Competências<span className="text-destructive">.</span>
                     </h2>
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                        {Object.entries(skills).map(([cat, items]) => (
-                            <div
+                    <motion.div
+                        className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+                        variants={staggerGrid}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
+                        {Object.entries(skills).map(([cat, items], index) => (
+                            <motion.div
                                 key={cat}
                                 className="brutal-border brutal-shadow brutal-hover bg-paper p-6"
+                                variants={revealUp}
+                                transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.8, delay: index * 0.03 }}
                             >
                                 <p className="font-mono text-xs uppercase opacity-60">/{cat.toLowerCase()}</p>
                                 <h3 className="mt-2 font-display text-2xl">{cat}</h3>
@@ -145,9 +212,9 @@ export default function Sobre() {
                                         </li>
                                     ))}
                                 </ul>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </>

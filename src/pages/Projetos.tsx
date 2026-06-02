@@ -1,4 +1,5 @@
 import { SectionLabel } from "@/components/SectionLabel";
+import { motion } from "framer-motion";
 import project1 from "@/assets/project-1.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
@@ -100,8 +101,8 @@ const projects = [
         img: rastreio,
         deploy: "https://sistemarastreio-front.vercel.app/",
         github: "https://github.com/PauloHenrique993940/sistemaRastriobackend.git",
-        
-        
+
+
     },
     {
         n: "08",
@@ -119,11 +120,27 @@ const projects = [
     },
 ];
 
+const revealCard = {
+    hidden: { opacity: 0, y: 64, scale: 0.94, filter: "blur(10px)" },
+    show: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: { type: "spring" as const, stiffness: 115, damping: 18, mass: 0.9 },
+    },
+};
+
 export default function Projetos() {
     return (
         <>
             <section className="border-b-[3px] border-ink py-16 md:py-24">
-                <div className="mx-auto max-w-350 px-6 md:px-10">
+                <motion.div
+                    className="mx-auto max-w-350 px-6 md:px-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
+                >
                     <p className="font-mono text-xs uppercase">Capítulo 03 / Projetos</p>
                     <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
                         <span className="bg-highlight px-3">Cases</span>
@@ -135,19 +152,35 @@ export default function Projetos() {
                     <p className="mt-6 max-w-3xl text-lg leading-relaxed">
                         Os projetos abaixo foram selecionados e estruturados para refletir com maior precisão minha experiência e alinhamento com o currículo, destacando o problema de negócio identificado, a solução desenvolvida, a stack utilizada e as competências práticas aplicadas em cada entrega — evidenciando minha capacidade de construir soluções reais do zero, com foco em resultado e qualidade técnica.
                     </p>
-                </div>
+                </motion.div>
             </section>
 
             <section className="border-b-[3px] border-ink">
                 {projects.map((p, idx) => (
-                    <article
+                    <motion.article
                         key={p.n}
                         className={`${idx % 2 === 0 ? "bg-paper" : "bg-secondary"} border-b-[3px] border-ink`}
+                        initial="hidden"
+                        whileInView="show"
+                        variants={revealCard}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ type: "spring", stiffness: 115, damping: 18, mass: 0.9, delay: idx * 0.02 }}
                     >
                         <div className="mx-auto max-w-350 px-6 py-16 md:px-10 md:py-24">
                             <div className="grid items-center gap-10 lg:grid-cols-12">
-                                <div className="lg:col-span-7">
-                                    <div className="brutal-border brutal-shadow-lg overflow-hidden bg-paper">
+                                <motion.div
+                                    className="lg:col-span-7"
+                                    initial={{ opacity: 0, x: -36, scale: 0.97, filter: "blur(8px)" }}
+                                    whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+                                    viewport={{ once: true, amount: 0.25 }}
+                                    transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.85 }}
+                                >
+                                    <motion.div
+                                        className="brutal-border brutal-shadow-lg overflow-hidden bg-paper"
+                                        whileInView={{ scale: [0.98, 1.01, 1] }}
+                                        viewport={{ once: true, amount: 0.35 }}
+                                        transition={{ duration: 0.7, ease: "easeOut" }}
+                                    >
                                         <div className="relative">
                                             <img
                                                 src={p.img}
@@ -162,9 +195,15 @@ export default function Projetos() {
                                                 </div>
                                             )}
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="space-y-5 lg:col-span-5">
+                                    </motion.div>
+                                </motion.div>
+                                <motion.div
+                                    className="space-y-5 lg:col-span-5"
+                                    initial={{ opacity: 0, x: 36, scale: 0.97, filter: "blur(8px)" }}
+                                    whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+                                    viewport={{ once: true, amount: 0.25 }}
+                                    transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.85, delay: 0.05 }}
+                                >
                                     <div className="flex items-center gap-3 font-mono text-xs uppercase">
                                         <span className="bg-ink px-2 py-1 text-paper">{p.n}</span>
                                         <span>{p.year}</span>
@@ -177,13 +216,26 @@ export default function Projetos() {
                                         <p><span className="font-mono text-xs uppercase opacity-60">Solução</span><br />{p.solution}</p>
                                         <p><span className="font-mono text-xs uppercase opacity-60">Resultado</span><br />{p.result}</p>
                                     </div>
-                                    <div className="flex flex-wrap gap-2">
+                                    <motion.div
+                                        className="flex flex-wrap gap-2"
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.5 }}
+                                        transition={{ duration: 0.3, delay: 0.1 }}
+                                    >
                                         {p.tags.map((t) => (
-                                            <span key={t} className="brutal-border bg-paper px-3 py-1 font-mono text-xs uppercase">
+                                            <motion.span
+                                                key={t}
+                                                className="brutal-border bg-paper px-3 py-1 font-mono text-xs uppercase"
+                                                initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                                                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                                viewport={{ once: true, amount: 0.7 }}
+                                                transition={{ type: "spring", stiffness: 130, damping: 16 }}
+                                            >
                                                 {t}
-                                            </span>
+                                            </motion.span>
                                         ))}
-                                    </div>
+                                    </motion.div>
                                     <div className="flex gap-3 pt-2">
                                         {p.upcoming ? (
                                             <span className="brutal-border bg-paper px-5 py-3 font-mono text-sm uppercase text-muted-foreground">
@@ -210,20 +262,26 @@ export default function Projetos() {
                                             </>
                                         )}
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
-                    </article>
+                    </motion.article>
                 ))}
             </section>
 
             <section className="py-20 md:py-28">
-                <div className="mx-auto max-w-350 px-6 md:px-10">
+                <motion.div
+                    className="mx-auto max-w-350 px-6 md:px-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.35 }}
+                >
                     <SectionLabel index="∞">Critério de curadoria</SectionLabel>
                     <p className="max-w-3xl font-display text-4xl uppercase md:text-6xl">
                         Menos vitrine, mais resultado. Cada projeto foi cuidadosamente selecionado para evidenciar minha capacidade de transformar problemas reais em soluções funcionais, unindo contexto de negócio, arquitetura bem definida, stack consistente e aplicação prática — oferecendo uma visão clara do meu potencial técnico e da minha forma de pensar como desenvolvedor.
                     </p>
-                </div>
+                </motion.div>
             </section>
         </>
     );

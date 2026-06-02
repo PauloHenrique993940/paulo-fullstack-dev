@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
+import { motion } from "framer-motion";
 
 const contactLinks = [
     { label: "GitHub", href: "https://github.com/PauloHenrique993940" },
@@ -35,7 +36,12 @@ export default function Contato() {
     return (
         <>
             <section className="border-b-[3px] border-ink py-16 md:py-24">
-                <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+                <motion.div
+                    className="mx-auto max-w-[1400px] px-6 md:px-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
+                >
                     <p className="font-mono text-xs uppercase">Capítulo 04 / Contato</p>
                     <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
                         Vamos<span className="text-destructive">/</span>
@@ -45,12 +51,18 @@ export default function Contato() {
                     <p className="mt-6 max-w-xl text-xl">
                         Aberto a oportunidades como Desenvolvedor Full Stack Júnior, atuação em projetos front-end ou full stack e conversas sobre produtos web modernos.
                     </p>
-                </div>
+                </motion.div>
             </section>
 
             <section className="py-20 md:py-28">
                 <div className="mx-auto grid max-w-[1400px] gap-10 px-6 md:px-10 lg:grid-cols-12">
-                    <div className="lg:col-span-7">
+                    <motion.div
+                        className="lg:col-span-7"
+                        initial={{ opacity: 0, x: -36, scale: 0.96, filter: "blur(8px)" }}
+                        whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+                        viewport={{ once: true, amount: 0.25 }}
+                        transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.85 }}
+                    >
                         <SectionLabel index="01">Formulário</SectionLabel>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid gap-6 md:grid-cols-2">
@@ -75,9 +87,15 @@ export default function Contato() {
                                 {sent ? "Enviado ✓" : "Enviar →"}
                             </button>
                         </form>
-                    </div>
+                    </motion.div>
 
-                    <aside className="space-y-6 lg:col-span-5">
+                    <motion.aside
+                        className="space-y-6 lg:col-span-5"
+                        initial={{ opacity: 0, x: 36, scale: 0.96, filter: "blur(8px)" }}
+                        whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+                        viewport={{ once: true, amount: 0.25 }}
+                        transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.85, delay: 0.08 }}
+                    >
                         <SectionLabel index="02">Canais</SectionLabel>
                         <div className="brutal-border brutal-shadow bg-highlight p-6">
                             <p className="font-mono text-xs uppercase">Email</p>
@@ -106,7 +124,7 @@ export default function Contato() {
                             <p className="mt-1 font-display text-2xl">Remoto, híbrido ou presencial</p>
                             <p className="mt-2 font-mono text-xs opacity-70">Resposta em até 48h úteis para vagas, freelas e parcerias</p>
                         </div>
-                    </aside>
+                    </motion.aside>
                 </div>
             </section>
         </>

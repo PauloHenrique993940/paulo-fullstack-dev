@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import Home from '@/pages/Home'
@@ -7,28 +9,73 @@ import Projetos from '@/pages/Projetos'
 import Contato from '@/pages/Contato'
 // import { Toaster } from '@/components/ui/sonner.tsx' // removed dep
 
+const flyingElements = [
+    { id: 'f-1', top: '8%', left: '7%', size: 'h-8 w-8', shape: 'rounded-sm bg-highlight', travelX: 34, travelY: 26, rotate: 36, duration: 12, delay: 0 },
+    { id: 'f-2', top: '18%', left: '84%', size: 'h-10 w-10', shape: 'rounded-full border-2 border-ink/30 bg-paper/50', travelX: -44, travelY: 24, rotate: -52, duration: 15, delay: 1.2 },
+    { id: 'f-3', top: '34%', left: '14%', size: 'h-3 w-20', shape: 'rounded-full bg-destructive/35', travelX: 56, travelY: -20, rotate: 12, duration: 13, delay: 0.4 },
+    { id: 'f-4', top: '45%', left: '74%', size: 'h-7 w-7', shape: 'rounded-sm border-2 border-ink/25 bg-highlight/70', travelX: -28, travelY: -34, rotate: 48, duration: 11, delay: 2 },
+    { id: 'f-5', top: '62%', left: '28%', size: 'h-12 w-12', shape: 'rounded-full bg-highlight/45', travelX: 24, travelY: -30, rotate: -28, duration: 14, delay: 0.8 },
+    { id: 'f-6', top: '72%', left: '88%', size: 'h-4 w-16', shape: 'rounded-sm bg-ink/15', travelX: -36, travelY: 20, rotate: 22, duration: 10, delay: 1.6 },
+    { id: 'f-7', top: '82%', left: '9%', size: 'h-9 w-9', shape: 'rounded-full border-2 border-destructive/40 bg-paper/40', travelX: 46, travelY: -22, rotate: -40, duration: 16, delay: 0.3 },
+]
+
 
 function App() {
+    const location = useLocation()
+    const reduceMotion = useReducedMotion()
+
     return (
         <div className="min-h-screen flex flex-col bg-paper text-ink">
             <Nav />
-            <main className="flex-1">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/sobre" element={<Sobre />} />
-                    <Route path="/projetos" element={<Projetos />} />
-                    <Route path="/contato" element={<Contato />} />
-                    <Route path="*" element={<div className="flex min-h-screen flex-col items-center justify-center bg-paper px-4">
-                        <div className="max-w-xl text-center">
-                            <p className="font-mono text-sm uppercase">Erro / 404</p>
-                            <h1 className="mt-2 font-display text-[18vw] leading-none md:text-[10rem]">404</h1>
-                            <h2 className="mt-2 font-display text-2xl uppercase">Página não encontrada</h2>
-                            <a href="/" className="brutal-border brutal-shadow brutal-hover mt-8 inline-block bg-highlight px-6 py-3 font-mono text-sm uppercase">
-                                ← Voltar ao início
-                            </a>
-                        </div>
-                    </div>} />
-                </Routes>
+            <main className="relative flex-1 overflow-hidden">
+                <div className="pointer-events-none absolute inset-0 z-0">
+                    {flyingElements.map((item) => (
+                        <motion.span
+                            key={item.id}
+                            className={`absolute ${item.size} ${item.shape} shadow-[2px_2px_0_0_rgba(20,20,20,0.15)]`}
+                            style={{ top: item.top, left: item.left }}
+                            animate={reduceMotion ? undefined : {
+                                x: [0, item.travelX, 0, -item.travelX * 0.5, 0],
+                                y: [0, -item.travelY, item.travelY * 0.4, 0],
+                                rotate: [0, item.rotate, 0],
+                            }}
+                            transition={reduceMotion ? undefined : {
+                                duration: item.duration,
+                                delay: item.delay,
+                                repeat: Infinity,
+                                repeatType: 'mirror',
+                                ease: 'easeInOut',
+                            }}
+                        />
+                    ))}
+                </div>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={location.pathname}
+                        className="relative z-10"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -14 }}
+                        transition={{ duration: 0.35, ease: 'easeOut' }}
+                    >
+                        <Routes location={location}>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/sobre" element={<Sobre />} />
+                            <Route path="/projetos" element={<Projetos />} />
+                            <Route path="/contato" element={<Contato />} />
+                            <Route path="*" element={<div className="flex min-h-screen flex-col items-center justify-center bg-paper px-4">
+                                <div className="max-w-xl text-center">
+                                    <p className="font-mono text-sm uppercase">Erro / 404</p>
+                                    <h1 className="mt-2 font-display text-[18vw] leading-none md:text-[10rem]">404</h1>
+                                    <h2 className="mt-2 font-display text-2xl uppercase">Página não encontrada</h2>
+                                    <a href="/" className="brutal-border brutal-shadow brutal-hover mt-8 inline-block bg-highlight px-6 py-3 font-mono text-sm uppercase">
+                                        ← Voltar ao início
+                                    </a>
+                                </div>
+                            </div>} />
+                        </Routes>
+                    </motion.div>
+                </AnimatePresence>
             </main>
             <Footer />
             {/* <Toaster /> sonner removed */}
