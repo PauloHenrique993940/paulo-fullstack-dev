@@ -12,6 +12,7 @@ import ativoControl from "@/assets/ativoControl.png";
 import financeProImage from "@/assets/financePro.png";
 import DimSushiImage from "@/assets/dimSushi.png";
 import cafeAromaImage from "@/assets/cafeteriaSaborAroma.png";
+import EssenciaGosto from "@/assets/essenciaGosto.png";
 
 const projects = [
   {
@@ -221,7 +222,7 @@ const projects = [
       "Site totalmente funcional e visualmente atraente, proporcionando uma experiência agradável para os usuários.",
     tags: ["HTML5", "CSS3", "JavaScript", "UX/UI", "Google Fonts | Booststrap Icons", "Bootstrap", "Acessibilidade"],
     year: "2024",
-    img: cafeAromaImage,
+    img: EssenciaGosto,
     deploy: "https://restaurante-peach-alpha.vercel.app/",
     github: "https://github.com/PauloHenrique993940/Restaurante.git",
     upcoming: false,
