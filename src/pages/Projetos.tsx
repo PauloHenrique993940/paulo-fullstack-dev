@@ -10,6 +10,8 @@ import project11 from "@/assets/project-11.png";
 import rastreio from "@/assets/rastreio.png";
 import ativoControl from "@/assets/ativoControl.png";
 import financeProImage from "@/assets/financePro.png";
+import DimSushiImage from "@/assets/dimSushi.png";
+import cafeAromaImage from "@/assets/cafeteriaSaborAroma.png";
 
 const projects = [
   {
@@ -172,6 +174,57 @@ const projects = [
     deploy: "#",
     github: "#",
     upcoming: true,
+  },
+  {
+    n: "10",
+    title: "Rest Dim Sushi",
+    sub: "Website institucional para restaurante com foco em experiência visual",
+    problem:
+      "Criar uma presença online que refletisse a identidade visual do restaurante e facilitasse a navegação para cardápio, reservas e contato.",
+    solution:
+      "Desenvolvi um website institucional com design responsivo, integração de reservas online e apresentação visual atraente do cardápio.",
+    result:
+      "O site proporciona uma experiência visual envolvente, facilitando a interação dos clientes e fortalecendo a presença online do restaurante.",
+    tags: ["React", "TypeScript", "Tailwind", "UX/UI", "Deploy"],
+    year: "2024",
+    img: DimSushiImage,
+    deploy: "https://restaurante-luxury.netlify.app/",
+    github: "https://github.com/PauloHenrique993940/restaurante-luxury.git",
+    upcoming: false,
+  },
+  {
+    n: "11",
+    title: "Sabor Aroma",
+    sub: "Landing page para cafeteria com foco em experiência visual",
+    problem:
+      "Criar uma landing page para uma cafeteria local que transmitisse a atmosfera acolhedora do estabelecimento e facilitasse a navegação para cardápio, reservas e contato. Cardápio diversificado, ambiente aconchegante e atendimento personalizado eram os principais pontos a destacar para atrair clientes e fortalecer a presença online da cafeteria.",
+    solution:
+      "Desenvolvi uma landing page com design responsivo, integração de reservas online e apresentação visual atraente do cardápio, destacando os diferenciais da cafeteria e criando uma experiência envolvente para os visitantes.",
+    result:
+      "A Landing page proporciona uma experiência  agradável e descontraída, carregando a atmosfera acolhedora do estabelecimento",
+    tags: ["React", "TypeScript", "Tailwind", "UX/UI", "CSS3", "Bootstrap"],
+    year: "2024",
+    img: cafeAromaImage,
+    deploy: "https://cafe-aroma-preto.vercel.app/",
+    github: "https://github.com/PauloHenrique993940/cafe-aroma.git",
+    upcoming: false,
+  },
+  {
+    n: "12",
+    title: "Essência do Gosto",
+    sub: "Site Intitucional para restaurante",
+    problem:
+      "Criar um site para um restaurante com  cardápio e seleção de pratos e formulário de contato. O site precisava transmitir a identidade do restaurante, destacar o cardápio e facilitar a navegação para reservas e contato.",
+    solution:
+      "Desenvolvi um site institucional com design responsivo, integração de reservas online e apresentação visual atraente do cardápio, destacando os diferenciais do restaurante e criando uma experiência envolvente para os visitantes.",
+    result:
+      "Site totalmente funcional e visualmente atraente, proporcionando uma experiência agradável para os usuários.",
+    tags: ["HTML5", "CSS3", "JavaScript", "UX/UI", "Google Fonts | Booststrap Icons", "Bootstrap", "Acessibilidade"],
+    year: "2024",
+    img: cafeAromaImage,
+    deploy: "https://restaurante-peach-alpha.vercel.app/",
+    github: "https://github.com/PauloHenrique993940/Restaurante.git",
+    upcoming: false,
   },
 ];
 
