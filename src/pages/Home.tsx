@@ -4,6 +4,7 @@ import portrait from "@/assets/portrait.jpg";
 import project1 from "@/assets/project-1.jpg";
 import financeProImage from "@/assets/financePro.png";
 import { SectionLabel } from "@/components/SectionLabel";
+import LacreiSaudeImage from "@/assets/lacrei.png";
 
 const proofPoints = [
   {
@@ -312,6 +313,93 @@ export default function Home() {
                 {
                   label: "Resultado",
                   text: "Case aderente ao meu currículo, mostrando arquitetura full stack, modelagem relacional e foco em produtividade operacional.",
+                },
+              ].map((item) => (
+                <motion.div
+                  key={item.label}
+                  className="brutal-border bg-paper p-5"
+                  variants={revealUp}
+                >
+                  <p className="font-mono text-xs uppercase opacity-60">{item.label}</p>
+                  <p className="mt-3 text-base leading-relaxed">{item.text}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
+      <section className="border-b-[3px] border-ink bg-secondary py-20 md:py-24">
+        <motion.div
+          className="mx-auto grid max-w-350 gap-10 px-6 md:px-10 lg:grid-cols-12"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div className="lg:col-span-5" variants={revealSideLeft}>
+            <SectionLabel index="02">Desafio Técnico - Tech Lead | Lacrei Saúde LGBT</SectionLabel>
+            <h2 className="font-display text-5xl uppercase md:text-7xl">
+              Lacrei Saúde LGBT<span className="text-destructive">.</span>
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed">
+              Desenvolvimento de site com foco em promover uma experiência digital acessível, segura
+              e centrada nas pessoas usuárias. A solução integra front-end, priorizando qualidade de
+              código, escalabilidade e eficiência, além de aplicar boas práticas de desenvolvimento
+              e uma abordagem colaborativa para resolver problemas de forma simples e eficaz. O
+              projeto evidencia capacidade de atuação prática, visão técnica interdisciplinar e
+              compromisso com a criação de produtos digitais inclusivos, confiáveis e de impacto
+              positivo para a comunidade LGBTQIAPN+ e para a sociedade.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="https://lacrei-saude-taupe-nine.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="brutal-border brutal-shadow-sm brutal-hover bg-ink px-5 py-3 font-mono text-sm uppercase text-paper"
+              >
+                Ver deploy ↗
+              </a>
+              <a
+                href="https://github.com/PauloHenrique993940/lacrei-saude-page-1.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="brutal-border brutal-shadow-sm brutal-hover bg-paper px-5 py-3 font-mono text-sm uppercase"
+              >
+                Ver código ↗
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div className="lg:col-span-7" variants={revealSideRight}>
+            <div className="brutal-border brutal-shadow-lg overflow-hidden bg-paper">
+              <img
+                src={LacreiSaudeImage}
+                alt="LacreiSaudeImage"
+                className="aspect-4/3 w-full object-cover"
+              />
+            </div>
+            <motion.div
+              className="mt-6 grid gap-4 md:grid-cols-2"
+              variants={staggerGrid}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+            >
+              {[
+                {
+                  label: "Problema",
+                  text: "Promover uma experiência digital acessível, segura e centrada nas pessoas usuárias para a comunidade LGBTQIAPN+, integrando front-end com foco em qualidade de código, escalabilidade e eficiência, além de aplicar boas práticas de desenvolvimento e uma abordagem colaborativa para resolver problemas de forma simples e eficaz.",
+                },
+                {
+                  label: "Solução",
+                  text: "Desenvolvimento de solução utilizando tecnologias do ecossistema React.js, com foco em qualidade de código, escalabilidade e eficiência, além de aplicar boas práticas de desenvolvimento e uma abordagem colaborativa para resolver problemas de forma simples e eficaz.",
+                },
+                {
+                  label: "Tecnologias",
+                  text: "React.js, TypeScript, React.memo. React Libraries, React Hooks, Context API, Styled Components, Vite, GitHub, Documentação técnica, Testes unitários e de integração, Acessibilidade digital, UX/UI Design System, Boas práticas de desenvolvimento, Colaboração em equipe.",
+                },
+                {
+                  label: "Resultado",
+                  text: "O projeto evidencia capacidade de atuação prática, visão técnica interdisciplinar e compromisso com a criação de produtos digitais inclusivos, confiáveis e de impacto positivo para a comunidade LGBTQIAPN+ e para a sociedade.",
                 },
               ].map((item) => (
                 <motion.div
