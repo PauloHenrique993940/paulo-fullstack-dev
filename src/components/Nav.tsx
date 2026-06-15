@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import Logo from "@/assets/logo.png";
 
 const links = [
     { to: "/", label: "Início" },
@@ -19,7 +20,7 @@ export function Nav() {
             <div className="mx-auto flex max-w-350 items-center justify-between px-6 py-4 md:px-10">
                 <Link to="/" className="group flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center bg-ink text-paper font-display text-lg">
-                        PH
+                        <img src={Logo} alt="Logo" className="h-6 w-6" />
                     </div>
                     <span className="font-display text-sm uppercase tracking-tight">
                         Paulo Henrique<span className="text-destructive">/</span> Full Stack Júnior
