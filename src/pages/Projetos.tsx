@@ -2,7 +2,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { motion } from "framer-motion";
 import project1 from "@/assets/project-1.jpg";
 import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
+import project4 from "@/assets/hackerPentest.png";
 import project5 from "@/assets/project-5.jpg";
 import project9 from "@/assets/project-9.png";
 import project10 from "@/assets/project-10.png";
