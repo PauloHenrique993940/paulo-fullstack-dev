@@ -6,7 +6,7 @@ const skills = {
     "Front-end": ["React.js", "TypeScript", "JavaScript ES6+", "Tailwind CSS", "React Hook Form", "TanStack Router", "Zod"],
     "Back-end": ["Node.js", "Express.js", "APIs RESTful", "Autenticação"],
     "Dados & Cloud": ["PostgreSQL", "Prisma ORM", "Supabase"],
-    "Ferramentas": ["Git", "GitHub", "Vercel", "Mobile First", "Responsividade", "UX/UI"],
+    "Ferramentas": ["Git", "GitHub", "Docker", "Jest", "Vercel", "Mobile First", "Responsividade", "UX/UI"],
 };
 
 const timeline = [
