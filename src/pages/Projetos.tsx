@@ -13,6 +13,7 @@ import financeProImage from "@/assets/financePro.png";
 import DimSushiImage from "@/assets/DimSushi.png";
 import cafeAromaImage from "@/assets/cafeteriaSaborAroma.png";
 import EssenciaGosto from "@/assets/essenciaGosto.png";
+import kanbanImage from "@/assets/kanban.png";
 
 const projects = [
   {
@@ -225,6 +226,23 @@ const projects = [
     img: EssenciaGosto,
     deploy: "https://restaurante-peach-alpha.vercel.app/",
     github: "https://github.com/PauloHenrique993940/Restaurante.git",
+    upcoming: false,
+  },
+  {
+    n: "13",
+    title: "Gerenciador de Tarefas Kanban",
+    sub: "Aplicação para organização visual de tarefas e fluxos de trabalho",
+    problem:
+      "Organizar tarefas em andamento, pendências e entregas concluídas de forma visual, simples e fácil de acompanhar.",
+    solution:
+      "Desenvolvi uma interface Kanban responsiva com colunas de status, cards de tarefas e uma experiência direta para acompanhar o progresso das atividades.",
+    result:
+      "O projeto reforça minha prática com organização de estado, componentes reutilizáveis e construção de interfaces produtivas para rotina de trabalho.",
+    tags: ["React", "TypeScript", "Tailwind", "Kanban", "UX/UI"],
+    year: "2025",
+    img: kanbanImage,
+    deploy: "https://app-gerenciador-kanban-bfs5.vercel.app/",
+    github: "https://github.com/PauloHenrique993940/app-gerenciador-kanban.git",
     upcoming: false,
   },
 ];
