@@ -14,6 +14,7 @@ import DimSushiImage from "@/assets/DimSushi.png";
 import cafeAromaImage from "@/assets/cafeteriaSaborAroma.png";
 import EssenciaGosto from "@/assets/essenciaGosto.png";
 import kanbanImage from "@/assets/kanban.png";
+import angularWeatherImage from "@/assets/angularWeather.svg";
 
 const projects = [
   {
@@ -245,6 +246,24 @@ const projects = [
     github: "https://github.com/PauloHenrique993940/app-gerenciador-kanban.git",
     upcoming: false,
   },
+  {
+    n: "14",
+    title: "Dashboard Climático Angular",
+    sub: "Aplicação de clima criada durante meus estudos em Angular",
+    problem:
+      "Explorar Angular em um projeto prático, consumindo dados climáticos e organizando informações como temperatura, umidade, vento, visibilidade e sensação térmica em uma interface clara.",
+    solution:
+      "Construí um dashboard responsivo com busca por cidade, cards de indicadores meteorológicos, navegação lateral e visual dark inspirado em produtos SaaS, aplicando conceitos de componentes, estado e integração com API.",
+    result:
+      "O projeto marca minha evolução estudando Angular e reforça minha capacidade de aprender novos frameworks enquanto transformo dados externos em uma experiência visual útil e organizada.",
+    tags: ["Angular", "TypeScript", "API de Clima", "Dashboard", "Estudando Angular"],
+    year: "2026",
+    img: angularWeatherImage,
+    deploy: "https://weather-app-lyart-phi-61.vercel.app/weather",
+    github: "https://github.com/PauloHenrique993940/weather-app.git",
+    upcoming: false,
+    ribbon: "Angular",
+  },
 ];
 
 const revealCard = {
@@ -329,6 +348,11 @@ export default function Projetos() {
                       {p.upcoming && (
                         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-y-[3px] border-ink bg-highlight px-4 py-4 text-center font-mono text-sm font-bold uppercase tracking-[0.25em] text-ink md:text-base">
                           Em breve • projeto em fase de produção
+                        </div>
+                      )}
+                      {p.ribbon && (
+                        <div className="absolute bottom-4 left-4 brutal-border bg-highlight px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-ink md:text-sm">
+                          {p.ribbon}
                         </div>
                       )}
                     </div>
