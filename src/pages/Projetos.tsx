@@ -10,7 +10,7 @@ import project11 from "@/assets/project-11.png";
 import rastreio from "@/assets/rastreio.png";
 import ativoControl from "@/assets/ativoControl.png";
 import financeProImage from "@/assets/financePro.png";
-import DimSushiImage from "@/assets/dimSushi.png";
+import DimSushiImage from "@/assets/DimSushi.png";
 import cafeAromaImage from "@/assets/cafeteriaSaborAroma.png";
 import EssenciaGosto from "@/assets/essenciaGosto.png";
 
