@@ -15,6 +15,7 @@ import cafeAromaImage from "@/assets/cafeteriaSaborAroma.png";
 import EssenciaGosto from "@/assets/essenciaGosto.png";
 import kanbanImage from "@/assets/kanban.png";
 import angularWeatherImage from "@/assets/angularWeather.svg";
+import digitalLibraryImage from "@/assets/bibliotecaDigital.png";
 
 const projects = [
   {
@@ -263,6 +264,34 @@ const projects = [
     github: "https://github.com/PauloHenrique993940/weather-app.git",
     upcoming: false,
     ribbon: "Angular",
+  },
+
+  {
+    n: "15",
+    title: "Biblioteca Digital",
+    sub: "Plataforma digital para descoberta, organização e acesso a conteúdos",
+    problem:
+      "Criar uma experiência moderna e intuitiva para facilitar a descoberta e organização de diferentes tipos de conteúdos digitais, reunindo livros, PDFs, vídeos, áudios, artigos, estudos bíblicos e devocionais em uma única plataforma.",
+    solution:
+      "Desenvolvi uma aplicação responsiva com busca de conteúdos, navegação por categorias, livros em destaque, páginas de detalhes, sistema de favoritos, biblioteca pessoal e opções de acesso e download. A aplicação utiliza componentes reutilizáveis, React Router para navegação, Context API para gerenciamento de estado compartilhado e Local Storage para persistência de favoritos e preferências do usuário.",
+    result:
+      "O projeto fortaleceu minha experiência com desenvolvimento Front-end moderno, componentização e gerenciamento de estado, além de proporcionar a construção de uma interface responsiva e organizada, focada na experiência do usuário e na facilidade de acesso ao conhecimento.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "React Router",
+      "Context API",
+      "Local Storage",
+      "CSS",
+      "Biblioteca Digital"
+    ],
+    year: "2026",
+    img: digitalLibraryImage,
+    deploy: "https://biblioteca-digital-opal.vercel.app/",
+    github: "https://github.com/PauloHenrique993940/biblioteca-digital.git",
+    upcoming: false,
+    ribbon: "React",
   },
 ];
 
