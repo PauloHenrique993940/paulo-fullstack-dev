@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
@@ -7,6 +8,7 @@ import Home from '@/pages/Home'
 import Sobre from '@/pages/Sobre'
 import Projetos from '@/pages/Projetos'
 import Contato from '@/pages/Contato'
+import portrait from '@/assets/portrait.jpg'
 // import { Toaster } from '@/components/ui/sonner.tsx' // removed dep
 
 const flyingElements = [
@@ -23,6 +25,64 @@ const flyingElements = [
 function App() {
     const location = useLocation()
     const reduceMotion = useReducedMotion()
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        const loadingDuration = reduceMotion ? 500 : 2500
+        const timer = window.setTimeout(() => setIsLoading(false), loadingDuration)
+
+        return () => window.clearTimeout(timer)
+    }, [reduceMotion])
+
+    if (isLoading) {
+        return (
+            <motion.div
+                className="anime-loader"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                aria-label="Carregando portfólio"
+                role="status"
+            >
+                <div className="anime-loader__sun" aria-hidden="true" />
+                <div className="anime-loader__speed-lines" aria-hidden="true" />
+                <div className="anime-loader__portrait-wrap" aria-hidden="true">
+                    <img
+                        src={portrait}
+                        alt=""
+                        className="anime-loader__portrait"
+                    />
+                </div>
+                <div className="relative z-10 w-full max-w-2xl px-8">
+                    <p className="anime-loader__eyebrow">Abertura / Episódio 01</p>
+                    <motion.p
+                        className="anime-loader__name"
+                        initial={{ opacity: 0, x: -24 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.45, delay: 0.15 }}
+                    >
+                        Paulo Henrique
+                    </motion.p>
+                    <motion.h1
+                        className="anime-loader__title"
+                        initial={{ opacity: 0, scale: 0.86, rotate: -3 }}
+                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                        transition={{ type: 'spring', stiffness: 150, damping: 14, delay: 0.3 }}
+                    >
+                        Full Stack <span>Júnior!</span>
+                    </motion.h1>
+                    <div className="anime-loader__progress" aria-hidden="true">
+                        <motion.span
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ duration: reduceMotion ? 0.4 : 2.15, ease: 'easeInOut' }}
+                        />
+                    </div>
+                    <p className="anime-loader__status">Carregando próxima cena...</p>
+                </div>
+            </motion.div>
+        )
+    }
 
     return (
         <div className="min-h-screen flex flex-col bg-paper text-ink">

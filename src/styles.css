@@ -1,7 +1,7 @@
 /* 1. IMPORTS (Devem ser as primeiras linhas) */
 
 /* Fontes primeiro */
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Space+Grotesk:wght@300..700&family=Space+Mono:wght@400;700&display=swap");
 
 /* No Tailwind v4, este único comando substitui os antigos @tailwind base/components/utilities */
 @import "tailwindcss";
@@ -9,15 +9,15 @@
 /* 2. CONFIGURAÇÕES DE VARIANTE */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Brutalist Editorial Portfolio Design System */
+/* Comic-book portfolio design system */
 
 /* 3. TEMA E VARIÁVEIS DO TAILWIND V4 */
 @theme inline {
   --color-brand: #ff5f1f;
-  --font-mono: "JetBrains Mono", monospace;
-  --font-display: "Archivo Black", system-ui, sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-display: "Bangers", Impact, sans-serif;
   --font-sans: "Space Grotesk", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "Space Mono", ui-monospace, monospace;
 
   --radius-sm: 0px;
   --radius-md: 0px;
@@ -56,34 +56,30 @@
 :root {
   --radius: 0px;
 
-  /* Core brutalist palette */
-  --paper: #000000;
-  /* preto absoluto */
-  --ink: #ffffff;
-  /* branco puro */
-  --highlight: #00d8ff;
-  /* ciano vibrante */
-  --accent-red: #ff4c4c;
-  /* vermelho de alto contraste */
+  /* Ink, paper and primary comic accents */
+  --paper: #fff8e7;
+  --ink: #171717;
+  --highlight: #ffd447;
+  --accent-red: #ed4b3e;
 
   --background: var(--paper);
   --foreground: var(--ink);
-  --card: #111111;
+  --card: #fffdf4;
   --card-foreground: var(--ink);
-  --popover: #111111;
+  --popover: #fffdf4;
   --popover-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--paper);
-  --secondary: #1a1a1a;
+  --secondary: #f3e6c9;
   --secondary-foreground: var(--ink);
-  --muted: #222222;
-  --muted-foreground: #dcdcdc;
+  --muted: #e5d6b7;
+  --muted-foreground: #5d5549;
   --accent: var(--highlight);
   --accent-foreground: var(--ink);
   --destructive: var(--accent-red);
   --destructive-foreground: var(--paper);
   --border: var(--ink);
-  --input: #111111;
+  --input: #fffdf4;
   --ring: var(--ink);
 }
 
@@ -96,10 +92,10 @@
   --popover-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--paper);
-  --secondary: #1a1a1a;
+  --secondary: #f3e6c9;
   --secondary-foreground: var(--ink);
-  --muted: #222222;
-  --muted-foreground: #dcdcdc;
+  --muted: #e5d6b7;
+  --muted-foreground: #5d5549;
   --accent: var(--highlight);
   --accent-foreground: var(--ink);
   --border: var(--ink);
@@ -119,6 +115,8 @@
 
   body {
     background-color: var(--background);
+    background-image: radial-gradient(var(--ink) 0.8px, transparent 0.8px);
+    background-size: 7px 7px;
     color: var(--foreground);
     font-family: var(--font-mono), monospace;
     font-feature-settings: "ss01", "cv11";
@@ -136,14 +134,15 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.03em;
+    letter-spacing: 0.02em;
     line-height: 0.92;
     text-transform: uppercase;
-    @apply uppercase font-bold border-b-2 border-foreground mb-4;
+    @apply uppercase font-bold mb-4;
   }
 
   section {
-    @apply border-2 border-foreground p-6 mb-8;
+    position: relative;
+    @apply border-2 border-foreground;
     box-shadow: 8px 8px 0px 0px var(--ink);
   }
 }
@@ -158,11 +157,11 @@
   }
 
   .brutal-border {
-    border: 2px solid var(--ink);
+    border: 3px solid var(--ink);
   }
 
   .brutal-border-thick {
-    border: 3px solid var(--ink);
+    border: 4px solid var(--ink);
   }
 
   .brutal-shadow {
@@ -193,10 +192,186 @@
 
   .grid-noise {
     background-image:
-      linear-gradient(var(--ink) 1px, transparent 1px),
-      linear-gradient(90deg, var(--ink) 1px, transparent 1px);
-    background-size: 80px 80px;
-    opacity: 0.04;
+      radial-gradient(var(--ink) 1px, transparent 1px),
+      linear-gradient(135deg, transparent 48%, var(--accent-red) 49%, var(--accent-red) 51%, transparent 52%);
+    background-size: 12px 12px, 150px 150px;
+    opacity: 0.08;
+  }
+
+  .comic-caption {
+    display: inline-block;
+    border: 3px solid var(--ink);
+    background: var(--highlight);
+    padding: 0.45rem 0.75rem;
+    box-shadow: 4px 4px 0 var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .comic-burst {
+    clip-path: polygon(50% 0%, 61% 19%, 79% 7%, 78% 29%, 100% 29%, 84% 47%, 100% 63%, 77% 66%, 80% 91%, 60% 79%, 48% 100%, 39% 79%, 18% 92%, 22% 68%, 0% 64%, 16% 47%, 0% 29%, 23% 30%, 19% 7%, 39% 19%);
+  }
+
+  .comic-panel {
+    border: 3px solid var(--ink);
+    background-color: var(--card);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .comic-panel:nth-child(even) {
+    transform: rotate(0.35deg);
+  }
+
+  .anime-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .anime-loader__sun {
+    position: absolute;
+    top: 16%;
+    right: 12%;
+    width: min(38vw, 26rem);
+    aspect-ratio: 1;
+    border: 8px solid var(--paper);
+    border-radius: 999px;
+    background: var(--accent-red);
+    box-shadow: 0 0 0 18px var(--ink), 0 0 0 22px var(--accent-red);
+    opacity: 0.95;
+  }
+
+  .anime-loader__speed-lines {
+    position: absolute;
+    inset: -20%;
+    opacity: 0.28;
+    background: repeating-linear-gradient(115deg, transparent 0 36px, var(--paper) 37px 39px, transparent 40px 76px);
+    transform: rotate(-12deg);
+    animation: anime-speed 3.6s linear infinite;
+  }
+
+  .anime-loader__portrait-wrap {
+    position: absolute;
+    top: 16%;
+    right: 12%;
+    z-index: 1;
+    width: min(38vw, 26rem);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 7px solid var(--paper);
+    background: var(--highlight);
+    border-radius: 999px;
+    box-shadow: 0 0 0 18px var(--ink), 0 0 0 22px var(--accent-red);
+  }
+
+  .anime-loader__portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 999px;
+    filter: saturate(1.2) contrast(1.12);
+    mix-blend-mode: multiply;
+  }
+
+  .anime-loader__eyebrow,
+  .anime-loader__status {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .anime-loader__eyebrow {
+    display: inline-block;
+    border: 3px solid var(--ink);
+    background: var(--highlight);
+    color: var(--ink);
+    padding: 0.55rem 0.8rem;
+    transform: rotate(-2deg);
+  }
+
+  .anime-loader__name {
+    margin-top: 2.5rem;
+    color: var(--highlight);
+    font-family: var(--font-mono);
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .anime-loader__title {
+    max-width: 14ch;
+    margin-top: 0.25rem;
+    color: var(--paper);
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 12vw, 9rem);
+    line-height: 0.82;
+    text-transform: uppercase;
+    text-shadow: 7px 7px 0 var(--accent-red);
+  }
+
+  .anime-loader__title span {
+    color: var(--highlight);
+  }
+
+  .anime-loader__progress {
+    width: min(100%, 30rem);
+    height: 0.8rem;
+    margin-top: 2rem;
+    overflow: hidden;
+    border: 3px solid var(--paper);
+    background: var(--ink);
+  }
+
+  .anime-loader__progress span {
+    display: block;
+    height: 100%;
+    background: var(--highlight);
+    transform-origin: left;
+  }
+
+  .anime-loader__status {
+    margin-top: 0.75rem;
+    color: var(--paper);
+    opacity: 0.7;
+  }
+
+  @keyframes anime-speed {
+    from { transform: translate3d(-4%, -4%, 0) rotate(-12deg); }
+    to { transform: translate3d(4%, 4%, 0) rotate(-12deg); }
+  }
+
+  @media (max-width: 768px) {
+    .anime-loader__sun {
+      top: 9%;
+      right: -18%;
+      width: 65vw;
+    }
+
+    .anime-loader__portrait-wrap {
+      top: 9%;
+      right: 7%;
+      width: min(58vw, 15rem);
+      opacity: 0.82;
+    }
+
+    .anime-loader__title,
+    .anime-loader__name,
+    .anime-loader__eyebrow,
+    .anime-loader__progress,
+    .anime-loader__status {
+      position: relative;
+      z-index: 2;
+    }
   }
 
   .marquee-track {

@@ -114,10 +114,10 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-350 gap-10 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-12 lg:gap-6 lg:py-32">
           <div className="lg:col-span-12">
             <div className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase">
-              <span className="bg-ink px-2 py-1 text-paper">Edição 01</span>
+              <span className="comic-caption">Edição 01</span>
               <span>—</span>
               <span>Portfólio profissional / 2026</span>
-              <span className="ml-auto flex items-center gap-2">
+              <span className="ml-auto flex items-center gap-2 font-bold">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-destructive" />
                 Aberto a oportunidades
               </span>
@@ -129,7 +129,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="font-display text-[16vw] leading-[0.85] md:text-[10rem] lg:text-[11rem]"
+              className="font-display comic-title text-[16vw] leading-[0.85] md:text-[10rem] lg:text-[11rem]"
             >
               Full<span className="text-destructive">-</span>
               <br />
