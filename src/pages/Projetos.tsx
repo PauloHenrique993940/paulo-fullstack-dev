@@ -306,6 +306,32 @@ const revealCard = {
   },
 };
 
+const getArchitectureSummary = (project: (typeof projects)[number]) => {
+  const stack = project.tags.map((tag) => tag.toLowerCase());
+
+  if (stack.some((tag) => tag.includes("node") || tag.includes("express") || tag.includes("php") || tag.includes("postgre"))) {
+    return "Arquitetura pensada em camadas, com interface responsiva, APIs organizadas e persistência de dados voltada para manutenção e evolução.";
+  }
+
+  return "Arquitetura de interface modular, com componentes reutilizáveis, navegação clara e estrutura preparada para crescer com o produto.";
+};
+
+const getChallengeSummary = (project: (typeof projects)[number]) => {
+  if (project.title === "Almoxarif") {
+    return "Integrar fluxo operacional, controle de estoque e rastreabilidade em uma aplicação que fosse simples para o usuário e confiável para a operação.";
+  }
+
+  if (project.title === "FinancePro") {
+    return "Conciliar segurança, autenticação, relatórios e rotina financeira em uma solução que suportasse uso real do negócio.";
+  }
+
+  if (project.title === "Rastreio de Encomendas") {
+    return "Unir dados externos, interface intuitiva e atualização contínua de status para tornar a experiência útil no dia a dia.";
+  }
+
+  return "Balancear usabilidade, organização visual e boa estrutura técnica para entregar algo claro, útil e com valor percebido.";
+};
+
 export default function Projetos() {
   return (
     <>
@@ -325,11 +351,10 @@ export default function Projetos() {
             em aderência.
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-            Os projetos abaixo foram selecionados e estruturados para refletir com maior precisão
-            minha experiência e alinhamento com o currículo, destacando o problema de negócio
-            identificado, a solução desenvolvida, a stack utilizada e as competências práticas
-            aplicadas em cada entrega — evidenciando minha capacidade de construir soluções reais do
-            zero, com foco em resultado e qualidade técnica.
+            Os projetos abaixo foram selecionados e estruturados como cases de estudo, com foco em
+            contexto, problema, solução, arquitetura, decisões técnicas, desafios e resultados.
+            Essa abordagem evidencia não apenas o que foi construído, mas como eu penso, escolho
+            tecnologias e entrego valor com clareza técnica.
           </p>
         </motion.div>
       </section>
@@ -411,7 +436,7 @@ export default function Projetos() {
                   <p className="font-display text-xl uppercase text-muted-foreground">{p.sub}</p>
                   <div className="space-y-3 text-base leading-relaxed">
                     <p>
-                      <span className="font-mono text-xs uppercase opacity-60">Problema</span>
+                      <span className="font-mono text-xs uppercase opacity-60">Contexto</span>
                       <br />
                       {p.problem}
                     </p>
@@ -421,10 +446,27 @@ export default function Projetos() {
                       {p.solution}
                     </p>
                     <p>
-                      <span className="font-mono text-xs uppercase opacity-60">Resultado</span>
+                      <span className="font-mono text-xs uppercase opacity-60">Arquitetura</span>
                       <br />
-                      {p.result}
+                      {getArchitectureSummary(p)}
                     </p>
+                    <p>
+                      <span className="font-mono text-xs uppercase opacity-60">Desafios</span>
+                      <br />
+                      {getChallengeSummary(p)}
+                    </p>
+                    <div className="grid gap-3 md:grid-cols-2">
+                      <p>
+                        <span className="font-mono text-xs uppercase opacity-60">Decisões técnicas</span>
+                        <br />
+                        {p.tags.join(" · ")}
+                      </p>
+                      <p>
+                        <span className="font-mono text-xs uppercase opacity-60">Resultado</span>
+                        <br />
+                        {p.result}
+                      </p>
+                    </div>
                   </div>
                   <motion.div
                     className="flex flex-wrap gap-2"

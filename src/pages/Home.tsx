@@ -148,6 +148,11 @@ export default function Home() {
                 criar soluções com interface responsiva, APIs RESTful e estrutura pronta para
                 evolução.
               </p>
+              <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                Além do visual, eu apresento cada projeto como um case de estudo: contexto, problema,
+                arquitetura, decisões técnicas, desafios e resultados — para mostrar maturidade além
+                da entrega estética.
+              </p>
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link
                   to="/projetos"

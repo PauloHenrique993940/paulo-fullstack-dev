@@ -27,12 +27,9 @@ function App() {
     const reduceMotion = useReducedMotion()
     const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => {
-        const loadingDuration = reduceMotion ? 500 : 2500
-        const timer = window.setTimeout(() => setIsLoading(false), loadingDuration)
-
-        return () => window.clearTimeout(timer)
-    }, [reduceMotion])
+    const handleEnterClick = () => {
+        setIsLoading(false)
+    }
 
     if (isLoading) {
         return (
@@ -79,6 +76,13 @@ function App() {
                         />
                     </div>
                     <p className="anime-loader__status">Carregando próxima cena...</p>
+                    <button
+                        type="button"
+                        onClick={handleEnterClick}
+                        className="anime-loader__enter-button mt-6 inline-flex items-center justify-center rounded-full border-2 border-paper bg-paper px-8 py-4 font-mono text-sm uppercase tracking-[0.3em] text-ink transition-all duration-300 hover:bg-highlight hover:text-ink"
+                    >
+                        Entrar
+                    </button>
                 </div>
             </motion.div>
         )

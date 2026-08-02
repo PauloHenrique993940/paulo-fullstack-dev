@@ -390,6 +390,73 @@
 
   .blink {
     animation: blink 1.2s steps(2, start) infinite;
+    cursor: pointer;
+  }
+
+  .anime-loader__enter-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 2px solid var(--paper);
+    background: var(--paper);
+    color: var(--ink);
+    padding: 0.9rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    margin-top: 1.5rem;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.12);
+    animation: pulse-glow 1.8s ease-in-out infinite;
+  }
+
+  .anime-loader__enter-button:hover {
+    background: var(--highlight);
+    color: var(--ink);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 18px rgba(255, 211, 67, 0.32);
+  }
+
+  .anime-loader__enter-button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.15);
+    animation: pulse-ring 2.2s ease-out infinite;
+  }
+
+  .anime-loader__enter-button,
+  .anime-loader__enter-button::after {
+    position: relative;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(255, 211, 67, 0.15);
+    }
+    50% {
+      transform: scale(1.02);
+      box-shadow: 0 0 18px rgba(255, 211, 67, 0.28);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.85);
+      opacity: 0.45;
+    }
+    80% {
+      transform: scale(1.35);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1.35);
+      opacity: 0;
+    }
   }
 
   @keyframes blink {
