@@ -316,6 +316,16 @@ const getArchitectureSummary = (project: (typeof projects)[number]) => {
   return "Arquitetura de interface modular, com componentes reutilizáveis, navegação clara e estrutura preparada para crescer com o produto.";
 };
 
+const landingPageTitles = [
+  "Ink Art Studio",
+  "Barbearia Premium",
+  "Rest Dim Sushi",
+  "Sabor Aroma",
+  "Essência do Gosto",
+];
+
+const landingPages = projects.filter((p) => landingPageTitles.includes(p.title));
+
 const getChallengeSummary = (project: (typeof projects)[number]) => {
   if (project.title === "Almoxarif") {
     return "Integrar fluxo operacional, controle de estoque e rastreabilidade em uma aplicação que fosse simples para o usuário e confiável para a operação.";
@@ -519,6 +529,110 @@ export default function Projetos() {
             </div>
           </motion.article>
         ))}
+      </section>
+
+      <section className="border-b-[3px] border-ink bg-secondary py-16 md:py-24">
+        <div className="mx-auto max-w-350 px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.35 }}
+          >
+            <SectionLabel index="04">Landing Pages</SectionLabel>
+            <p className="max-w-3xl font-display text-3xl uppercase md:text-5xl">
+              Sites institucionais e landing pages focados em conversão, identidade visual e
+              experiência do usuário para negócios locais.
+            </p>
+          </motion.div>
+          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {landingPages.map((p, idx) => (
+              <motion.article
+                key={p.n}
+                className="brutal-border brutal-shadow-lg flex flex-col overflow-hidden bg-paper"
+                initial="hidden"
+                whileInView="show"
+                variants={revealCard}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 115,
+                  damping: 18,
+                  mass: 0.9,
+                  delay: idx * 0.05,
+                }}
+              >
+                <div className="relative border-b-[3px] border-ink">
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    width={1024}
+                    height={768}
+                    className="aspect-4/3 w-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col gap-3 p-6">
+                  <div className="flex items-center gap-3 font-mono text-xs uppercase">
+                    <span className="bg-ink px-2 py-1 text-paper">{p.n}</span>
+                    <span>{p.year}</span>
+                  </div>
+                  <h3 className="font-display text-3xl leading-none">{p.title}.</h3>
+                  <p className="font-display text-base uppercase text-muted-foreground">{p.sub}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {p.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="brutal-border bg-paper px-2 py-1 font-mono text-xs uppercase"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-auto flex gap-3 pt-4">
+                    <a
+                      href={p.deploy}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="brutal-border brutal-shadow-sm brutal-hover bg-ink px-4 py-2 font-mono text-xs uppercase text-paper"
+                    >
+                      Ver demo →
+                    </a>
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="brutal-border brutal-shadow-sm brutal-hover bg-paper px-4 py-2 font-mono text-xs uppercase"
+                    >
+                      Código ↗
+                    </a>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+            {Array.from({ length: 5 }).map((_, idx) => (
+              <motion.div
+                key={`landing-placeholder-${idx}`}
+                className="brutal-border flex min-h-[22rem] flex-col items-center justify-center gap-3 border-dashed bg-transparent p-6 text-center"
+                initial="hidden"
+                whileInView="show"
+                variants={revealCard}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 115,
+                  damping: 18,
+                  mass: 0.9,
+                  delay: (landingPages.length + idx) * 0.05,
+                }}
+              >
+                <span className="font-display text-5xl leading-none">+</span>
+                <p className="font-mono text-xs uppercase text-muted-foreground">
+                  Novas landing pages em breve
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="py-20 md:py-28">
