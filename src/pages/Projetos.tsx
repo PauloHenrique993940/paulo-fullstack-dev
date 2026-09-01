@@ -16,6 +16,7 @@ import EssenciaGosto from "@/assets/essenciaGosto.png";
 import kanbanImage from "@/assets/kanban.png";
 import angularWeatherImage from "@/assets/angularWeather.svg";
 import digitalLibraryImage from "@/assets/bibliotecaDigital.png";
+import efoodImage from "@/assets/efood.png";
 
 const projects = [
   {
@@ -290,6 +291,24 @@ const projects = [
     img: digitalLibraryImage,
     deploy: "https://biblioteca-digital-opal.vercel.app/",
     github: "https://github.com/PauloHenrique993940/biblioteca-digital.git",
+    upcoming: false,
+    ribbon: "React",
+  },
+  {
+    n: "16",
+    title: "Efood",
+    sub: "Experiência completa de compra para um marketplace de delivery",
+    problem:
+      "Criar uma experiência de delivery clara e fluida, permitindo explorar restaurantes e cardápios, organizar o carrinho e concluir pedidos com entrega e pagamento.",
+    solution:
+      "Desenvolvi uma aplicação em React com catálogo de restaurantes, detalhes de pratos em modal, carrinho global e checkout estruturado em etapas de entrega e pagamento.",
+    result:
+      "O case demonstra a construção de um fluxo completo de compra, com componentes reutilizáveis, estado global tipado e interface responsiva para um marketplace de restaurantes.",
+    tags: ["React", "TypeScript", "Redux", "Styled Components", "Checkout", "UX/UI"],
+    year: "2026",
+    img: efoodImage,
+    deploy: "https://efood-3xco7v3fr-paulohenrique537s-projects.vercel.app/",
+    github: "https://github.com/PauloHenrique993940/efood.git",
     upcoming: false,
     ribbon: "React",
   },
