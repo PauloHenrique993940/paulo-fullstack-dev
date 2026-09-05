@@ -2,8 +2,15 @@ import { motion } from "framer-motion";
 
 const socialLinks = [
     { label: "GitHub", href: "https://github.com/PauloHenrique993940" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/paulo-henrique-ferreira-fran%C3%A7a-751256262/" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/in/paulohenriquefranca/" },
     { label: "Portfólio", href: "https://paulo-fullstack-dev.vercel.app/" },
+];
+
+const marqueeMessages = [
+    "Desenvolvedor Full Stack Júnior",
+    "Construo aplicações web completas",
+    "React · Node.js · TypeScript · PostgreSQL",
+    "Transformo problemas em soluções digitais",
 ];
 
 export function Footer() {
@@ -18,9 +25,9 @@ export function Footer() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    {Array.from({ length: 6 }).map((_, i) => (
-                        <span key={i} className="mx-8 flex items-center gap-8">
-                            Disponível para oportunidades
+                    {marqueeMessages.map((message) => (
+                        <span key={message} className="mx-8 flex items-center gap-8">
+                            {message}
                             <span className="text-highlight">★</span>
                         </span>
                     ))}

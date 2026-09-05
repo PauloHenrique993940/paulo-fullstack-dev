@@ -25,7 +25,7 @@ const flyingElements = [
 function App() {
     const location = useLocation()
     const reduceMotion = useReducedMotion()
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleEnterClick = () => {
         setIsLoading(false)
@@ -93,7 +93,7 @@ function App() {
             <Nav />
             <main className="relative flex-1 overflow-hidden">
                 <div className="pointer-events-none absolute inset-0 z-0">
-                    {flyingElements.map((item) => (
+                    {location.pathname === '/' && flyingElements.map((item) => (
                         <motion.span
                             key={item.id}
                             className={`absolute ${item.size} ${item.shape} shadow-[2px_2px_0_0_rgba(20,20,20,0.15)]`}

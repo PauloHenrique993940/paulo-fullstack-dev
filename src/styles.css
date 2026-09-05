@@ -13,8 +13,7 @@
 
 /* 3. TEMA E VARIÁVEIS DO TAILWIND V4 */
 @theme inline {
-  --color-brand: #ff5f1f;
-  --font-mono: "Space Mono", monospace;
+  --color-brand: #2f80ed;
   --font-display: "Bangers", Impact, sans-serif;
   --font-sans: "Space Grotesk", system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
@@ -56,30 +55,30 @@
 :root {
   --radius: 0px;
 
-  /* Ink, paper and primary comic accents */
-  --paper: #fff8e7;
-  --ink: #171717;
-  --highlight: #ffd447;
-  --accent-red: #ed4b3e;
+  /* Navy, cool paper and electric accents */
+  --paper: #f2f6fb;
+  --ink: #0b1f33;
+  --highlight: #f4c542;
+  --accent-red: #2f80ed;
 
   --background: var(--paper);
   --foreground: var(--ink);
-  --card: #fffdf4;
+  --card: #ffffff;
   --card-foreground: var(--ink);
-  --popover: #fffdf4;
+  --popover: #ffffff;
   --popover-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--paper);
-  --secondary: #f3e6c9;
+  --secondary: #dce8f3;
   --secondary-foreground: var(--ink);
-  --muted: #e5d6b7;
-  --muted-foreground: #5d5549;
+  --muted: #c7d6e5;
+  --muted-foreground: #496176;
   --accent: var(--highlight);
   --accent-foreground: var(--ink);
   --destructive: var(--accent-red);
   --destructive-foreground: var(--paper);
   --border: var(--ink);
-  --input: #fffdf4;
+  --input: #ffffff;
   --ring: var(--ink);
 }
 
@@ -115,8 +114,6 @@
 
   body {
     background-color: var(--background);
-    background-image: radial-gradient(var(--ink) 0.8px, transparent 0.8px);
-    background-size: 7px 7px;
     color: var(--foreground);
     font-family: var(--font-mono), monospace;
     font-feature-settings: "ss01", "cv11";
@@ -142,8 +139,6 @@
 
   section {
     position: relative;
-    @apply border-2 border-foreground;
-    box-shadow: 8px 8px 0px 0px var(--ink);
   }
 }
 

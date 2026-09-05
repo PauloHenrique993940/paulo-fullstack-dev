@@ -17,6 +17,7 @@ import kanbanImage from "@/assets/kanban.png";
 import angularWeatherImage from "@/assets/angularWeather.svg";
 import digitalLibraryImage from "@/assets/bibliotecaDigital.png";
 import efoodImage from "@/assets/efood.png";
+import sistemaInformacaoImage from "@/assets/sistemaInformacao.png";
 
 const projects = [
   {
@@ -181,6 +182,22 @@ const projects = [
     upcoming: true,
   },
   {
+    n: "17",
+    title: "Sistema de Informações APS/AFM",
+    sub: "Dashboard operacional para acompanhamento de processos e materiais",
+    problem:
+      "Dar visibilidade ao andamento de processos, materiais recebidos, atrasos e próximos recebimentos em uma única visão operacional.",
+    solution:
+      "Estruturei um dashboard com navegação por módulos, indicadores de status e áreas de análise para apoiar o acompanhamento da operação.",
+    result:
+      "O projeto demonstra capacidade de transformar dados operacionais em uma interface clara para leitura rápida e tomada de decisão.",
+    tags: ["React", "TypeScript", "Dashboard", "UX/UI", "Indicadores"],
+    year: "2026",
+    img: sistemaInformacaoImage,
+    deploy: "",
+    github: "",
+  },
+  {
     n: "10",
     title: "Rest Dim Sushi",
     sub: "Website institucional para restaurante com foco em experiência visual",
@@ -314,6 +331,17 @@ const projects = [
   },
 ];
 
+const featuredProjectTitles = [
+  "Almoxarif",
+  "FinancePro",
+  "Rastreio de Encomendas",
+  "Sistema de Informações APS/AFM",
+  "Biblioteca Digital",
+  "Efood",
+];
+
+const featuredProjects = projects.filter((project) => featuredProjectTitles.includes(project.title));
+
 const revealCard = {
   hidden: { opacity: 0, y: 64, scale: 0.94, filter: "blur(10px)" },
   show: {
@@ -343,7 +371,9 @@ const landingPageTitles = [
   "Essência do Gosto",
 ];
 
-const landingPages = projects.filter((p) => landingPageTitles.includes(p.title));
+const landingPages = projects.filter(
+  (p) => landingPageTitles.includes(p.title) && !featuredProjectTitles.includes(p.title),
+);
 
 const getChallengeSummary = (project: (typeof projects)[number]) => {
   if (project.title === "Almoxarif") {
@@ -389,7 +419,7 @@ export default function Projetos() {
       </section>
 
       <section className="border-b-[3px] border-ink">
-        {projects.map((p, idx) => (
+        {featuredProjects.map((p, idx) => (
           <motion.article
             key={p.n}
             className={`${idx % 2 === 0 ? "bg-paper" : "bg-secondary"} border-b-[3px] border-ink`}
@@ -524,22 +554,26 @@ export default function Projetos() {
                       </span>
                     ) : (
                       <>
-                        <a
-                          href={p.deploy}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="brutal-border brutal-shadow-sm brutal-hover bg-ink px-5 py-3 font-mono text-sm uppercase text-paper"
-                        >
-                          Ver demo →
-                        </a>
-                        <a
-                          href={p.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="brutal-border brutal-shadow-sm brutal-hover bg-paper px-5 py-3 font-mono text-sm uppercase"
-                        >
-                          Código ↗
-                        </a>
+                        {p.deploy && (
+                          <a
+                            href={p.deploy}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="brutal-border brutal-shadow-sm brutal-hover bg-ink px-5 py-3 font-mono text-sm uppercase text-paper"
+                          >
+                            Ver demo →
+                          </a>
+                        )}
+                        {p.github && (
+                          <a
+                            href={p.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="brutal-border brutal-shadow-sm brutal-hover bg-paper px-5 py-3 font-mono text-sm uppercase"
+                          >
+                            Código ↗
+                          </a>
+                        )}
                       </>
                     )}
                   </div>
@@ -627,28 +661,6 @@ export default function Projetos() {
                   </div>
                 </div>
               </motion.article>
-            ))}
-            {Array.from({ length: 5 }).map((_, idx) => (
-              <motion.div
-                key={`landing-placeholder-${idx}`}
-                className="brutal-border flex min-h-[22rem] flex-col items-center justify-center gap-3 border-dashed bg-transparent p-6 text-center"
-                initial="hidden"
-                whileInView="show"
-                variants={revealCard}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 115,
-                  damping: 18,
-                  mass: 0.9,
-                  delay: (landingPages.length + idx) * 0.05,
-                }}
-              >
-                <span className="font-display text-5xl leading-none">+</span>
-                <p className="font-mono text-xs uppercase text-muted-foreground">
-                  Novas landing pages em breve
-                </p>
-              </motion.div>
             ))}
           </div>
         </div>

@@ -122,7 +122,6 @@ export default function Contato() {
                         <div className="brutal-border bg-ink p-6 text-paper">
                             <p className="font-mono text-xs uppercase opacity-60">Disponibilidade</p>
                             <p className="mt-1 font-display text-2xl">Remoto, híbrido ou presencial</p>
-                            <p className="mt-2 font-mono text-xs opacity-70">Resposta em até 48h úteis para vagas, freelas e parcerias</p>
                         </div>
                     </motion.aside>
                 </div>
