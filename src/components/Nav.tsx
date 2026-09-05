@@ -15,16 +15,16 @@ export function Nav() {
     const [open, setOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-50 border-b-[3px] border-ink bg-paper">
-            <div className="mx-auto flex max-w-350 items-center justify-between px-6 py-4 md:px-10">
+        <header className="site-header sticky top-0 z-50">
+            <div className="site-header__inner mx-auto flex max-w-350 items-center justify-between px-6 py-4 md:px-10">
                 <Link to="/" className="group flex items-center gap-3">
-                    <span className="font-display text-sm uppercase tracking-tight">
-                        Paulo Henrique<span className="text-destructive">/</span> Full Stack Júnior
+                    <span className="brand-mark brand-wordmark">
+                        PAULO<span>.</span>
                     </span>
                 </Link>
 
                 {/* Menu Desktop */}
-                <nav className="hidden items-center gap-1 md:flex">
+                <nav className="site-nav hidden items-center gap-1 md:flex">
                     {links.map((l) => {
                         const isActive = location.pathname === l.to;
                         return (
@@ -32,7 +32,7 @@ export function Nav() {
                                 <Link
                                     key={l.to}
                                     to={l.to}
-                                    className={`px-4 py-2 font-mono text-sm uppercase transition-colors hover:bg-ink hover:text-paper ${isActive ? "bg-ink text-paper" : ""}`}
+                                    className={`site-nav__link px-4 py-2 font-mono text-sm uppercase transition-colors ${isActive ? "is-active" : ""}`}
                                 >
                                     {l.label}
                                 </Link>
@@ -53,12 +53,11 @@ export function Nav() {
                 </button>
 
                 {/* Botão de contato Desktop */}
-                <Link
-                    to="/contato"
-                    className="brutal-border brutal-shadow-sm brutal-hover bg-highlight px-4 py-2 font-mono text-xs uppercase md:text-sm hidden md:inline"
-                >
-                    Vamos conversar →
-                </Link>
+                <div className="header-socials hidden items-center gap-5 md:flex">
+                    <a href="https://www.linkedin.com/in/paulohenriquefranca/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+                    <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
+                    <a href="mailto:paulohenriqueferreirafranca2@gmail.com" aria-label="Enviar e-mail">@</a>
+                </div>
             </div>
 
             {/* Menu Mobile */}
@@ -69,7 +68,7 @@ export function Nav() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.22, ease: "easeOut" }}
-                        className="flex flex-col gap-2 px-6 pb-4 md:hidden"
+                        className="site-nav--mobile flex flex-col gap-2 px-6 pb-4 md:hidden"
                     >
                         {links.map((l, index) => {
                             const isActive = location.pathname === l.to;
@@ -83,7 +82,7 @@ export function Nav() {
                                     <Link
                                         to={l.to}
                                         onClick={() => setOpen(false)}
-                                        className={`px-4 py-2 font-mono text-sm uppercase rounded transition-colors hover:bg-ink hover:text-paper ${isActive ? "bg-ink text-paper" : ""}`}
+                                        className={`site-nav__link px-4 py-2 font-mono text-sm uppercase transition-colors ${isActive ? "is-active" : ""}`}
                                     >
                                         {l.label}
                                     </Link>
@@ -98,7 +97,7 @@ export function Nav() {
                             <Link
                                 to="/contato"
                                 onClick={() => setOpen(false)}
-                                className="brutal-border brutal-shadow-sm brutal-hover bg-highlight px-4 py-2 font-mono text-xs uppercase"
+                                className="header-cta inline-flex"
                             >
                                 Vamos conversar →
                             </Link>

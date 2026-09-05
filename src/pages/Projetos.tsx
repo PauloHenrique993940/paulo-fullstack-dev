@@ -194,7 +194,7 @@ const projects = [
     tags: ["React", "TypeScript", "Dashboard", "UX/UI", "Indicadores"],
     year: "2026",
     img: sistemaInformacaoImage,
-    deploy: "",
+    deploy: "https://sistema-informacao-nmp.vercel.app/",
     github: "",
   },
   {
@@ -392,6 +392,38 @@ const getChallengeSummary = (project: (typeof projects)[number]) => {
 };
 
 export default function Projetos() {
+  return (
+    <>
+      <section className="projects-intro border-b border-ink/15">
+        <div className="mx-auto max-w-350 px-6 py-20 md:px-10 md:py-28">
+          <p className="eyebrow">01 — Portfólio</p>
+          <h1 className="mt-5 max-w-4xl text-6xl md:text-9xl">Projetos que resolvem problemas.</h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">Uma seleção de aplicações web, dashboards e produtos digitais construídos com foco em clareza e resultado.</p>
+        </div>
+      </section>
+      <section className="projects-index mx-auto max-w-350 px-6 py-16 md:px-10 md:py-24">
+        <div className="projects-index__grid">
+          {projects.map((project) => (
+            <article key={project.n} className="projects-index__item">
+              <a href={project.deploy && project.deploy !== "#" ? project.deploy : undefined} target={project.deploy && project.deploy !== "#" ? "_blank" : undefined} rel="noopener noreferrer" className="projects-index__image">
+                <img src={project.img} alt={project.title} />
+                {project.upcoming && <span className="projects-index__status">Em breve</span>}
+              </a>
+              <div className="projects-index__caption">
+                <span className="projects-index__number">{project.n}</span>
+                <div><h2>{project.title}</h2><p>{project.sub}</p></div>
+                <div className="projects-index__actions">
+                  {project.deploy && project.deploy !== "#" && <a href={project.deploy} target="_blank" rel="noopener noreferrer" aria-label={`Abrir demonstração de ${project.title}`}>Demo ↗</a>}
+                  {project.github && project.github !== "#" && <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`Abrir GitHub de ${project.title}`}>GitHub ↗</a>}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+
   return (
     <>
       <section className="border-b-[3px] border-ink py-16 md:py-24">

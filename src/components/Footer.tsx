@@ -6,34 +6,11 @@ const socialLinks = [
     { label: "Portfólio", href: "https://paulo-fullstack-dev.vercel.app/" },
 ];
 
-const marqueeMessages = [
-    "Desenvolvedor Full Stack Júnior",
-    "Construo aplicações web completas",
-    "React · Node.js · TypeScript · PostgreSQL",
-    "Transformo problemas em soluções digitais",
-];
-
 export function Footer() {
     const year = new Date().getFullYear();
     return (
         <footer className="border-t-[3px] border-ink bg-ink text-paper">
-            <div className="overflow-hidden border-b border-paper/20 py-6">
-                <motion.div
-                    className="marquee-track flex whitespace-nowrap font-display text-5xl uppercase md:text-7xl"
-                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                    {marqueeMessages.map((message) => (
-                        <span key={message} className="mx-8 flex items-center gap-8">
-                            {message}
-                            <span className="text-highlight">★</span>
-                        </span>
-                    ))}
-                </motion.div>
-            </div>
-            <div className="mx-auto grid max-w-350 gap-8 px-6 py-12 md:grid-cols-3 md:px-10">
+            <div className="mx-auto grid max-w-350 gap-8 px-6 py-10 md:grid-cols-3 md:px-10">
                 <motion.div
                     initial={{ opacity: 0, y: 36, scale: 0.96, filter: "blur(8px)" }}
                     whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
