@@ -8,41 +8,95 @@ const contactLinks = [
     { label: "Portfólio publicado", href: "https://paulo-fullstack-dev.vercel.app/" },
 ];
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+type FormStatus = "idle" | "loading" | "success" | "error";
+type FormErrors = Partial<Record<"nome" | "email" | "assunto" | "mensagem", string>>;
+
+function Field({
+    label,
+    name,
+    type = "text",
+    error,
+}: {
+    label: string;
+    name: string;
+    type?: string;
+    error?: string;
+}) {
     return (
         <div>
-            <label className="font-mono text-xs uppercase">{label}</label>
+            <label htmlFor={name} className="font-mono text-xs uppercase">{label}</label>
             <input
-                required
+                id={name}
                 name={name}
                 type={type}
-                className="brutal-border mt-2 block w-full bg-paper p-4 font-sans text-base focus:bg-highlight/30 focus:outline-none"
+                aria-invalid={Boolean(error)}
+                aria-describedby={error ? `${name}-error` : undefined}
+                className={`brutal-border mt-2 block w-full bg-paper p-4 font-sans text-base focus:bg-highlight/30 focus:outline-none ${error ? "border-destructive" : ""}`}
             />
+            {error && (
+                <p id={`${name}-error`} role="alert" className="mt-1.5 text-xs font-semibold text-destructive">
+                    {error}
+                </p>
+            )}
         </div>
     );
 }
 
 export default function Contato() {
-    const [sent, setSent] = useState(false);
+    const [status, setStatus] = useState<FormStatus>("idle");
+    const [errors, setErrors] = useState<FormErrors>({});
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    function validate(data: FormData): FormErrors {
+        const nome = String(data.get("nome") || "").trim();
+        const email = String(data.get("email") || "").trim();
+        const assunto = String(data.get("assunto") || "").trim();
+        const mensagem = String(data.get("mensagem") || "").trim();
+        const nextErrors: FormErrors = {};
+
+        if (!nome) nextErrors.nome = "Informe seu nome.";
+        if (!email) nextErrors.email = "Informe um email.";
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = "Email inválido.";
+        if (!assunto) nextErrors.assunto = "Informe o assunto.";
+        if (!mensagem) nextErrors.mensagem = "Escreva uma mensagem.";
+        else if (mensagem.length < 10) nextErrors.mensagem = "Conte um pouco mais (mínimo 10 caracteres).";
+
+        return nextErrors;
+    }
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        alert('Mensagem enviada! Respondo em breve.');
-        setSent(true);
-        setTimeout(() => setSent(false), 4000);
-        e.currentTarget.reset();
+        const form = e.currentTarget;
+        const data = new FormData(form);
+        const nextErrors = validate(data);
+        setErrors(nextErrors);
+
+        if (Object.keys(nextErrors).length > 0) {
+            setStatus("error");
+            return;
+        }
+
+        setStatus("loading");
+        try {
+            // Simula o envio; substitua por uma chamada real de API quando disponível.
+            await new Promise((resolve, reject) => setTimeout(() => (Math.random() > 0.05 ? resolve(null) : reject()), 900));
+            setStatus("success");
+            form.reset();
+            setTimeout(() => setStatus("idle"), 5000);
+        } catch {
+            setStatus("error");
+        }
     }
 
     return (
         <>
-            <section className="border-b-[3px] border-ink py-16 md:py-24">
+            <section className="page-intro border-b-[3px] border-ink py-16 md:py-24">
                 <motion.div
                     className="mx-auto max-w-[1400px] px-6 md:px-10"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.45, ease: "easeOut" }}
                 >
-                    <p className="font-mono text-xs uppercase">Capítulo 04 / Contato</p>
+                    <p className="font-mono text-xs uppercase">03 — Contato</p>
                     <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
                         Vamos<span className="text-destructive">/</span>
                         <br />
@@ -64,28 +118,47 @@ export default function Contato() {
                         transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.85 }}
                     >
                         <SectionLabel index="01">Formulário</SectionLabel>
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} noValidate className="space-y-6">
                             <div className="grid gap-6 md:grid-cols-2">
-                                <Field label="Seu nome" name="nome" />
-                                <Field label="Email" name="email" type="email" />
+                                <Field label="Seu nome" name="nome" error={errors.nome} />
+                                <Field label="Email" name="email" type="email" error={errors.email} />
                             </div>
-                            <Field label="Assunto" name="assunto" />
+                            <Field label="Assunto" name="assunto" error={errors.assunto} />
                             <div>
-                                <label className="font-mono text-xs uppercase">Mensagem</label>
+                                <label htmlFor="mensagem" className="font-mono text-xs uppercase">Mensagem</label>
                                 <textarea
-                                    required
+                                    id="mensagem"
                                     name="mensagem"
                                     rows={6}
-                                    className="brutal-border mt-2 block w-full bg-paper p-4 font-sans text-base focus:bg-highlight/30 focus:outline-none"
+                                    aria-invalid={Boolean(errors.mensagem)}
+                                    aria-describedby={errors.mensagem ? "mensagem-error" : undefined}
+                                    className={`brutal-border mt-2 block w-full bg-paper p-4 font-sans text-base focus:bg-highlight/30 focus:outline-none ${errors.mensagem ? "border-destructive" : ""}`}
                                     placeholder="Conta a ideia."
                                 />
+                                {errors.mensagem && (
+                                    <p id="mensagem-error" role="alert" className="mt-1.5 text-xs font-semibold text-destructive">
+                                        {errors.mensagem}
+                                    </p>
+                                )}
                             </div>
                             <button
                                 type="submit"
-                                className="brutal-border brutal-shadow brutal-hover bg-ink px-6 py-4 font-mono text-sm uppercase text-paper"
+                                disabled={status === "loading"}
+                                className="brutal-border brutal-shadow brutal-hover bg-ink px-6 py-4 font-mono text-sm uppercase text-paper disabled:cursor-not-allowed disabled:opacity-60"
                             >
-                                {sent ? "Enviado ✓" : "Enviar →"}
+                                {status === "loading" ? "Enviando…" : "Enviar →"}
                             </button>
+                            <div aria-live="polite" className="min-h-[1.5rem]">
+                                {status === "success" && (
+                                    <p role="status" className="form-feedback form-feedback--success">Mensagem enviada com sucesso! Respondo em breve.</p>
+                                )}
+                                {status === "error" && Object.keys(errors).length === 0 && (
+                                    <p role="alert" className="form-feedback form-feedback--error">Não foi possível enviar agora. Tente novamente ou use o email ao lado.</p>
+                                )}
+                                {status === "error" && Object.keys(errors).length > 0 && (
+                                    <p role="alert" className="form-feedback form-feedback--error">Verifique os campos destacados acima.</p>
+                                )}
+                            </div>
                         </form>
                     </motion.div>
 

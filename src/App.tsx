@@ -1,19 +1,30 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import Home from '@/pages/Home'
-import Sobre from '@/pages/Sobre'
-import Projetos from '@/pages/Projetos'
-import Contato from '@/pages/Contato'
 // import { Toaster } from '@/components/ui/sonner.tsx' // removed dep
 
 
 function App() {
     const location = useLocation()
+
+    useEffect(() => {
+        if (!location.hash) return
+
+        const targetId = location.hash.slice(1)
+        const target = document.getElementById(targetId)
+        if (!target) return
+
+        requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        })
+    }, [location.hash, location.pathname])
+
     return (
-        <div className="min-h-screen flex flex-col bg-paper text-ink">
+        <div className="portfolio-interface min-h-screen flex flex-col bg-paper text-ink">
             <Nav />
             <main className="relative flex-1 overflow-hidden">
                 <AnimatePresence mode="wait">
@@ -27,9 +38,9 @@ function App() {
                     >
                         <Routes location={location}>
                             <Route path="/" element={<Home />} />
-                            <Route path="/sobre" element={<Sobre />} />
-                            <Route path="/projetos" element={<Projetos />} />
-                            <Route path="/contato" element={<Contato />} />
+                            <Route path="/sobre" element={<Navigate to="/#sobre" replace />} />
+                            <Route path="/projetos" element={<Navigate to="/#projetos" replace />} />
+                            <Route path="/contato" element={<Navigate to="/#contato" replace />} />
                             <Route path="*" element={<div className="flex min-h-screen flex-col items-center justify-center bg-paper px-4">
                                 <div className="max-w-xl text-center">
                                     <p className="font-mono text-sm uppercase">Erro / 404</p>

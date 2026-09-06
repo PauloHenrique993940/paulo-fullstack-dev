@@ -1,5 +1,4 @@
-import { SectionLabel } from "@/components/SectionLabel";
-import { motion } from "framer-motion";
+import { useMemo, useState } from "react";
 import project1 from "@/assets/project-1.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/hackerPentest.png";
@@ -342,6 +341,29 @@ const featuredProjectTitles = [
 
 const featuredProjects = projects.filter((project) => featuredProjectTitles.includes(project.title));
 
+const projectCategories = ["Todos", "Produtos digitais", "Dashboards", "Experiências web", "Estudos"] as const;
+type ProjectCategory = (typeof projectCategories)[number];
+
+const getProjectCategory = (project: (typeof projects)[number]): Exclude<ProjectCategory, "Todos"> => {
+  if (project.title === "Ativo Control" || project.tags.some((tag) => tag.toLowerCase().includes("estudando"))) {
+    return "Estudos";
+  }
+
+  if (["Almoxarif", "FinancePro", "Efood"].includes(project.title)) {
+    return "Produtos digitais";
+  }
+
+  if (project.tags.some((tag) => tag.toLowerCase().includes("dashboard") || tag.toLowerCase().includes("indicadores"))) {
+    return "Dashboards";
+  }
+
+  if (project.tags.some((tag) => tag.toLowerCase().includes("ux/ui") || tag.toLowerCase().includes("checkout") || tag.toLowerCase().includes("kanban"))) {
+    return "Produtos digitais";
+  }
+
+  return "Experiências web";
+};
+
 const revealCard = {
   hidden: { opacity: 0, y: 64, scale: 0.94, filter: "blur(10px)" },
   show: {
@@ -392,18 +414,56 @@ const getChallengeSummary = (project: (typeof projects)[number]) => {
 };
 
 export default function Projetos() {
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("Todos");
+  const [showAll, setShowAll] = useState(false);
+  const baseList = showAll ? projects : featuredProjects;
+  const visibleProjects = useMemo(
+    () => activeCategory === "Todos" ? baseList : baseList.filter((project) => getProjectCategory(project) === activeCategory),
+    [activeCategory, baseList],
+  );
+
   return (
     <>
-      <section className="projects-intro border-b border-ink/15">
+      <section className="projects-intro page-intro border-b border-ink/15">
         <div className="mx-auto max-w-350 px-6 py-20 md:px-10 md:py-28">
           <p className="eyebrow">01 — Portfólio</p>
-          <h1 className="mt-5 max-w-4xl text-6xl md:text-9xl">Projetos que resolvem problemas.</h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">Uma seleção de aplicações web, dashboards e produtos digitais construídos com foco em clareza e resultado.</p>
+          <div className="projects-intro__heading">
+            <div>
+              <h1 className="mt-5 max-w-4xl text-6xl md:text-9xl">Projetos que resolvem problemas.</h1>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">Uma seleção de aplicações web, dashboards e produtos digitais construídos com foco em clareza e resultado.</p>
+            </div>
+            <div className="projects-intro__profile" aria-label="Áreas de atuação">
+              <span>Atuação</span>
+              <strong>Full Stack</strong>
+              <strong>UX e UI</strong>
+              <small>Da descoberta à interface final.</small>
+            </div>
+          </div>
         </div>
       </section>
       <section className="projects-index mx-auto max-w-350 px-6 py-16 md:px-10 md:py-24">
-        <div className="projects-index__grid">
-          {projects.map((project) => (
+        <div className="projects-index__toolbar">
+          <div>
+            <p className="eyebrow">02 — {showAll ? "Todos os projetos" : "Melhores projetos"}</p>
+            <p className="projects-index__count">{visibleProjects.length} {visibleProjects.length === 1 ? "projeto encontrado" : "projetos encontrados"}</p>
+          </div>
+          <div className="projects-index__filters" role="tablist" aria-label="Filtrar projetos por categoria">
+            {projectCategories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                role="tab"
+                aria-selected={activeCategory === category}
+                className={activeCategory === category ? "is-active" : ""}
+                onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="projects-index__grid" aria-live="polite">
+          {visibleProjects.map((project) => (
             <article key={project.n} className="projects-index__item">
               <a href={project.deploy && project.deploy !== "#" ? project.deploy : undefined} target={project.deploy && project.deploy !== "#" ? "_blank" : undefined} rel="noopener noreferrer" className="projects-index__image">
                 <img src={project.img} alt={project.title} />
@@ -411,7 +471,7 @@ export default function Projetos() {
               </a>
               <div className="projects-index__caption">
                 <span className="projects-index__number">{project.n}</span>
-                <div><h2>{project.title}</h2><p>{project.sub}</p></div>
+                <div><div className="projects-index__meta"><span>{getProjectCategory(project)}</span><span>{project.year}</span></div><h2>{project.title}</h2><p>{project.sub}</p></div>
                 <div className="projects-index__actions">
                   {project.deploy && project.deploy !== "#" && <a href={project.deploy} target="_blank" rel="noopener noreferrer" aria-label={`Abrir demonstração de ${project.title}`}>Demo ↗</a>}
                   {project.github && project.github !== "#" && <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`Abrir GitHub de ${project.title}`}>GitHub ↗</a>}
@@ -420,301 +480,13 @@ export default function Projetos() {
             </article>
           ))}
         </div>
-      </section>
-    </>
-  );
-
-  return (
-    <>
-      <section className="border-b-[3px] border-ink py-16 md:py-24">
-        <motion.div
-          className="mx-auto max-w-350 px-6 md:px-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-        >
-          <p className="font-mono text-xs uppercase">Capítulo 03 / Projetos</p>
-          <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
-            <span className="bg-highlight px-3">Cases</span>
-            <br />
-            com foco
-            <br />
-            em aderência.
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-            Os projetos abaixo foram selecionados e estruturados como cases de estudo, com foco em
-            contexto, problema, solução, arquitetura, decisões técnicas, desafios e resultados.
-            Essa abordagem evidencia não apenas o que foi construído, mas como eu penso, escolho
-            tecnologias e entrego valor com clareza técnica.
-          </p>
-        </motion.div>
-      </section>
-
-      <section className="border-b-[3px] border-ink">
-        {featuredProjects.map((p, idx) => (
-          <motion.article
-            key={p.n}
-            className={`${idx % 2 === 0 ? "bg-paper" : "bg-secondary"} border-b-[3px] border-ink`}
-            initial="hidden"
-            whileInView="show"
-            variants={revealCard}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{
-              type: "spring",
-              stiffness: 115,
-              damping: 18,
-              mass: 0.9,
-              delay: idx * 0.02,
-            }}
-          >
-            <div className="mx-auto max-w-350 px-6 py-16 md:px-10 md:py-24">
-              <div className="grid items-center gap-10 lg:grid-cols-12">
-                <motion.div
-                  className="lg:col-span-7"
-                  initial={{ opacity: 0, x: -36, scale: 0.97, filter: "blur(8px)" }}
-                  whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.85 }}
-                >
-                  <motion.div
-                    className="brutal-border brutal-shadow-lg overflow-hidden bg-paper"
-                    whileInView={{ scale: [0.98, 1.01, 1] }}
-                    viewport={{ once: true, amount: 0.35 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                  >
-                    <div className="relative">
-                      <img
-                        src={p.img}
-                        alt={p.title}
-                        width={1024}
-                        height={768}
-                        className="aspect-4/3 w-full object-cover"
-                      />
-                      {p.upcoming && (
-                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-y-[3px] border-ink bg-highlight px-4 py-4 text-center font-mono text-sm font-bold uppercase tracking-[0.25em] text-ink md:text-base">
-                          Em breve • projeto em fase de produção
-                        </div>
-                      )}
-                      {p.ribbon && (
-                        <div className="absolute bottom-4 left-4 brutal-border bg-highlight px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-ink md:text-sm">
-                          {p.ribbon}
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                </motion.div>
-                <motion.div
-                  className="space-y-5 lg:col-span-5"
-                  initial={{ opacity: 0, x: 36, scale: 0.97, filter: "blur(8px)" }}
-                  whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 120,
-                    damping: 18,
-                    mass: 0.85,
-                    delay: 0.05,
-                  }}
-                >
-                  <div className="flex items-center gap-3 font-mono text-xs uppercase">
-                    <span className="bg-ink px-2 py-1 text-paper">{p.n}</span>
-                    <span>{p.year}</span>
-                    {p.n === "01" && (
-                      <span className="bg-highlight px-2 py-1 text-ink">Projeto destaque</span>
-                    )}
-                  </div>
-                  <h2 className="font-display text-5xl leading-none md:text-7xl">{p.title}.</h2>
-                  <p className="font-display text-xl uppercase text-muted-foreground">{p.sub}</p>
-                  <div className="space-y-3 text-base leading-relaxed">
-                    <p>
-                      <span className="font-mono text-xs uppercase opacity-60">Contexto</span>
-                      <br />
-                      {p.problem}
-                    </p>
-                    <p>
-                      <span className="font-mono text-xs uppercase opacity-60">Solução</span>
-                      <br />
-                      {p.solution}
-                    </p>
-                    <p>
-                      <span className="font-mono text-xs uppercase opacity-60">Arquitetura</span>
-                      <br />
-                      {getArchitectureSummary(p)}
-                    </p>
-                    <p>
-                      <span className="font-mono text-xs uppercase opacity-60">Desafios</span>
-                      <br />
-                      {getChallengeSummary(p)}
-                    </p>
-                    <div className="grid gap-3 md:grid-cols-2">
-                      <p>
-                        <span className="font-mono text-xs uppercase opacity-60">Decisões técnicas</span>
-                        <br />
-                        {p.tags.join(" · ")}
-                      </p>
-                      <p>
-                        <span className="font-mono text-xs uppercase opacity-60">Resultado</span>
-                        <br />
-                        {p.result}
-                      </p>
-                    </div>
-                  </div>
-                  <motion.div
-                    className="flex flex-wrap gap-2"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  >
-                    {p.tags.map((t) => (
-                      <motion.span
-                        key={t}
-                        className="brutal-border bg-paper px-3 py-1 font-mono text-xs uppercase"
-                        initial={{ opacity: 0, y: 10, scale: 0.96 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                        viewport={{ once: true, amount: 0.7 }}
-                        transition={{ type: "spring", stiffness: 130, damping: 16 }}
-                      >
-                        {t}
-                      </motion.span>
-                    ))}
-                  </motion.div>
-                  <div className="flex gap-3 pt-2">
-                    {p.upcoming ? (
-                      <span className="brutal-border bg-paper px-5 py-3 font-mono text-sm uppercase text-muted-foreground">
-                        Lançamento em breve
-                      </span>
-                    ) : (
-                      <>
-                        {p.deploy && (
-                          <a
-                            href={p.deploy}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="brutal-border brutal-shadow-sm brutal-hover bg-ink px-5 py-3 font-mono text-sm uppercase text-paper"
-                          >
-                            Ver demo →
-                          </a>
-                        )}
-                        {p.github && (
-                          <a
-                            href={p.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="brutal-border brutal-shadow-sm brutal-hover bg-paper px-5 py-3 font-mono text-sm uppercase"
-                          >
-                            Código ↗
-                          </a>
-                        )}
-                      </>
-                    )}
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.article>
-        ))}
-      </section>
-
-      <section className="border-b-[3px] border-ink bg-secondary py-16 md:py-24">
-        <div className="mx-auto max-w-350 px-6 md:px-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.35 }}
-          >
-            <SectionLabel index="04">Landing Pages</SectionLabel>
-            <p className="max-w-3xl font-display text-3xl uppercase md:text-5xl">
-              Sites institucionais e landing pages focados em conversão, identidade visual e
-              experiência do usuário para negócios locais.
-            </p>
-          </motion.div>
-          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {landingPages.map((p, idx) => (
-              <motion.article
-                key={p.n}
-                className="brutal-border brutal-shadow-lg flex flex-col overflow-hidden bg-paper"
-                initial="hidden"
-                whileInView="show"
-                variants={revealCard}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 115,
-                  damping: 18,
-                  mass: 0.9,
-                  delay: idx * 0.05,
-                }}
-              >
-                <div className="relative border-b-[3px] border-ink">
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    width={1024}
-                    height={768}
-                    className="aspect-4/3 w-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col gap-3 p-6">
-                  <div className="flex items-center gap-3 font-mono text-xs uppercase">
-                    <span className="bg-ink px-2 py-1 text-paper">{p.n}</span>
-                    <span>{p.year}</span>
-                  </div>
-                  <h3 className="font-display text-3xl leading-none">{p.title}.</h3>
-                  <p className="font-display text-base uppercase text-muted-foreground">{p.sub}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="brutal-border bg-paper px-2 py-1 font-mono text-xs uppercase"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-auto flex gap-3 pt-4">
-                    <a
-                      href={p.deploy}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="brutal-border brutal-shadow-sm brutal-hover bg-ink px-4 py-2 font-mono text-xs uppercase text-paper"
-                    >
-                      Ver demo →
-                    </a>
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="brutal-border brutal-shadow-sm brutal-hover bg-paper px-4 py-2 font-mono text-xs uppercase"
-                    >
-                      Código ↗
-                    </a>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+        {!showAll && (
+          <div className="mt-12 flex justify-center">
+            <button type="button" onClick={() => setShowAll(true)} className="hero-cta-outline">
+              Ver todos os projetos ({projects.length}) <span>↗</span>
+            </button>
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 md:py-28">
-        <motion.div
-          className="mx-auto max-w-350 px-6 md:px-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.35 }}
-        >
-          <SectionLabel index="∞">Critério de curadoria</SectionLabel>
-          <p className="max-w-3xl font-display text-4xl uppercase md:text-6xl">
-            Menos vitrine, mais resultado. Cada projeto foi cuidadosamente selecionado para
-            evidenciar minha capacidade de transformar problemas reais em soluções funcionais,
-            unindo contexto de negócio, arquitetura bem definida, stack consistente e aplicação
-            prática — oferecendo uma visão clara do meu potencial técnico e da minha forma de pensar
-            como desenvolvedor.
-          </p>
-        </motion.div>
+        )}
       </section>
     </>
   );

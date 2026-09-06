@@ -39,14 +39,14 @@ const staggerGrid = {
 export default function Sobre() {
     return (
         <>
-            <section className="border-b-[3px] border-ink py-16 md:py-24">
+            <section className="page-intro border-b-[3px] border-ink py-16 md:py-24">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.45, ease: "easeOut" }}
                     className="mx-auto max-w-350 px-6 md:px-10"
                 >
-                    <p className="font-mono text-xs uppercase">Capítulo 02 / Sobre</p>
+                    <p className="font-mono text-xs uppercase">02 — Sobre mim</p>
                     <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
                         Minha
                         <br />
@@ -93,12 +93,12 @@ export default function Sobre() {
                 </div>
             </section>
 
-            <section className="border-b-[3px] border-ink bg-ink py-20 text-paper">
+            <section id="experiencia" className="border-b-[3px] border-ink bg-ink py-20 text-paper">
                 <div className="mx-auto max-w-350 px-6 md:px-10">
                     <div className="mb-10 flex items-center gap-3 font-mono text-xs uppercase">
-                        <span className="bg-paper px-2 py-1 text-ink">02</span>
+                        <span className="bg-paper px-2 py-1 text-ink">05</span>
                         <span className="h-0.5 flex-1 bg-paper" />
-                        <span>Minha trajetória</span>
+                        <span>Experiência / Trajetória</span>
                     </div>
                     <motion.div
                         className="space-y-6"
@@ -120,6 +120,9 @@ export default function Sobre() {
                             </motion.div>
                         ))}
                     </motion.div>
+                    <p className="mt-8 max-w-3xl text-base text-paper/80">
+                        Minha experiência profissional em processos, logística e gestão contribuiu para desenvolver organização, análise de problemas, responsabilidade e visão de processos — competências que hoje aplico no desenvolvimento de software.
+                    </p>
                 </div>
             </section>
 

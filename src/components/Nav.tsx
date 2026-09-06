@@ -1,18 +1,32 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const links = [
-    { to: "/", label: "Início" },
-    { to: "/sobre", label: "Sobre" },
-    { to: "/projetos", label: "Projetos" },
-    { to: "/contato", label: "Contato" },
+    { to: "/#sobre", label: "Sobre" },
+    { to: "/#stack", label: "Stack" },
+    { to: "/#projetos", label: "Projetos" },
+    { to: "/#experiencia", label: "Experiência" },
+    { to: "/#github", label: "GitHub" },
+    { to: "/#contato", label: "Contato" },
 ] as const;
 
 export function Nav() {
     const location = useLocation();
-    const [open, setOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location.pathname, location.hash]);
+
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isOpen]);
 
     return (
         <header className="site-header sticky top-0 z-50">
@@ -41,67 +55,55 @@ export function Nav() {
                     })}
                 </nav>
 
-                {/* Botão Hamburger Mobile */}
-                <button
-                    className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-                    aria-label="Abrir menu"
-                    onClick={() => setOpen((v) => !v)}
-                >
-                    <span className={`block h-0.5 w-6 bg-ink transition-all duration-300 ${open ? "rotate-45 translate-y-1.5" : ""}`}></span>
-                    <span className={`block h-0.5 w-6 bg-ink my-1 transition-all duration-300 ${open ? "opacity-0" : ""}`}></span>
-                    <span className={`block h-0.5 w-6 bg-ink transition-all duration-300 ${open ? "-rotate-45 -translate-y-1.5" : ""}`}></span>
-                </button>
-
                 {/* Botão de contato Desktop */}
                 <div className="header-socials hidden items-center gap-5 md:flex">
                     <a href="https://www.linkedin.com/in/paulohenriquefranca/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
                     <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
                     <a href="mailto:paulohenriqueferreirafranca2@gmail.com" aria-label="Enviar e-mail">@</a>
                 </div>
+
+                {/* Botão do menu Mobile */}
+                <button
+                    type="button"
+                    className="site-nav__toggle md:hidden"
+                    aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+                    aria-expanded={isOpen}
+                    onClick={() => setIsOpen((open) => !open)}
+                >
+                    {isOpen ? <X size={22} /> : <Menu size={22} />}
+                </button>
             </div>
 
             {/* Menu Mobile */}
             <AnimatePresence>
-                {open && (
+                {isOpen && (
                     <motion.nav
-                        initial={{ opacity: 0, y: -14 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.22, ease: "easeOut" }}
-                        className="site-nav--mobile flex flex-col gap-2 px-6 pb-4 md:hidden"
+                        className="site-nav-mobile md:hidden"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
                     >
-                        {links.map((l, index) => {
-                            const isActive = location.pathname === l.to;
-                            return (
-                                <motion.div
-                                    key={l.to}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.18, delay: index * 0.04 }}
-                                >
-                                    <Link
-                                        to={l.to}
-                                        onClick={() => setOpen(false)}
-                                        className={`site-nav__link px-4 py-2 font-mono text-sm uppercase transition-colors ${isActive ? "is-active" : ""}`}
-                                    >
-                                        {l.label}
-                                    </Link>
-                                </motion.div>
-                            );
-                        })}
-                        <motion.div
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.18, delay: links.length * 0.04 }}
-                        >
-                            <Link
-                                to="/contato"
-                                onClick={() => setOpen(false)}
-                                className="header-cta inline-flex"
-                            >
-                                Vamos conversar →
-                            </Link>
-                        </motion.div>
+                        <ul className="site-nav-mobile__list">
+                            {links.map((l) => {
+                                const isActive = location.pathname === l.to;
+                                return (
+                                    <li key={l.to}>
+                                        <Link
+                                            to={l.to}
+                                            className={`site-nav-mobile__link ${isActive ? "is-active" : ""}`}
+                                        >
+                                            {l.label}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                        <div className="site-nav-mobile__socials">
+                            <a href="https://www.linkedin.com/in/paulohenriquefranca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="mailto:paulohenriqueferreirafranca2@gmail.com">E-mail</a>
+                        </div>
                     </motion.nav>
                 )}
             </AnimatePresence>
