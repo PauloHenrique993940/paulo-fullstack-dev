@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Braces, GitBranch, Palette, Rocket, ShieldCheck, Sparkles, Terminal, Webhook } from "lucide-react";
+import { Braces, Database, Gauge, GitBranch, Palette, Rocket, Server, ShieldCheck, Sparkles, Terminal, Webhook } from "lucide-react";
 import {
   SiCypress,
   SiDocker,
@@ -26,7 +26,6 @@ import {
   SiVite,
 } from "react-icons/si";
 import type { IconType } from "react-icons";
-import portrait from "@/assets/portrait.jpg";
 import Sobre from "@/pages/Sobre";
 import Projetos from "@/pages/Projetos";
 import Contato from "@/pages/Contato";
@@ -107,9 +106,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <p className="hero2__greeting">Olá, eu sou Paulo Henrique</p>
-            <h1 className="hero2__title">Full Stack<br />Developer</h1>
-            <p className="hero2__lead">Desenvolvo aplicações web full stack — do front-end ao back-end, banco de dados e deploy — com React, Next.js, TypeScript, Node.js e PostgreSQL.</p>
+            <p className="hero2__greeting">Full Stack Developer <span>/ Salvador, BA</span></p>
+            <h1 className="hero2__title">Paulo<br />Henrique</h1>
+            <p className="hero2__lead">Construo experiências digitais e sistemas escaláveis, conectando interface, engenharia de software e dados em produtos que resolvem problemas reais.</p>
             <div className="hero2__actions">
               <Link to="/#projetos" className="hero-cta-primary">Ver projetos <span>↗</span></Link>
               <Link to="/#contato" className="hero-cta-outline">Entrar em contato <span>↗</span></Link>
@@ -124,8 +123,23 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.15 }}
           >
             <div className="hero2__visual-frame">
-              <img src={portrait} alt="Retrato de Paulo Henrique" />
+              <div className="hero-dashboard" aria-label="Painel de código e métricas de uma aplicação full stack">
+                <div className="hero-dashboard__bar"><span className="hero-dashboard__dots"><i /><i /><i /></span><span>paulo.dev / dashboard</span><span className="hero-dashboard__status">● online</span></div>
+                <div className="hero-dashboard__body">
+                  <aside className="hero-dashboard__sidebar"><span className="hero-dashboard__logo">PH</span><span className="is-active">⌁</span><span>□</span><span>⌘</span><span>◌</span></aside>
+                  <div className="hero-dashboard__content">
+                    <div className="hero-dashboard__heading"><span>workspace / overview</span><strong>Good morning, Paulo.</strong></div>
+                    <div className="hero-dashboard__metrics"><span><small>Deploys</small><strong>24</strong><em>+18%</em></span><span><small>Uptime</small><strong>99.9%</strong><em>stable</em></span></div>
+                    <div className="hero-dashboard__code"><span className="code-line"><b>01</b> <i>const</i> <strong>product</strong> = <em>await</em> build({"{"}</span><span className="code-line"><b>02</b> &nbsp; stack: [<mark>React</mark>, <mark>Node.js</mark>],</span><span className="code-line"><b>03</b> &nbsp; database: <mark>PostgreSQL</mark>,</span><span className="code-line"><b>04</b> &nbsp; status: <mark className="code-green">'shipping'</mark></span><span className="code-line"><b>05</b> {"}"}</span></div>
+                    <div className="hero-dashboard__chart"><span className="chart-label">SYSTEM PERFORMANCE <b>+32.8%</b></span><div className="chart-bars"><i /><i /><i /><i /><i /><i /><i /><i /><i /></div></div>
+                  </div>
+                </div>
+              </div>
               <div className="hero2__visual-tag">&lt;/&gt; código · arquitetura · UI</div>
+              <div className="hero-float-card hero-float-card--code"><Terminal size={14} /><span><b>CODE</b><small>React / TypeScript</small></span></div>
+              <div className="hero-float-card hero-float-card--database"><Database size={14} /><span><b>DATABASE</b><small>PostgreSQL / Prisma</small></span></div>
+              <div className="hero-float-card hero-float-card--performance"><Gauge size={14} /><span><b>98%</b><small>Performance</small></span></div>
+              <div className="hero-float-card hero-float-card--api"><Server size={14} /><span><b>API</b><small>Node.js / REST</small></span></div>
             </div>
           </motion.div>
         </div>
@@ -156,23 +170,23 @@ export default function Home() {
           <div>
             <p className="home-kicker">03 — Formação contínua</p>
             <h2 className="script-heading">Aprender para<br />construir melhor.</h2>
-            <p className="home-muted">Uma base acadêmica em evolução, combinada com prática constante e projetos que transformam estudo em produto.</p>
+            <p className="home-muted">Minha formação combina base acadêmica, prática constante e projetos que transformam estudo em produto.</p>
           </div>
           <div className="home-education__list">
             <article className="home-education__item">
               <span>2026 · em andamento</span>
               <h3>Pós-graduação em Front-end</h3>
-              <p>Aprofundamento em arquitetura de interfaces, experiência do usuário e práticas modernas de desenvolvimento.</p>
+              <p>Aprofundo arquitetura de interfaces, experiência do usuário e práticas modernas para criar produtos digitais mais claros e consistentes.</p>
             </article>
             <article className="home-education__item">
               <span>2024 · concluído</span>
               <h3>Análise e Desenvolvimento de Sistemas</h3>
-              <p>Formação tecnológica que sustenta meu trabalho com aplicações web, dados e soluções para problemas reais.</p>
+              <p>É a base tecnológica que sustenta meu trabalho com aplicações web, dados e soluções para problemas reais.</p>
             </article>
             <article className="home-education__item">
               <span>sempre em prática</span>
               <h3>Projetos como laboratório</h3>
-              <p>Estudo novas ferramentas construindo produtos completos com React, Node.js, PostgreSQL e APIs REST.</p>
+              <p>Aprendo construindo: experimento novas ferramentas em produtos completos com React, Node.js, PostgreSQL e APIs REST.</p>
             </article>
           </div>
         </div>
@@ -228,6 +242,23 @@ export default function Home() {
           <p className="home-kicker">07 — CI/CD e DevOps</p>
           <h2 className="script-heading">Deploy contínuo,<br />com confiança.</h2>
           <p className="home-muted">Utilizo práticas de CI/CD para automatizar validações, testes, builds e deploy das aplicações, reduzindo erros manuais e acelerando entregas.</p>
+          <div className="home-cicd__intro">
+            <div>
+              <p className="home-cicd__note"><GitBranch size={15} aria-hidden="true" /> Código que passa por revisão, validação e entrega contínua.</p>
+            </div>
+            <div className="dev-terminal" aria-label="Terminal animado mostrando um deploy em andamento">
+              <div className="dev-terminal__bar"><span><i /><i /><i /></span><b>deploy.sh</b><em>LIVE</em></div>
+              <div className="dev-terminal__body">
+                <p><strong>$</strong> git push origin main</p>
+                <p className="is-muted">Preparing production build...</p>
+                <p><span className="is-ok">OK</span> TypeScript check</p>
+                <p><span className="is-ok">OK</span> Vite production build</p>
+                <p><span className="is-ok">OK</span> Deploying to Vercel</p>
+                <p className="is-current"><strong>$</strong> <span className="dev-terminal__cursor" /> shipping experience</p>
+              </div>
+              <div className="dev-terminal__footer"><span className="dev-gif-card__pulse" /> build / ship / improve</div>
+            </div>
+          </div>
           <div className="home-cicd__pipeline" aria-label="Pipeline de CI/CD">
             {pipelineSteps.map((step, index) => (
               <span key={step} className="home-cicd__step">

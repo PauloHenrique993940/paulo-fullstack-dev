@@ -174,7 +174,7 @@ export default function Contato() {
                             <p className="font-mono text-xs uppercase">Email</p>
                             <a
                                 href="mailto:paulohenriqueferreirafranca2@gmail.com"
-                                className="mt-1 block font-display text-font  underline decoration-ink decoration-4 underline-offset-4"
+                                className="contact-email mt-2 block font-display underline decoration-ink decoration-2 underline-offset-4"
                             >
                                 paulohenriqueferreirafranca2@gmail.com
                             </a>

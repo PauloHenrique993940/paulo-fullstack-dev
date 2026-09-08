@@ -84,10 +84,10 @@ export default function Sobre() {
                     >
                         <SectionLabel index="01">Minha história</SectionLabel>
                         <p className="text-2xl leading-snug md:text-3xl">
-                            Minha trajetória combina formação em tecnologia, experiência profissional em operação e a construção contínua de produtos web.
+                            Sou Paulo Henrique, desenvolvedor Full Stack focado em transformar problemas reais em produtos digitais claros, úteis e escaláveis.
                         </p>
                         <p className="text-lg leading-relaxed text-muted-foreground">
-                            Comecei minha formação em Análise e Desenvolvimento de Sistemas e, desde então, venho transformando problemas reais em aplicações úteis. Hoje me especializo em desenvolvimento Full Stack e continuo minha pós-graduação em Front-end.
+                            Minha trajetória combina formação em Análise e Desenvolvimento de Sistemas, experiência profissional em operação e construção contínua de aplicações web. Hoje trabalho com React, TypeScript, Node.js, PostgreSQL e CI/CD, conectando interface, dados e engenharia de software em cada entrega.
                         </p>
                     </motion.div>
                 </div>
