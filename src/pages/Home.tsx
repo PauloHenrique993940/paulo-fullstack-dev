@@ -1,10 +1,10 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowDown, Braces, GitBranch, Layers3, MousePointer2, Terminal } from "lucide-react";
+import { ArrowDown, Braces, GitBranch, Layers3, MousePointer2, Terminal, X } from "lucide-react";
 import { SiCss, SiDocker, SiExpress, SiFigma, SiGit, SiHtml5, SiJavascript, SiMongodb, SiMysql, SiNodedotjs, SiPostgresql, SiPrisma, SiReact, SiTailwindcss, SiTypescript, SiVite } from "react-icons/si";
 import { Button } from "@/components/ui/button";
-import portrait from "@/assets/portrait.jpg";
+import heroBg from "@/assets/minhaFotoClara.jpg";
 import Sobre from "@/pages/Sobre";
 import Projetos from "@/pages/Projetos";
 
@@ -44,21 +44,20 @@ const objectives = [
 ];
 
 export default function Home() {
+  const [isPhotoOpen, setIsPhotoOpen] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
 
   return (
     <>
-      <section ref={heroRef} className="hero2 hero2--editorial">
-        <motion.img className="hero2__background" style={{ y: imageY, scale: imageScale }} src={portrait} alt="Retrato autoral de Paulo Henrique" />
-        <motion.div className="hero2__overlay" aria-hidden="true" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2 }} />
+      <section ref={heroRef} className="hero2 relative">
         <div className="hero2__inner">
           <motion.div
             className="hero2__copy"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -24 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
           >
             <p className="hero2__greeting hero2__reveal hero2__reveal--1">Portfólio · Salvador, BA</p>
@@ -75,10 +74,64 @@ export default function Home() {
               ))}
             </div>
           </motion.div>
+
+          <motion.div
+            className="hero2__visual hero2__reveal hero2__reveal--3"
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <div
+              className="hero2__visual-frame cursor-pointer"
+              onClick={() => setIsPhotoOpen(true)}
+              title="Clique para ver a foto em tela cheia"
+            >
+              <img src={heroBg} alt="Foto de Paulo Henrique" />
+              <div className="hero2__visual-tag">
+                Paulo Henrique · Dev Full Stack ↗
+              </div>
+            </div>
+          </motion.div>
         </div>
+
         <a href="#objetivo" className="hero2__scroll" aria-label="Rolar para o objetivo">
           <span>Scroll</span><ArrowDown size={14} aria-hidden="true" />
         </a>
+
+        <AnimatePresence>
+          {isPhotoOpen && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsPhotoOpen(false)}
+            >
+              <motion.div
+                className="relative flex flex-col items-center justify-center max-h-[95vh] max-w-[95vw]"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  className="mb-3 flex items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 font-mono text-xs text-white uppercase backdrop-blur-sm transition-all hover:border-white hover:bg-black"
+                  onClick={() => setIsPhotoOpen(false)}
+                >
+                  <X size={16} aria-hidden="true" />
+                  <span>Fechar</span>
+                </button>
+                <img
+                  src={heroBg}
+                  alt="Foto completa de Paulo Henrique"
+                  className="max-h-[85vh] max-w-[90vw] rounded-xl object-contain shadow-2xl border border-white/10"
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       <section id="objetivo" className="home-objective">

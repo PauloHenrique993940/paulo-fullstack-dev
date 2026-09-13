@@ -60,29 +60,34 @@ export function Nav() {
                     })}
                 </nav>
 
-                {/* Botão de contato Desktop */}
-                <div className="header-socials hidden items-center gap-5 md:flex">
-                    <a href="https://www.linkedin.com/in/paulohenriquefranca/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-                    <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
-                    <a href="mailto:paulohenriqueferreirafranca2@gmail.com" aria-label="Enviar e-mail">@</a>
-                    <button type="button" className="theme-toggle" aria-label={isLight ? "Ativar tema escuro" : "Ativar tema claro"} title={isLight ? "Tema escuro" : "Tema claro"} onClick={() => setIsLight((value) => !value)}>
-                        {isLight ? <Moon size={16} aria-hidden="true" /> : <Sun size={16} aria-hidden="true" />}
+                {/* Ações da direita: Redes Sociais (Desktop) + Theme Toggle + Menu Hamburger (Mobile) */}
+                <div className="flex items-center gap-4 md:gap-5">
+                    <div className="header-socials hidden items-center gap-5 md:flex">
+                        <a href="https://www.linkedin.com/in/paulohenriquefranca/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+                        <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
+                        <a href="mailto:paulohenriqueferreirafranca2@gmail.com" aria-label="Enviar e-mail">@</a>
+                    </div>
+
+                    <button
+                        type="button"
+                        className="theme-toggle"
+                        aria-label={isLight ? "Ativar tema escuro" : "Ativar tema claro"}
+                        title={isLight ? "Tema escuro" : "Tema claro"}
+                        onClick={() => setIsLight((value) => !value)}
+                    >
+                        {isLight ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
+                    </button>
+
+                    <button
+                        type="button"
+                        className="site-nav__toggle md:hidden"
+                        aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+                        aria-expanded={isOpen}
+                        onClick={() => setIsOpen((open) => !open)}
+                    >
+                        {isOpen ? <X size={22} /> : <Menu size={22} />}
                     </button>
                 </div>
-
-                {/* Botão do menu Mobile */}
-                <button
-                    type="button"
-                    className="site-nav__toggle md:hidden"
-                    aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
-                    aria-expanded={isOpen}
-                    onClick={() => setIsOpen((open) => !open)}
-                >
-                    {isOpen ? <X size={22} /> : <Menu size={22} />}
-                </button>
-                <button type="button" className="theme-toggle md:hidden" aria-label={isLight ? "Ativar tema escuro" : "Ativar tema claro"} title={isLight ? "Tema escuro" : "Tema claro"} onClick={() => setIsLight((value) => !value)}>
-                    {isLight ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
-                </button>
             </div>
 
             {/* Menu Mobile */}

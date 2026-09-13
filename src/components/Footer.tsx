@@ -9,7 +9,7 @@ const socialLinks = [
 export function Footer() {
     const year = new Date().getFullYear();
     return (
-        <footer className="site-footer border-t-[3px] border-ink bg-ink text-paper">
+        <footer className="site-footer border-t border-border bg-paper text-ink">
             <div className="mx-auto grid max-w-350 gap-8 px-6 py-10 md:grid-cols-3 md:px-10">
                 <motion.div
                     initial={{ opacity: 0, y: 36, scale: 0.96, filter: "blur(8px)" }}
@@ -55,7 +55,7 @@ export function Footer() {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="border border-paper/40 px-3 py-1 hover:bg-highlight hover:text-ink"
+                                className="border border-border px-3 py-1 hover:bg-highlight hover:text-white transition-colors"
                             >
                                 {link.label} ↗
                             </a>
@@ -63,7 +63,7 @@ export function Footer() {
                     </div>
                 </motion.div>
             </div>
-            <div className="border-t border-paper/20 px-6 py-4 text-center font-mono text-xs uppercase opacity-60 md:px-10">
+            <div className="border-t border-border px-6 py-4 text-center font-mono text-xs uppercase opacity-70 md:px-10">
                 © {year} — Desenvolvedor Full Stack | React.js, Node.js, TypeScript, PostgreSQL e APIs REST.
             </div>
         </footer>
