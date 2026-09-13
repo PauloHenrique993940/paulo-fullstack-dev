@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import project1 from "@/assets/project-1.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/hackerPentest.png";
@@ -416,6 +417,7 @@ const getChallengeSummary = (project: (typeof projects)[number]) => {
 export default function Projetos() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("Todos");
   const [showAll, setShowAll] = useState(false);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const baseList = showAll ? projects : featuredProjects;
   const visibleProjects = useMemo(
     () => activeCategory === "Todos" ? baseList : baseList.filter((project) => getProjectCategory(project) === activeCategory),
@@ -448,23 +450,41 @@ export default function Projetos() {
             <p className="projects-index__count">{visibleProjects.length} {visibleProjects.length === 1 ? "projeto encontrado" : "projetos encontrados"}</p>
           </div>
           <div className="projects-index__filters" role="tablist" aria-label="Filtrar projetos por categoria">
-            {projectCategories.map((category) => (
+            {projectCategories.map((category, index) => (
               <button
                 key={category}
                 type="button"
                 role="tab"
                 aria-selected={activeCategory === category}
+                aria-controls="projects-panel"
+                tabIndex={activeCategory === category ? 0 : -1}
+                ref={(element) => { tabRefs.current[index] = element; }}
                 className={activeCategory === category ? "is-active" : ""}
                 onClick={() => setActiveCategory(category)}
+                onKeyDown={(event) => {
+                  const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 0;
+                  if (!direction) return;
+                  event.preventDefault();
+                  const nextIndex = (index + direction + projectCategories.length) % projectCategories.length;
+                  setActiveCategory(projectCategories[nextIndex]);
+                  tabRefs.current[nextIndex]?.focus();
+                }}
               >
                 {category}
               </button>
             ))}
           </div>
         </div>
-        <div className="projects-index__grid" aria-live="polite">
+        <div id="projects-panel" role="tabpanel" tabIndex={0} className="projects-index__grid" aria-live="polite" aria-label={`Projetos da categoria ${activeCategory}`}>
           {visibleProjects.map((project) => (
-            <article key={project.n} className="projects-index__item">
+            <motion.article
+              key={project.n}
+              className="projects-index__item"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{ duration: 0.42, ease: "easeOut" }}
+            >
               <a href={project.deploy && project.deploy !== "#" ? project.deploy : undefined} target={project.deploy && project.deploy !== "#" ? "_blank" : undefined} rel="noopener noreferrer" className="projects-index__image">
                 <img src={project.img} alt={project.title} />
                 {project.upcoming && <span className="projects-index__status">Em breve</span>}
@@ -477,7 +497,7 @@ export default function Projetos() {
                   {project.github && project.github !== "#" && <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`Abrir GitHub de ${project.title}`}>GitHub ↗</a>}
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
         {!showAll && (

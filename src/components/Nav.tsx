@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
+    { to: "/#principios", label: "Princípios" },
     { to: "/#sobre", label: "Sobre" },
     { to: "/#stack", label: "Stack" },
     { to: "/#projetos", label: "Projetos" },
@@ -16,6 +17,7 @@ const links = [
 export function Nav() {
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
+    const isActiveLink = (to: string) => location.pathname === "/" && location.hash === to.slice(1);
 
     useEffect(() => {
         setIsOpen(false);
@@ -40,7 +42,7 @@ export function Nav() {
                 {/* Menu Desktop */}
                 <nav className="site-nav hidden items-center gap-1 md:flex">
                     {links.map((l) => {
-                        const isActive = location.pathname === l.to;
+                        const isActive = isActiveLink(l.to);
                         return (
                             <motion.div key={l.to} whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
                                 <Link
@@ -86,7 +88,7 @@ export function Nav() {
                     >
                         <ul className="site-nav-mobile__list">
                             {links.map((l) => {
-                                const isActive = location.pathname === l.to;
+                                const isActive = isActiveLink(l.to);
                                 return (
                                     <li key={l.to}>
                                         <Link

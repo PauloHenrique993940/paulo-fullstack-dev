@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import Home from '@/pages/Home'
@@ -24,9 +24,11 @@ function App() {
     }, [location.hash, location.pathname])
 
     return (
+        <MotionConfig reducedMotion="user">
         <div className="portfolio-interface min-h-screen flex flex-col bg-paper text-ink">
+            <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
             <Nav />
-            <main className="relative flex-1 overflow-hidden">
+            <main id="conteudo-principal" className="relative flex-1 overflow-hidden" tabIndex={-1}>
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={location.pathname}
@@ -58,6 +60,7 @@ function App() {
             <Footer />
             {/* <Toaster /> sonner removed */}
         </div>
+        </MotionConfig>
     )
 }
 

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Braces, Database, Gauge, GitBranch, Palette, Rocket, Server, ShieldCheck, Sparkles, Terminal, Webhook } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Accessibility, Braces, Database, Gauge, GitBranch, Keyboard, Palette, Rocket, Server, ShieldCheck, Terminal, Webhook } from "lucide-react";
 import {
   SiCypress,
   SiDocker,
@@ -36,6 +37,13 @@ const interests = [
   { icon: Rocket, title: "Evoluir", text: "Refino cada entrega para ganhar performance, clareza e impacto." },
 ];
 
+const productPrinciples = [
+  { icon: Braces, title: "Documento antes do pixel", text: "Começo pelo problema, pelos fluxos e pelos critérios de sucesso. A interface nasce de uma decisão de produto, não de uma tela isolada." },
+  { icon: Palette, title: "Sistema antes da exceção", text: "Uso tokens CSS, Tailwind e composição no padrão shadcn/ui para manter tema escuro, estados e componentes consistentes." },
+  { icon: Accessibility, title: "Acessibilidade na prática", text: "Trato contraste AA, foco visível, teclado, semântica e prefers-reduced-motion como parte da definição de pronto." },
+  { icon: Keyboard, title: "Autonomia até a entrega", text: "Conduzo descoberta, UI/UX, engenharia, validação e deploy com foco em entregar valor sem depender de um designer intermediário." },
+];
+
 const techIcons: Record<string, IconType> = {
   React: SiReact,
   JavaScript: SiJavascript,
@@ -65,13 +73,21 @@ const techIcons: Record<string, IconType> = {
 
 const techStack = [
   { category: "Frontend", items: ["React", "JavaScript", "TypeScript", "Next.js", "Tailwind CSS", "Vite"] },
+  { category: "Design System", items: ["shadcn/ui", "Radix UI", "CSS Tokens", "Dark Mode", "WCAG AA"] },
   { category: "Backend", items: ["Node.js", "Express", "REST API"] },
   { category: "Testes", items: ["Jest", "Cypress"] },
   { category: "Banco de dados", items: ["PostgreSQL", "Prisma", "MongoDB", "Supabase"] },
   { category: "DevOps", items: ["Git", "GitHub", "Docker", "CI/CD", "Vercel", "Netlify"] },
-  { category: "Diferencial", items: ["PHP", "Python"] },
+  { category: "Complementar", items: ["PHP", "Python"] },
   { category: "Design", items: ["Figma"] },
 ];
+
+const qualityPractices = [
+  { icon: Terminal, title: "Código legível", text: "Prefiro componentes pequenos, nomes claros e decisões que outra pessoa consiga entender e revisar." },
+  { icon: ShieldCheck, title: "Qualidade verificável", text: "Transformo critérios de produto em checks objetivos para reduzir regressões antes da entrega." },
+  { icon: Gauge, title: "Performance percebida", text: "Cuido de hierarquia visual, carregamento, movimento e feedback para a interface parecer rápida e confiável." },
+];
+
 const tools = [
   { icon: Terminal, name: "VS Code" },
   { icon: SiFigma, name: "Figma" },
@@ -83,11 +99,11 @@ const tools = [
 const workflowSteps = [
   { n: "01", title: "Entendimento", text: "Levanto o problema, o público e as regras de negócio antes de qualquer linha de código." },
   { n: "02", title: "Planejamento", text: "Defino escopo, arquitetura e prioridades para organizar a entrega em etapas claras." },
-  { n: "03", title: "UI/UX", text: "Desenho fluxos e telas com foco em clareza, acessibilidade e consistência visual." },
-  { n: "04", title: "Desenvolvimento", text: "Construo front-end e back-end com componentização, tipagem e boas práticas." },
-  { n: "05", title: "Testes", text: "Valido regras de negócio e fluxos críticos antes de considerar a entrega pronta." },
-  { n: "06", title: "Code Review", text: "Reviso o próprio código em busca de clareza, performance e manutenibilidade." },
-  { n: "07", title: "CI/CD", text: "Automatizo lint, testes e build para reduzir erros antes do deploy." },
+  { n: "03", title: "Documento antes do pixel", text: "Defino fluxos, estados e critérios de sucesso antes de transformar a decisão em interface." },
+  { n: "04", title: "Design System", text: "Uso tokens CSS, Tailwind e componentes shadcn/ui/Radix para construir com consistência." },
+  { n: "05", title: "Desenvolvimento", text: "Construo com React e TypeScript, mantendo componentes pequenos, tipados e reutilizáveis." },
+  { n: "06", title: "PR pequeno", text: "Organizo mudanças revisáveis, com contexto, escopo claro e código pronto para colaboração." },
+  { n: "07", title: "Verificação automática", text: "Valido lint, testes, build, contraste, teclado e estados de foco antes do deploy." },
   { n: "08", title: "Deploy", text: "Publico em ambientes como Vercel e Railway com configuração de variáveis e domínio." },
   { n: "09", title: "Monitoramento", text: "Acompanho logs e comportamento em produção para agir rápido se algo falhar." },
 ];
@@ -110,9 +126,9 @@ export default function Home() {
             <h1 className="hero2__title">Paulo<br />Henrique</h1>
             <p className="hero2__lead">Construo experiências digitais e sistemas escaláveis, conectando interface, engenharia de software e dados em produtos que resolvem problemas reais.</p>
             <div className="hero2__actions">
-              <Link to="/#projetos" className="hero-cta-primary">Ver projetos <span>↗</span></Link>
-              <Link to="/#contato" className="hero-cta-outline">Entrar em contato <span>↗</span></Link>
-              <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer" className="hero-cta-outline">GitHub <span>↗</span></a>
+              <Button asChild className="hero-cta-primary"><Link to="/#projetos">Ver projetos <span>↗</span></Link></Button>
+              <Button asChild variant="outline" className="hero-cta-outline"><Link to="/#contato">Entrar em contato <span>↗</span></Link></Button>
+              <Button asChild variant="outline" className="hero-cta-outline"><a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a></Button>
             </div>
             <p className="hero2__stack">React · Next.js · TypeScript · Node.js · PostgreSQL</p>
           </motion.div>
@@ -147,17 +163,52 @@ export default function Home() {
           <span>Scroll</span> ↓
         </a>
       </section>
+      <section id="principios" className="home-principles">
+        <div className="home-section__inner">
+          <p className="home-kicker">01 — Como penso produto</p>
+          <div className="home-principles__heading">
+            <div>
+              <h2 className="script-heading">Clareza antes<br />da interface.</h2>
+              <p className="home-muted">Neste portfólio, React, TypeScript, Tailwind CSS, tokens CSS, Framer Motion e o ecossistema shadcn/ui trabalham juntos para transformar requisitos em experiências úteis, inclusivas e prontas para produção.</p>
+            </div>
+            <p className="home-principles__proof">produto = contexto + sistema + entrega</p>
+          </div>
+          <div className="home-principles__grid">
+            {productPrinciples.map(({ icon: Icon, title, text }, index) => (
+              <motion.article
+                key={title}
+                className="home-principle"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
+              >
+                <Icon size={22} strokeWidth={1.7} aria-hidden="true" />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="home-interests">
         <div className="home-section__inner">
           <p className="home-kicker">01 — O que eu faço</p>
           <h2 className="script-heading">Ideia, interface<br />e produto.</h2>
           <div className="home-interests__grid">
-            {interests.map(({ icon: Icon, title, text }) => (
-              <article key={title} className="home-interest">
+            {interests.map(({ icon: Icon, title, text }, index) => (
+              <motion.article
+                key={title}
+                className="home-interest"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
+              >
                 <Icon size={25} strokeWidth={1.6} aria-hidden="true" />
                 <h3>{title}</h3>
                 <p>{text}</p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -196,9 +247,16 @@ export default function Home() {
           <div><p className="home-kicker">04 — Stack atual</p><h2 className="script-heading">O que eu<br />conheço.</h2><p className="home-muted">Tecnologias que uso para criar produtos completos, do primeiro componente ao deploy. Ferramentas a serviço do produto — não o contrário.</p></div>
           <div className="home-skills__content">
             <div className="home-tech-grid">
-              {techStack.map(({ category, items }) => (
-                <div key={category} className={`home-tech-group ${category === "Diferencial" ? "home-tech-group--highlight" : ""}`}>
-                  <h4>{category === "Diferencial" && <Sparkles size={13} aria-hidden="true" />} {category}</h4>
+              {techStack.map(({ category, items }, index) => (
+                <motion.div
+                  key={category}
+                  className="home-tech-group"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
+                >
+                  <h4>{category}</h4>
                   <div className="home-chip-list">
                     {items.map((skill) => {
                       const Icon = techIcons[skill];
@@ -209,10 +267,26 @@ export default function Home() {
                       );
                     })}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
             <div className="home-tools">{tools.map(({ icon: Icon, name }) => <div key={name}><Icon size={20} aria-hidden="true" /><span>{name}</span></div>)}</div>
+          </div>
+        </div>
+      </section>
+      <section id="metodo" className="home-method">
+        <div className="home-section__inner">
+          <p className="home-kicker">05 — Método e qualidade</p>
+          <h2 className="script-heading">Detalhe que<br />sustenta produto.</h2>
+          <p className="home-muted">Uma boa interface não depende de efeito. Ela precisa ser compreensível, consistente e confiável em cada estado de uso.</p>
+          <div className="home-method__grid">
+            {qualityPractices.map(({ icon: Icon, title, text }) => (
+              <article key={title} className="home-method__card">
+                <Icon size={24} strokeWidth={1.8} aria-hidden="true" />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -223,16 +297,23 @@ export default function Home() {
         <div className="home-section__inner">
           <p className="home-kicker">06 — Como eu trabalho</p>
           <h2 className="script-heading">Do problema<br />ao produto no ar.</h2>
-          <p className="home-muted">Um processo repetível para transformar um pedido em uma aplicação estável, testada e publicada.</p>
+          <p className="home-muted">Um processo repetível para transformar um pedido em uma aplicação estável, testada e publicada. O Design System orienta a implementação e cada PR deixa a decisão técnica fácil de revisar.</p>
           <ol className="home-workflow__list">
-            {workflowSteps.map((step) => (
-              <li key={step.n} className="home-workflow__item">
+            {workflowSteps.map((step, index) => (
+              <motion.li
+                key={step.n}
+                className="home-workflow__item"
+                initial={{ opacity: 0, x: -18 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: index * 0.04, ease: "easeOut" }}
+              >
                 <span className="home-workflow__number">{step.n}</span>
                 <div>
                   <h3>{step.title}</h3>
                   <p>{step.text}</p>
                 </div>
-              </li>
+              </motion.li>
             ))}
           </ol>
         </div>
@@ -286,7 +367,7 @@ export default function Home() {
           <div className="github-callout">
             <div>
               <h3>Cada repositório documentado de ponta a ponta</h3>
-              <p>READMEs com contexto do problema, arquitetura, tecnologias e instruções de execução — para quem quiser rodar o projeto localmente ou entender as decisões técnicas.</p>
+              <p>READMEs com contexto do problema, arquitetura, tokens, tecnologias, critérios de acessibilidade e instruções de execução — para revisar o código ou rodar o produto localmente.</p>
             </div>
             <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer" className="hero-cta-primary">Ver perfil no GitHub <span>↗</span></a>
           </div>
