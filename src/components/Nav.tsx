@@ -2,22 +2,25 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 
 const links = [
-    { to: "/#principios", label: "Princípios" },
-    { to: "/#sobre", label: "Sobre" },
+    { to: "/#objetivo", label: "Objetivo" },
+    { to: "/#historia", label: "História" },
     { to: "/#stack", label: "Stack" },
     { to: "/#projetos", label: "Projetos" },
-    { to: "/#experiencia", label: "Experiência" },
-    { to: "/#github", label: "GitHub" },
-    { to: "/#contato", label: "Contato" },
 ] as const;
 
 export function Nav() {
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
+    const [isLight, setIsLight] = useState(() => localStorage.getItem("portfolio-theme") === "light");
     const isActiveLink = (to: string) => location.pathname === "/" && location.hash === to.slice(1);
+
+    useEffect(() => {
+        document.documentElement.classList.toggle("light", isLight);
+        localStorage.setItem("portfolio-theme", isLight ? "light" : "dark");
+    }, [isLight]);
 
     useEffect(() => {
         setIsOpen(false);
@@ -62,6 +65,9 @@ export function Nav() {
                     <a href="https://www.linkedin.com/in/paulohenriquefranca/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
                     <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
                     <a href="mailto:paulohenriqueferreirafranca2@gmail.com" aria-label="Enviar e-mail">@</a>
+                    <button type="button" className="theme-toggle" aria-label={isLight ? "Ativar tema escuro" : "Ativar tema claro"} title={isLight ? "Tema escuro" : "Tema claro"} onClick={() => setIsLight((value) => !value)}>
+                        {isLight ? <Moon size={16} aria-hidden="true" /> : <Sun size={16} aria-hidden="true" />}
+                    </button>
                 </div>
 
                 {/* Botão do menu Mobile */}
@@ -73,6 +79,9 @@ export function Nav() {
                     onClick={() => setIsOpen((open) => !open)}
                 >
                     {isOpen ? <X size={22} /> : <Menu size={22} />}
+                </button>
+                <button type="button" className="theme-toggle md:hidden" aria-label={isLight ? "Ativar tema escuro" : "Ativar tema claro"} title={isLight ? "Tema escuro" : "Tema claro"} onClick={() => setIsLight((value) => !value)}>
+                    {isLight ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
                 </button>
             </div>
 

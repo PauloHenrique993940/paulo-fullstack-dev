@@ -38,7 +38,7 @@ const projects = [
   },
   {
     n: "02",
-    title: "FinancePro",
+    title: "Clarity Finanças",
     sub: "SaaS de controle financeiro para pequenos negócios",
     problem:
       "Pequenos negócios precisavam centralizar clientes, produtos, vendas, caixa e indicadores em uma única plataforma com controle por perfil.",
@@ -333,7 +333,7 @@ const projects = [
 
 const featuredProjectTitles = [
   "Almoxarif",
-  "FinancePro",
+  "Clarity Finanças",
   "Rastreio de Encomendas",
   "Sistema de Informações APS/AFM",
   "Biblioteca Digital",
@@ -350,7 +350,7 @@ const getProjectCategory = (project: (typeof projects)[number]): Exclude<Project
     return "Estudos";
   }
 
-  if (["Almoxarif", "FinancePro", "Efood"].includes(project.title)) {
+  if (["Almoxarif", "Clarity Finanças", "Efood"].includes(project.title)) {
     return "Produtos digitais";
   }
 
@@ -403,7 +403,7 @@ const getChallengeSummary = (project: (typeof projects)[number]) => {
     return "Integrar fluxo operacional, controle de estoque e rastreabilidade em uma aplicação que fosse simples para o usuário e confiável para a operação.";
   }
 
-  if (project.title === "FinancePro") {
+  if (project.title === "Clarity Finanças") {
     return "Conciliar segurança, autenticação, relatórios e rotina financeira em uma solução que suportasse uso real do negócio.";
   }
 
