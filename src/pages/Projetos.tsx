@@ -447,7 +447,9 @@ export default function Projetos() {
         <div className="projects-index__toolbar">
           <div>
             <p className="eyebrow">02 — {showAll ? "Todos os projetos" : "Melhores projetos"}</p>
-            <p className="projects-index__count">{visibleProjects.length} {visibleProjects.length === 1 ? "projeto encontrado" : "projetos encontrados"}</p>
+            <p className="projects-index__count" aria-live="polite">
+              <strong>{visibleProjects.length}</strong> {visibleProjects.length === 1 ? "projeto encontrado" : "projetos encontrados"}
+            </p>
           </div>
           <div className="projects-index__filters" role="tablist" aria-label="Filtrar projetos por categoria">
             {projectCategories.map((category, index) => (
@@ -485,8 +487,22 @@ export default function Projetos() {
               viewport={{ once: true, amount: 0.12 }}
               transition={{ duration: 0.42, ease: "easeOut" }}
             >
-              <a href={project.deploy && project.deploy !== "#" ? project.deploy : undefined} target={project.deploy && project.deploy !== "#" ? "_blank" : undefined} rel="noopener noreferrer" className="projects-index__image">
+              <a
+                href={project.deploy && project.deploy !== "#" ? project.deploy : undefined}
+                target={project.deploy && project.deploy !== "#" ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className={`projects-index__image ${!project.deploy || project.deploy === "#" ? "is-disabled" : ""}`}
+                aria-label={project.deploy && project.deploy !== "#" ? `Abrir demonstração de ${project.title}` : `${project.title}, projeto em desenvolvimento`}
+                aria-disabled={!project.deploy || project.deploy === "#"}
+                onClick={(event) => {
+                  if (!project.deploy || project.deploy === "#") event.preventDefault();
+                }}
+              >
                 <img src={project.img} alt={project.title} />
+                <span className="projects-index__image-action">
+                  {project.deploy && project.deploy !== "#" ? "Abrir projeto" : "Em desenvolvimento"}
+                  {project.deploy && project.deploy !== "#" && <span aria-hidden="true">↗</span>}
+                </span>
                 {project.upcoming && <span className="projects-index__status">Em breve</span>}
               </a>
               <div className="projects-index__caption">
