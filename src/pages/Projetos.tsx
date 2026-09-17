@@ -498,7 +498,7 @@ export default function Projetos() {
                   if (!project.deploy || project.deploy === "#") event.preventDefault();
                 }}
               >
-                <img src={project.img} alt={project.title} />
+                <img src={project.img} alt={project.title} loading="lazy" decoding="async" />
                 <span className="projects-index__image-action">
                   {project.deploy && project.deploy !== "#" ? "Abrir projeto" : "Em desenvolvimento"}
                   {project.deploy && project.deploy !== "#" && <span aria-hidden="true">↗</span>}

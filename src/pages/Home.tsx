@@ -106,7 +106,7 @@ export default function Home() {
               onClick={() => setIsPhotoOpen(true)}
               title="Clique para ver a foto em tela cheia"
             >
-              <img src={heroBg} alt="Foto de Paulo Henrique" />
+                  <img src={heroBg} alt="Foto de Paulo Henrique" fetchPriority="high" decoding="async" />
               <div className="hero2__visual-tag">
                 Salvador, BA · Brasil
               </div>
