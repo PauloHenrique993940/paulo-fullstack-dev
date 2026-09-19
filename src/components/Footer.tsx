@@ -64,7 +64,7 @@ export function Footer() {
                 </motion.div>
             </div>
             <div className="border-t border-border px-6 py-4 text-center font-mono text-xs uppercase opacity-70 md:px-10">
-                © {year} — Desenvolvedor Full Stack | React.js, Node.js, TypeScript, PostgreSQL e APIs REST.
+                © {year} — Desenvolvedor Front-end | React, TypeScript, acessibilidade e interfaces responsivas.
             </div>
         </footer>
     );

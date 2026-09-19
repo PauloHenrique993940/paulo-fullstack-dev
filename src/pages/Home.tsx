@@ -12,8 +12,8 @@ const stackIcons = [
   { label: "React", icon: SiReact },
   { label: "TypeScript", icon: SiTypescript },
   { label: "Tailwind CSS", icon: SiTailwindcss },
-  { label: "Node.js", icon: SiNodedotjs },
-  { label: "PostgreSQL", icon: SiPostgresql },
+  { label: "Vite", icon: SiVite },
+  { label: "Figma", icon: SiFigma },
 ];
 
 const stackDetails = [
@@ -82,8 +82,8 @@ export default function Home() {
           >
             <p className="hero2__greeting hero2__reveal hero2__reveal--1">PAULO HENRIQUE · 2026</p>
             <h1 className="hero2__title hero2__reveal hero2__reveal--2">Criativo<br /><em>digital</em></h1>
-            <p className="hero2__role hero2__reveal hero2__reveal--3">Desenvolvedor <span>/</span> Full Stack</p>
-            <p className="hero2__lead hero2__reveal hero2__reveal--4">Interfaces sensíveis ao detalhe, código que sustenta ideias e produtos que fazem sentido.</p>
+            <p className="hero2__role hero2__reveal hero2__reveal--3">Desenvolvedor <span>/</span> Front-end</p>
+            <p className="hero2__lead hero2__reveal hero2__reveal--4">Interfaces sensíveis ao detalhe, experiências acessíveis e produtos que fazem sentido.</p>
             <div className="hero2__actions hero2__reveal hero2__reveal--5">
               <Button asChild className="hero-cta-primary"><Link to="/#projetos">Ver projetos <span>↗</span></Link></Button>
               <Button asChild variant="outline" className="hero-cta-outline"><Link to="/#historia">Minha história <span>↘</span></Link></Button>
@@ -161,7 +161,7 @@ export default function Home() {
           <p className="home-kicker">01 — Objetivo</p>
           <motion.div className="home-objective__heading" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55 }}>
             <h2 className="script-heading">Ideia que vira<br />produto.</h2>
-            <p className="home-muted">Desenvolvedor Full Stack focado em transformar necessidades em experiências digitais úteis, bonitas e fáceis de usar.</p>
+            <p className="home-muted">Desenvolvedor Front-end focado em transformar necessidades em experiências digitais úteis, bonitas e fáceis de usar.</p>
           </motion.div>
           <div className="home-objective__grid">
             {objectives.map(({ icon: Icon, title, text, details }, index) => (

@@ -103,7 +103,7 @@ export default function Contato() {
                         <span className="bg-highlight px-3">conversar</span>.
                     </h1>
                     <p className="mt-6 max-w-xl text-xl">
-                        Aberto a oportunidades como Desenvolvedor Full Stack Júnior, atuação em projetos front-end ou full stack e conversas sobre produtos web modernos.
+                        Aberto a oportunidades como Desenvolvedor Front-end Júnior e conversas sobre interfaces, produtos web modernos e experiências digitais bem construídas.
                     </p>
                 </motion.div>
             </section>
