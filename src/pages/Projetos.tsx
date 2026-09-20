@@ -1,4 +1,3 @@
-import { useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import project1 from "@/assets/project-1.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -18,6 +17,12 @@ import angularWeatherImage from "@/assets/angularWeather.svg";
 import digitalLibraryImage from "@/assets/bibliotecaDigital.png";
 import efoodImage from "@/assets/efood.png";
 import sistemaInformacaoImage from "@/assets/sistemaInformacao.png";
+import auraStudioImage from "@/assets/aura.png";
+import animeApiImage from "@/assets/animeApi.png";
+import disneyPlusImage from "@/assets/disney+.png";
+import ghibliImage from "@/assets/ghibli.png";
+import eplayImage from "@/assets/eplay.png";
+import industriaWayneImage from "@/assets/industriaWayne.png";
 
 const projects = [
   {
@@ -329,41 +334,124 @@ const projects = [
     upcoming: false,
     ribbon: "React",
   },
+  {
+    n: "18",
+    title: "Aura Studio",
+    sub: "Landing page para estúdio de interiores de alto padrão",
+    problem:
+      "Apresentar o trabalho do estúdio de forma sofisticada e criar um caminho claro para o visitante conhecer o portfólio e agendar uma consulta.",
+    solution:
+      "Desenvolvi uma landing page responsiva com hero imersivo, navegação objetiva e chamadas para ação que valorizam os projetos de arquitetura e interiores.",
+    result:
+      "O site traduz uma identidade visual premium em uma experiência direta, elegante e orientada à conversão.",
+    tags: ["Landing Page", "UI Responsiva", "UX/UI", "Arquitetura", "Deploy"],
+    year: "2026",
+    img: auraStudioImage,
+    deploy: "https://aura-sigma-neon.vercel.app/",
+    upcoming: false,
+    ribbon: "UI/UX",
+  },
+  {
+    n: "19",
+    title: "Anime API",
+    sub: "Aplicação para explorar animes com dados de uma API externa",
+    problem:
+      "Organizar informações de animes em uma interface agradável e simples de navegar, tornando a descoberta de novos títulos mais prática.",
+    solution:
+      "Desenvolvi uma interface responsiva que consome uma API de animes para apresentar títulos, imagens e informações relevantes em uma experiência visual organizada.",
+    result:
+      "O projeto demonstra integração com APIs externas, tratamento de dados e construção de uma interface orientada à descoberta de conteúdo.",
+    tags: ["React", "TypeScript", "API REST", "UI Responsiva", "UX/UI"],
+    year: "2026",
+    img: animeApiImage,
+    deploy: "https://paulohenrique993940.github.io/Anime-Api/hub.html",
+    upcoming: false,
+    ribbon: "API",
+  },
+  {
+    n: "20",
+    title: "Clone Disney+",
+    sub: "Interface inspirada em uma plataforma de streaming",
+    problem:
+      "Recriar uma experiência de streaming reconhecível, com hierarquia visual clara e navegação agradável para diferentes tamanhos de tela.",
+    solution:
+      "Desenvolvi uma interface responsiva inspirada no Disney+, organizando destaque, coleções de conteúdo e componentes de navegação para uma experiência visual imersiva.",
+    result:
+      "O projeto evidencia atenção a fidelidade visual, responsividade e composição de interfaces ricas em conteúdo.",
+    tags: ["React", "TypeScript", "UI Responsiva", "UX/UI", "Streaming"],
+    year: "2026",
+    img: disneyPlusImage,
+    upcoming: false,
+    ribbon: "UI/UX",
+  },
+  {
+    n: "21",
+    title: "Studio Ghibli API",
+    sub: "Catálogo de filmes do Studio Ghibli com dados de API externa",
+    problem:
+      "Organizar uma seleção extensa de filmes em uma experiência visual envolvente, facilitando a descoberta de títulos e detalhes relevantes para o público.",
+    solution:
+      "Desenvolvi uma interface responsiva que consome uma API para apresentar filmes do Studio Ghibli, com destaque principal e coleções navegáveis de títulos.",
+    result:
+      "O projeto demonstra integração com dados externos, estruturação de catálogo e cuidado com uma experiência visual rica em conteúdo.",
+    tags: ["React", "TypeScript", "API REST", "UI Responsiva", "Catálogo"],
+    year: "2026",
+    img: ghibliImage,
+    upcoming: false,
+    ribbon: "API",
+  },
+  {
+    n: "22",
+    title: "Eplay",
+    sub: "Loja digital de games com catálogo e fluxo de compra",
+    problem:
+      "Criar uma experiência de e-commerce para games que facilitasse explorar ofertas, consultar detalhes dos títulos e avançar na jornada de compra.",
+    solution:
+      "Desenvolvi uma loja responsiva com catálogo de jogos, áreas de destaque e componentes de navegação voltados para uma experiência de compra clara e envolvente.",
+    result:
+      "O projeto reforça a construção de interfaces de e-commerce, organização de catálogo e atenção à experiência do usuário em diferentes telas.",
+    tags: ["React", "TypeScript", "E-commerce", "UI Responsiva", "UX/UI"],
+    year: "2026",
+    img: eplayImage,
+    deploy: "https://eplay-one.vercel.app/",
+    upcoming: false,
+    ribbon: "E-commerce",
+  },
+  {
+    n: "23",
+    title: "Indústrias Wayne",
+    sub: "Sistema de gestão de recursos com controle de acesso por perfil",
+    problem:
+      "Centralizar o acesso a informações operacionais e recursos internos em uma interface organizada para diferentes tipos de usuários.",
+    solution:
+      "Desenvolvi uma aplicação com autenticação, dashboard e área de gestão de recursos, estruturando a navegação conforme o perfil de acesso.",
+    result:
+      "O projeto demonstra a construção de fluxos administrativos, controle de usuários e organização de uma interface voltada para operações internas.",
+    tags: ["React", "TypeScript", "Autenticação", "Dashboard", "Gestão de Recursos"],
+    year: "2026",
+    img: industriaWayneImage,
+    upcoming: false,
+    ribbon: "Sistema",
+  },
 ];
 
-const featuredProjectTitles = [
-  "Almoxarif",
-  "Clarity Finanças",
-  "Rastreio de Encomendas",
-  "Sistema de Informações APS/AFM",
-  "Biblioteca Digital",
-  "Efood",
-];
-
-const featuredProjects = projects.filter((project) => featuredProjectTitles.includes(project.title));
-
-const projectCategories = ["Todos", "Produtos digitais", "Dashboards", "Experiências web", "Estudos"] as const;
-type ProjectCategory = (typeof projectCategories)[number];
-
-const getProjectCategory = (project: (typeof projects)[number]): Exclude<ProjectCategory, "Todos"> => {
-  if (project.title === "Ativo Control" || project.tags.some((tag) => tag.toLowerCase().includes("estudando"))) {
-    return "Estudos";
-  }
-
-  if (["Almoxarif", "Clarity Finanças", "Efood"].includes(project.title)) {
-    return "Produtos digitais";
-  }
-
-  if (project.tags.some((tag) => tag.toLowerCase().includes("dashboard") || tag.toLowerCase().includes("indicadores"))) {
-    return "Dashboards";
-  }
-
-  if (project.tags.some((tag) => tag.toLowerCase().includes("ux/ui") || tag.toLowerCase().includes("checkout") || tag.toLowerCase().includes("kanban"))) {
-    return "Produtos digitais";
-  }
-
-  return "Experiências web";
-};
+const projectSections: Array<{ title: string; description: string; projectTitles: string[] }> = [
+  {
+    title: "Sistemas",
+    description: "Plataformas, produtos digitais e ferramentas para operações reais.",
+    projectTitles: ["Almoxarif", "Clarity Finanças", "Hacker Platform", "Syntax Wear", "Ativo Control", "Sistema de Informações APS/AFM", "Gerenciador de Tarefas Kanban", "Biblioteca Digital", "Efood", "Eplay", "Indústrias Wayne"],
+  },
+  {
+    title: "Sites",
+    description: "Sites institucionais e experiências orientadas à marca e conversão.",
+    projectTitles: ["Ink Art Studio", "Barbearia Premium", "Canarinho Chronicles", "Rest Dim Sushi", "Sabor Aroma", "Essência do Gosto", "Aura Studio", "Clone Disney+"],
+  },
+  {
+    title: "Consumo de APIs",
+    description: "Aplicações que transformam dados externos em experiências úteis e claras.",
+    projectTitles: ["Rastreio de Encomendas", "Dashboard Climático Angular", "Anime API", "Studio Ghibli API"],
+  },
+] as const;
 
 const revealCard = {
   hidden: { opacity: 0, y: 64, scale: 0.94, filter: "blur(10px)" },
@@ -386,18 +474,6 @@ const getArchitectureSummary = (project: (typeof projects)[number]) => {
   return "Arquitetura de interface modular, com componentes reutilizáveis, navegação clara e estrutura preparada para crescer com o produto.";
 };
 
-const landingPageTitles = [
-  "Ink Art Studio",
-  "Barbearia Premium",
-  "Rest Dim Sushi",
-  "Sabor Aroma",
-  "Essência do Gosto",
-];
-
-const landingPages = projects.filter(
-  (p) => landingPageTitles.includes(p.title) && !featuredProjectTitles.includes(p.title),
-);
-
 const getChallengeSummary = (project: (typeof projects)[number]) => {
   if (project.title === "Almoxarif") {
     return "Integrar fluxo operacional, controle de estoque e rastreabilidade em uma aplicação que fosse simples para o usuário e confiável para a operação.";
@@ -415,15 +491,6 @@ const getChallengeSummary = (project: (typeof projects)[number]) => {
 };
 
 export default function Projetos() {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("Todos");
-  const [showAll, setShowAll] = useState(false);
-  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
-  const baseList = showAll ? projects : featuredProjects;
-  const visibleProjects = useMemo(
-    () => activeCategory === "Todos" ? baseList : baseList.filter((project) => getProjectCategory(project) === activeCategory),
-    [activeCategory, baseList],
-  );
-
   return (
     <>
       <section className="projects-intro page-intro border-b border-ink/15">
@@ -446,83 +513,46 @@ export default function Projetos() {
       <section className="projects-index mx-auto max-w-350 px-6 py-16 md:px-10 md:py-24">
         <div className="projects-index__toolbar">
           <div>
-            <p className="eyebrow">02 — {showAll ? "Todos os projetos" : "Melhores projetos"}</p>
+            <p className="eyebrow">02 — Projetos</p>
             <p className="projects-index__count" aria-live="polite">
-              <strong>{visibleProjects.length}</strong> {visibleProjects.length === 1 ? "projeto encontrado" : "projetos encontrados"}
+              <strong>{projects.length}</strong> projetos organizados por tipo de entrega
             </p>
           </div>
-          <div className="projects-index__filters" role="tablist" aria-label="Filtrar projetos por categoria">
-            {projectCategories.map((category, index) => (
-              <button
-                key={category}
-                type="button"
-                role="tab"
-                aria-selected={activeCategory === category}
-                aria-controls="projects-panel"
-                tabIndex={activeCategory === category ? 0 : -1}
-                ref={(element) => { tabRefs.current[index] = element; }}
-                className={activeCategory === category ? "is-active" : ""}
-                onClick={() => setActiveCategory(category)}
-                onKeyDown={(event) => {
-                  const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 0;
-                  if (!direction) return;
-                  event.preventDefault();
-                  const nextIndex = (index + direction + projectCategories.length) % projectCategories.length;
-                  setActiveCategory(projectCategories[nextIndex]);
-                  tabRefs.current[nextIndex]?.focus();
-                }}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
         </div>
-        <div id="projects-panel" role="tabpanel" tabIndex={0} className="projects-index__grid" aria-live="polite" aria-label={`Projetos da categoria ${activeCategory}`}>
-          {visibleProjects.map((project) => (
-            <motion.article
-              key={project.n}
-              className="projects-index__item"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.12 }}
-              transition={{ duration: 0.42, ease: "easeOut" }}
-            >
-              <a
-                href={project.deploy && project.deploy !== "#" ? project.deploy : undefined}
-                target={project.deploy && project.deploy !== "#" ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className={`projects-index__image ${!project.deploy || project.deploy === "#" ? "is-disabled" : ""}`}
-                aria-label={project.deploy && project.deploy !== "#" ? `Abrir demonstração de ${project.title}` : `${project.title}, projeto em desenvolvimento`}
-                aria-disabled={!project.deploy || project.deploy === "#"}
-                onClick={(event) => {
-                  if (!project.deploy || project.deploy === "#") event.preventDefault();
-                }}
-              >
-                <img src={project.img} alt={project.title} loading="lazy" decoding="async" />
-                <span className="projects-index__image-action">
-                  {project.deploy && project.deploy !== "#" ? "Abrir projeto" : "Em desenvolvimento"}
-                  {project.deploy && project.deploy !== "#" && <span aria-hidden="true">↗</span>}
-                </span>
-                {project.upcoming && <span className="projects-index__status">Em breve</span>}
-              </a>
-              <div className="projects-index__caption">
-                <span className="projects-index__number">{project.n}</span>
-                <div><div className="projects-index__meta"><span>{getProjectCategory(project)}</span><span>{project.year}</span></div><h2>{project.title}</h2><p>{project.sub}</p></div>
-                <div className="projects-index__actions">
-                  {project.deploy && project.deploy !== "#" && <a href={project.deploy} target="_blank" rel="noopener noreferrer" aria-label={`Abrir demonstração de ${project.title}`}>Demo ↗</a>}
-                  {project.github && project.github !== "#" && <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`Abrir GitHub de ${project.title}`}>GitHub ↗</a>}
+        {projectSections.map((section, sectionIndex) => {
+          const sectionProjects = projects.filter((project) => section.projectTitles.includes(project.title));
+
+          return (
+            <section key={section.title} className="projects-index__section" aria-labelledby={`project-section-${sectionIndex}`}>
+              <div className="projects-index__section-heading">
+                <div>
+                  <p className="eyebrow">0{sectionIndex + 3} — Categoria</p>
+                  <h2 id={`project-section-${sectionIndex}`}>{section.title}</h2>
                 </div>
+                <p>{section.description}</p>
               </div>
-            </motion.article>
-          ))}
-        </div>
-        {!showAll && (
-          <div className="mt-12 flex justify-center">
-            <button type="button" onClick={() => setShowAll(true)} className="hero-cta-outline">
-              Ver todos os projetos ({projects.length}) <span>↗</span>
-            </button>
-          </div>
-        )}
+              <div className="projects-index__grid" aria-label={`Projetos de ${section.title}`}>
+                {sectionProjects.map((project) => (
+                  <motion.article key={project.n} className="projects-index__item" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.42, ease: "easeOut" }}>
+                    <a href={project.deploy && project.deploy !== "#" ? project.deploy : undefined} target={project.deploy && project.deploy !== "#" ? "_blank" : undefined} rel="noopener noreferrer" className={`projects-index__image ${!project.deploy || project.deploy === "#" ? "is-disabled" : ""}`} aria-label={project.deploy && project.deploy !== "#" ? `Abrir demonstração de ${project.title}` : `${project.title}, projeto em desenvolvimento`} aria-disabled={!project.deploy || project.deploy === "#"} onClick={(event) => { if (!project.deploy || project.deploy === "#") event.preventDefault(); }}>
+                      <img src={project.img} alt={project.title} loading="lazy" decoding="async" />
+                      <span className="projects-index__image-action">{project.deploy && project.deploy !== "#" ? "Abrir projeto" : "Em desenvolvimento"}{project.deploy && project.deploy !== "#" && <span aria-hidden="true">↗</span>}</span>
+                      {project.upcoming && <span className="projects-index__status">Em breve</span>}
+                    </a>
+                    <div className="projects-index__caption">
+                      <span className="projects-index__number">{project.n}</span>
+                      <div><div className="projects-index__meta"><span>{section.title}</span><span>{project.year}</span></div><h3>{project.title}</h3><p>{project.sub}</p></div>
+                      <div className="projects-index__actions">
+                        {project.deploy && project.deploy !== "#" && <a href={project.deploy} target="_blank" rel="noopener noreferrer" aria-label={`Abrir demonstração de ${project.title}`}>Demo ↗</a>}
+                        {project.github && project.github !== "#" && <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`Abrir GitHub de ${project.title}`}>GitHub ↗</a>}
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </section>
     </>
   );

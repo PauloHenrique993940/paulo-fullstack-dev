@@ -76,14 +76,11 @@ export default function Home() {
           <div className="hero2__serial" aria-hidden="true">01</div>
           <motion.div
             className="hero2__copy"
-            initial={{ opacity: 0, x: -24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
           >
             <p className="hero2__greeting hero2__reveal hero2__reveal--1">PAULO HENRIQUE · 2026</p>
-            <h1 className="hero2__title hero2__reveal hero2__reveal--2">Criativo<br /><em>digital</em></h1>
+            <h1 className="hero2__title hero2__reveal hero2__reveal--2">Ideias em<br /><em>ordem.</em></h1>
             <p className="hero2__role hero2__reveal hero2__reveal--3">Desenvolvedor <span>/</span> Front-end</p>
-            <p className="hero2__lead hero2__reveal hero2__reveal--4">Interfaces sensíveis ao detalhe, experiências acessíveis e produtos que fazem sentido.</p>
+            <p className="hero2__lead hero2__reveal hero2__reveal--4">Projetos digitais organizados, acessíveis e pensados para transformar necessidades em experiências claras.</p>
             <div className="hero2__actions hero2__reveal hero2__reveal--5">
               <Button asChild className="hero-cta-primary"><Link to="/#projetos">Ver projetos <span>↗</span></Link></Button>
               <Button asChild variant="outline" className="hero-cta-outline"><Link to="/#historia">Minha história <span>↘</span></Link></Button>
@@ -96,10 +93,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="hero2__visual hero2__reveal hero2__reveal--3"
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
+            className="hero2__visual"
           >
             <div
               className="hero2__visual-frame cursor-pointer"
