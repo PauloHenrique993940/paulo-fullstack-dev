@@ -1,285 +1,365 @@
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowDown, Braces, GitBranch, Layers3, MousePointer2, Terminal, X } from "lucide-react";
-import { SiCss, SiDocker, SiExpress, SiFigma, SiGit, SiHtml5, SiJavascript, SiMongodb, SiMysql, SiNodedotjs, SiPostgresql, SiPrisma, SiReact, SiTailwindcss, SiTypescript, SiVite } from "react-icons/si";
-import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/minhaFotoClara.jpg";
-import Sobre from "@/pages/Sobre";
-import Projetos from "@/pages/Projetos";
-
-const stackIcons = [
-  { label: "React", icon: SiReact },
-  { label: "TypeScript", icon: SiTypescript },
-  { label: "Tailwind CSS", icon: SiTailwindcss },
-  { label: "Vite", icon: SiVite },
-  { label: "Figma", icon: SiFigma },
-];
-
-const stackDetails = [
-  { label: "React", icon: SiReact },
-  { label: "TypeScript", icon: SiTypescript },
-  { label: "JavaScript", icon: SiJavascript },
-  { label: "Tailwind CSS", icon: SiTailwindcss },
-  { label: "HTML", icon: SiHtml5 },
-  { label: "CSS", icon: SiCss },
-  { label: "Vite", icon: SiVite },
-  { label: "Node.js", icon: SiNodedotjs },
-  { label: "Express", icon: SiExpress },
-  { label: "PostgreSQL", icon: SiPostgresql },
-  { label: "MySQL", icon: SiMysql },
-  { label: "MongoDB", icon: SiMongodb },
-  { label: "Prisma", icon: SiPrisma },
-  { label: "Git", icon: SiGit },
-  { label: "CI/CD", icon: GitBranch },
-  { label: "Docker", icon: SiDocker },
-  { label: "Figma", icon: SiFigma },
-  { label: "Claude Code", icon: Terminal },
-];
-
-const objectives = [
-  {
-    icon: Layers3,
-    title: "Produtos claros",
-    text: "Interfaces objetivas para resolver problemas reais sem adicionar complexidade desnecessária.",
-    details: "Organizo a informação por prioridade, reduzo decisões desnecessárias e crio caminhos visuais que ajudam a pessoa a chegar ao resultado com confiança.",
-    signals: ["Hierarquia visual", "Fluxos objetivos", "Decisões simples"],
-  },
-  {
-    icon: MousePointer2,
-    title: "Experiência direta",
-    text: "Fluxos responsivos, acessíveis e fáceis de entender desde o primeiro clique.",
-    details: "Penso na experiência em diferentes telas, entradas e necessidades: navegação previsível, feedback claro, foco visível e componentes que funcionam para mais pessoas.",
-    signals: ["Responsive first", "Acessibilidade", "Feedback claro"],
-  },
-  {
-    icon: Braces,
-    title: "Código sustentável",
-    text: "Componentes tipados, arquitetura organizada e uma base pronta para continuar crescendo.",
-    details: "Construo componentes tipados, responsabilidades bem separadas e padrões consistentes para que novas features possam nascer sem fragilizar o que já funciona.",
-    signals: ["Componentes tipados", "Arquitetura modular", "Evolução segura"],
-  },
-];
-
+﻿import { useState } from "react";
+import { ArrowUpRight, ArrowDown, Braces, Database, Terminal, Mail, MapPin } from "lucide-react";
+import { SiGithub as Github } from "react-icons/si";
+import { FaLinkedinIn as Linkedin } from "react-icons/fa";
+import portrait from "@/assets/minhaFotoClara.jpg";
+import { projects } from "@/data/projects";
+const fullstack = (tags: string[]) => tags.some((tag) => /node|express|php|postgresql/i.test(tag));
 export default function Home() {
-  const [isPhotoOpen, setIsPhotoOpen] = useState(false);
-  const [activeObjective, setActiveObjective] = useState<(typeof objectives)[number] | null>(null);
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
-
+  const [filter, setFilter] = useState("Destaques");
+  const selected = projects.filter((p) =>
+    filter === "Destaques"
+      ? ["Almoxarif", "Clarity Finanças", "Syntax Wear"].includes(p.title)
+      : filter === "Fullstack"
+        ? fullstack(p.tags)
+        : filter === "Front-end"
+          ? !fullstack(p.tags)
+          : true,
+  );
   return (
     <>
-      <section ref={heroRef} className="hero2 relative">
-        <div className="hero2__inner">
-          <div className="hero2__serial" aria-hidden="true">01</div>
-          <motion.div
-            className="hero2__copy"
-          >
-            <p className="hero2__greeting hero2__reveal hero2__reveal--1">PAULO HENRIQUE · 2026</p>
-            <h1 className="hero2__title hero2__reveal hero2__reveal--2">Ideias em<br /><em>ordem.</em></h1>
-            <p className="hero2__role hero2__reveal hero2__reveal--3">Desenvolvedor <span>/</span> Front-end</p>
-            <p className="hero2__lead hero2__reveal hero2__reveal--4">Projetos digitais organizados, acessíveis e pensados para transformar necessidades em experiências claras.</p>
-            <div className="hero2__actions hero2__reveal hero2__reveal--5">
-              <Button asChild className="hero-cta-primary"><Link to="/#projetos">Ver projetos <span>↗</span></Link></Button>
-              <Button asChild variant="outline" className="hero-cta-outline"><Link to="/#historia">Minha história <span>↘</span></Link></Button>
-            </div>
-            <div className="hero2__stack hero2__reveal hero2__reveal--6" aria-label="Principais tecnologias">
-              {stackIcons.map(({ label, icon: Icon }) => (
-                <motion.span key={label} title={label} aria-label={label} whileHover={{ y: -5, scale: 1.12 }} transition={{ type: "spring", stiffness: 350, damping: 18 }}><Icon aria-hidden="true" /></motion.span>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="hero2__visual"
-          >
-            <div
-              className="hero2__visual-frame cursor-pointer"
-              onClick={() => setIsPhotoOpen(true)}
-              title="Clique para ver a foto em tela cheia"
+      <section className="hero wrap" id="inicio">
+        <div className="hero-copy">
+          <span className="availability">
+            <i /> Disponível para estágio fullstack
+          </span>
+          <p className="eyebrow intro">OLÁ, EU SOU PAULO HENRIQUE</p>
+          <h1>
+            Conecto ideias.
+            <br />
+            Construo <em>soluções.</em>
+          </h1>
+          <p className="hero-description">
+            Desenvolvimento fullstack com propósito. Da interface ao banco de dados, transformo o
+            que aprendo em aplicações para resolver problemas reais.
+          </p>
+          <div className="actions">
+            <a className="button primary" href="#projetos">
+              Explore meus projetos <ArrowUpRight size={18} />
+            </a>
+            <a className="button secondary" href="#contato">
+              Vamos conversar <ArrowUpRight size={18} />
+            </a>
+          </div>
+          <div className="social">
+            <a
+              href="https://github.com/PauloHenrique993940"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-                  <img src={heroBg} alt="Foto de Paulo Henrique" fetchPriority="high" decoding="async" />
-              <div className="hero2__visual-tag">
-                Salvador, BA · Brasil
+              <Github size={17} /> GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/paulohenriquefranca/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin size={17} /> LinkedIn
+            </a>
+            <span>
+              <MapPin size={15} /> Salvador, BA
+            </span>
+          </div>
+        </div>
+        <div className="hero-visual">
+          <div className="portrait">
+            <img
+              src={portrait}
+              alt="Paulo Henrique, desenvolvedor fullstack"
+              fetchPriority="high"
+            />
+            <div className="portrait-label">
+              PAULO HENRIQUE<span>DESENVOLVEDOR EM FORMAÇÃO</span>
+            </div>
+          </div>
+          <div className="code-note">
+            <Braces size={27} />
+            <div>
+              <strong>Aprender. Construir. Evoluir.</strong>
+              <span>Um projeto de cada vez.</span>
+            </div>
+          </div>
+          <p className="visual-caption">CURIOSIDADE COMO PONTO DE PARTIDA.</p>
+        </div>
+        <div className="hero-bottom">
+          <span>INTERFACES CLARAS. LÓGICA BEM CONSTRUÍDA.</span>
+          <a href="#projetos">
+            Conheça meu trabalho <ArrowDown size={15} />
+          </a>
+        </div>
+      </section>
+      <div className="tech-strip">
+        <div className="wrap">
+          <span>MINHA STACK PRINCIPAL</span>
+          {["React", "TypeScript", "Node.js", "PostgreSQL", "Git"].map((t) => (
+            <strong key={t}>{t}</strong>
+          ))}
+        </div>
+      </div>
+      <section className="section wrap" id="projetos">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">01 / PROJETOS SELECIONADOS</p>
+            <h2>
+              Aprendizado que
+              <br />
+              vira <em>prática.</em>
+            </h2>
+          </div>
+          <p>
+            Cada projeto é uma oportunidade de conectar interface, lógica e dados. Conheça algumas
+            das soluções que construí.
+          </p>
+        </div>
+        <div className="toolbar">
+          <div className="filters" role="group" aria-label="Filtrar projetos">
+            {["Destaques", "Todos", "Fullstack", "Front-end"].map((t) => (
+              <button
+                key={t}
+                type="button"
+                aria-pressed={filter === t}
+                className={filter === t ? "selected" : ""}
+                onClick={() => setFilter(t)}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+          <span aria-live="polite">{selected.length.toString().padStart(2, "0")} projetos</span>
+        </div>
+        <div className="project-grid">
+          {selected.map((p, index) => (
+            <article className="project" key={p.title}>
+              <div className="project-image">
+                <img src={p.img} alt={`Interface de ${p.title}`} loading="lazy" />
+                <span>
+                  {p.upcoming
+                    ? "EM DESENVOLVIMENTO"
+                    : fullstack(p.tags)
+                      ? "FULLSTACK"
+                      : "FRONT-END"}
+                </span>
               </div>
+              <div className="project-content">
+                <div className="project-title">
+                  <h3>{p.title}</h3>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <p>{p.sub}</p>
+                <div className="tags">
+                  {p.tags.slice(0, 4).map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
+                <details>
+                  <summary>
+                    Sobre o desenvolvimento <span>+</span>
+                  </summary>
+                  <dl>
+                    <dt>Desafio</dt>
+                    <dd>{p.problem}</dd>
+                    <dt>Solução</dt>
+                    <dd>{p.solution}</dd>
+                    <dt>Resultado</dt>
+                    <dd>{p.result}</dd>
+                  </dl>
+                </details>
+                <div className="project-links">
+                  {p.github && p.github !== "#" && (
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Código de ${p.title}`}
+                    >
+                      <Github size={15} /> Código-fonte
+                    </a>
+                  )}
+                  {p.deploy && p.deploy !== "#" && (
+                    <a
+                      href={p.deploy}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Demonstração de ${p.title}`}
+                    >
+                      Ver projeto <ArrowUpRight size={16} />
+                    </a>
+                  )}
+                  {p.upcoming && <span>Em breve</span>}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        {filter === "Destaques" && (
+          <button className="button secondary all-projects" onClick={() => setFilter("Todos")}>
+            Ver todos os projetos <ArrowUpRight size={17} />
+          </button>
+        )}
+      </section>
+      <section className="about-section" id="sobre">
+        <div className="wrap about-grid" id="historia">
+          <div>
+            <p className="eyebrow">02 / SOBRE MIM</p>
+            <h2>
+              Além do código,
+              <br />
+              <em>quem eu sou.</em>
+            </h2>
+            <p className="about-lead">
+              Sou Paulo Henrique, de Salvador. Minha trajetória une tecnologia, organização e a
+              vontade de construir algo útil.
+            </p>
+            <p>
+              Sou formado em Análise e Desenvolvimento de Sistemas e curso uma pós-graduação em
+              Desenvolvimento Front-end na Anhanguera. Nos meus projetos, exploro aplicações
+              completas com React, Node.js e bancos de dados relacionais.
+            </p>
+            <p>
+              Minha experiência na Secretaria da Segurança Pública da Bahia trouxe responsabilidade,
+              atenção aos detalhes e uma visão prática de processos. Busco um estágio fullstack para
+              aprender com uma equipe, colaborar e evoluir em projetos reais.
+            </p>
+            <a className="text-link" href="#contato">
+              Vamos construir o próximo passo <ArrowUpRight size={17} />
+            </a>
+          </div>
+          <div className="journey">
+            <p className="eyebrow">UMA TRAJETÓRIA EM CONSTRUÇÃO</p>
+            {[
+              {
+                year: "2026 · EM ANDAMENTO",
+                title: "Pós em Desenvolvimento Front-end",
+                text: "Anhanguera · Interfaces, arquitetura e experiência do usuário.",
+              },
+              {
+                year: "2024 · CONCLUÍDO",
+                title: "Análise e Desenvolvimento de Sistemas",
+                text: "Formação tecnológica e prática na construção de aplicações web.",
+              },
+              {
+                year: "2020 — ATUAL",
+                title: "Experiência em operação",
+                text: "Secretaria da Segurança Pública da Bahia · Organização, processos e resolução de problemas.",
+              },
+            ].map((t) => (
+              <article key={t.year}>
+                <span>{t.year}</span>
+                <h3>{t.title}</h3>
+                <p>{t.text}</p>
+              </article>
+            ))}
+            <div className="learning-note">
+              ↗{" "}
+              <span>
+                O próximo capítulo?
+                <br />
+                <strong>Aprender e contribuir com a sua equipe.</strong>
+              </span>
             </div>
-          </motion.div>
+          </div>
         </div>
-
-        <p className="hero2__side-note" aria-hidden="true">SENSÍVEL AO FRONTEND <span>↓</span></p>
-
-        <a href="#objetivo" className="hero2__scroll" aria-label="Rolar para o objetivo">
-          <span>Scroll</span><ArrowDown size={14} aria-hidden="true" />
-        </a>
-
-        <AnimatePresence>
-          {isPhotoOpen && (
-            <motion.div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsPhotoOpen(false)}
+      </section>
+      <section className="section wrap" id="stack">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">03 / TECNOLOGIAS & FERRAMENTAS</p>
+            <h2>
+              Uma base para
+              <br />
+              <em>ir mais longe.</em>
+            </h2>
+          </div>
+          <p>
+            Tecnologias que estudo e aplico nos meus projetos. Sempre com espaço para aprender algo
+            novo.
+          </p>
+        </div>
+        <div className="skill-grid">
+          {[
+            {
+              icon: Braces,
+              title: "Front-end",
+              text: "Da ideia à experiência na tela.",
+              tags: ["React", "TypeScript", "JavaScript", "HTML & CSS", "Tailwind CSS"],
+            },
+            {
+              icon: Terminal,
+              title: "Back-end",
+              text: "A lógica por trás de cada interação.",
+              tags: ["Node.js", "Express", "PHP", "APIs REST", "JWT"],
+            },
+            {
+              icon: Database,
+              title: "Dados & ferramentas",
+              text: "Uma base organizada para evoluir.",
+              tags: ["PostgreSQL", "Prisma", "MySQL", "Git & GitHub", "Docker"],
+            },
+          ].map(({ icon: Icon, title, text, tags }) => (
+            <article className="skill-card" key={title}>
+              <Icon size={26} strokeWidth={1.5} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+              <div className="tags">
+                {tags.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="contact-section" id="contato">
+        <div className="wrap contact-grid">
+          <div>
+            <p className="eyebrow">04 / VAMOS CONVERSAR</p>
+            <h2>
+              Uma oportunidade.
+              <br />
+              <em>Muitas possibilidades.</em>
+            </h2>
+            <p>
+              Busco um estágio em desenvolvimento fullstack para transformar dedicação em
+              experiência. Vamos conversar sobre como posso contribuir com a sua equipe?
+            </p>
+            <a
+              className="button contact-button"
+              href="mailto:paulohenriqueferreirafranca2@gmail.com"
             >
-              <motion.div
-                className="relative flex flex-col items-center justify-center max-h-[95vh] max-w-[95vw]"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                onClick={(e) => e.stopPropagation()}
+              Entre em contato <Mail size={18} />
+            </a>
+          </div>
+          <div className="contact-card">
+            <span className="availability">
+              <i /> Aberto a oportunidades
+            </span>
+            <h3>
+              O próximo passo começa
+              <br />
+              com uma conversa.
+            </h3>
+            <span className="contact-label">MEU E-MAIL</span>
+            <a className="email-link" href="mailto:paulohenriqueferreirafranca2@gmail.com">
+              paulohenriqueferreirafranca2@gmail.com
+            </a>
+            <div className="contact-social">
+              <a
+                href="https://www.linkedin.com/in/paulohenriquefranca/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <button
-                  type="button"
-                  className="mb-3 flex items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 font-mono text-xs text-white uppercase backdrop-blur-sm transition-all hover:border-white hover:bg-black"
-                  onClick={() => setIsPhotoOpen(false)}
-                >
-                  <X size={16} aria-hidden="true" />
-                  <span>Fechar</span>
-                </button>
-                <img
-                  src={heroBg}
-                  alt="Foto completa de Paulo Henrique"
-                  className="max-h-[85vh] max-w-[90vw] rounded-xl object-contain shadow-2xl border border-white/10"
-                />
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
-
-      <section id="objetivo" className="home-objective">
-        <div className="home-section__inner">
-          <p className="home-kicker">01 — Objetivo</p>
-          <motion.div className="home-objective__heading" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55 }}>
-            <h2 className="script-heading">Ideia que vira<br />produto.</h2>
-            <p className="home-muted">Desenvolvedor Front-end focado em transformar necessidades em experiências digitais úteis, bonitas e fáceis de usar.</p>
-          </motion.div>
-          <div className="home-objective__grid">
-            {objectives.map(({ icon: Icon, title, text, details }, index) => (
-              <motion.article
-                key={title}
-                className="home-objective__card"
-                tabIndex={0}
-                role="button"
-                aria-haspopup="dialog"
-                aria-label={`${title}: ${text}`}
-                onClick={() => setActiveObjective(objectives[index])}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setActiveObjective(objectives[index]);
-                  }
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
+                LinkedIn <ArrowUpRight size={17} />
+              </a>
+              <a
+                href="https://github.com/PauloHenrique993940"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Icon size={22} strokeWidth={1.7} aria-hidden="true" />
-                <h3>{title}</h3>
-                <p>{text}</p>
-                <div className="home-objective__card-screen" aria-hidden="true">
-                  <span className="home-objective__card-screen-number">0{index + 1} / PRINCÍPIO</span>
-                  <strong>{title}</strong>
-                  <span>{details}</span>
-                  <i />
-                </div>
-              </motion.article>
-            ))}
+                GitHub <ArrowUpRight size={17} />
+              </a>
+            </div>
           </div>
         </div>
-
-        <AnimatePresence>
-          {activeObjective && (
-            <motion.div
-              className="objective-dialog-backdrop"
-              role="presentation"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setActiveObjective(null)}
-            >
-              <motion.div
-                className="objective-dialog"
-                role="dialog"
-                aria-modal="true"
-                aria-labelledby="objective-dialog-title"
-                initial={{ opacity: 0, y: 24, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 24, scale: 0.96 }}
-                onClick={(event) => event.stopPropagation()}
-              >
-                <div className="objective-dialog__topline">
-                  <span>PRINCÍPIO / 0{objectives.indexOf(activeObjective) + 1}</span>
-                  <button type="button" onClick={() => setActiveObjective(null)} aria-label="Fechar explicação">
-                    <X size={18} aria-hidden="true" />
-                  </button>
-                </div>
-                <h3 id="objective-dialog-title">{activeObjective.title}</h3>
-                {activeObjective.title === "Código sustentável" ? (
-                  <div className="objective-code-preview" aria-label="Exemplo visual de código sendo criado">
-                    <div className="objective-code-preview__bar">
-                      <span><i /><i /><i /></span>
-                      <em>principles.tsx</em>
-                      <b>● criando</b>
-                    </div>
-                    <div className="objective-code-preview__body">
-                      <p><small>01</small><span><mark>type</mark> Principle = {'{'}</span></p>
-                      <p><small>02</small><span>  name: <strong>"sustainable"</strong>;</span></p>
-                      <p><small>03</small><span>  typed: <strong>true</strong>;</span></p>
-                      <p><small>04</small><span>  scalable: <strong>true</strong>;</span></p>
-                      <p><small>05</small><span>{'}'};</span></p>
-                      <p><small>06</small><span><mark>export</mark> <mark>const</mark> <strong>architecture</strong> = <i>build</i>(Principle);</span></p>
-                      <p><small>07</small><span className="is-current">▋</span></p>
-                    </div>
-                    <div className="objective-code-preview__status"><span>✓ sem erros</span><span>componentes tipados</span><span>build 100%</span></div>
-                  </div>
-                ) : (
-                  <p>{activeObjective.details}</p>
-                )}
-                <div className="objective-dialog__signals">
-                  {activeObjective.signals.map((signal) => <span key={signal}>{signal}</span>)}
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
-
-      <section id="historia" className="home-history">
-        <Sobre />
-      </section>
-
-      <section id="stack" className="home-stack">
-        <div className="home-section__inner">
-          <p className="home-kicker">03 — Stack</p>
-          <div className="home-stack__heading">
-            <h2 className="script-heading">Ferramentas<br />do dia a dia.</h2>
-            <p className="home-muted">Tecnologias que uso para transformar ideia em produto, da interface ao deploy.</p>
-          </div>
-          <div className="home-stack__grid" aria-label="Tecnologias utilizadas no desenvolvimento">
-            {stackDetails.map(({ label, icon: Icon }, index) => (
-              <motion.div
-                key={label}
-                className="home-stack__item"
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.35, delay: index * 0.04 }}
-              >
-                <Icon size={26} aria-hidden="true" />
-                <span>{label}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="projetos" className="home-projects">
-        <Projetos />
       </section>
     </>
   );

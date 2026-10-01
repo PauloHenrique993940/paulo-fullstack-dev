@@ -1,128 +1,61 @@
-
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, Moon, Sun, X } from "lucide-react";
-
+﻿import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 const links = [
-    { to: "/#objetivo", label: "Objetivo" },
-    { to: "/#historia", label: "História" },
-    { to: "/#stack", label: "Stack" },
-    { to: "/#projetos", label: "Projetos" },
-] as const;
-
+  { href: "#projetos", label: "Projetos" },
+  { href: "#sobre", label: "Sobre mim" },
+  { href: "#stack", label: "Tecnologias" },
+];
 export function Nav() {
-    const location = useLocation();
-    const [isOpen, setIsOpen] = useState(false);
-    const [isLight, setIsLight] = useState(() => localStorage.getItem("portfolio-theme") === "light");
-    const isActiveLink = (to: string) => location.pathname === "/" && location.hash === to.slice(1);
-
-    useEffect(() => {
-        document.documentElement.classList.toggle("light", isLight);
-        localStorage.setItem("portfolio-theme", isLight ? "light" : "dark");
-    }, [isLight]);
-
-    useEffect(() => {
-        setIsOpen(false);
-    }, [location.pathname, location.hash]);
-
-    useEffect(() => {
-        document.body.style.overflow = isOpen ? "hidden" : "";
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [isOpen]);
-
-    return (
-        <header className="site-header sticky top-0 z-50">
-            <div className="site-header__inner mx-auto flex max-w-350 items-center justify-between px-6 py-4 md:px-10">
-                <Link to="/" className="group flex items-center gap-3">
-                    <span className="brand-mark brand-wordmark">
-                        PAULO<span>.</span>
-                    </span>
-                </Link>
-
-                {/* Menu Desktop */}
-                <nav className="site-nav hidden items-center gap-1 md:flex">
-                    {links.map((l) => {
-                        const isActive = isActiveLink(l.to);
-                        return (
-                            <motion.div key={l.to} whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
-                                <Link
-                                    key={l.to}
-                                    to={l.to}
-                                    className={`site-nav__link px-4 py-2 font-mono text-sm uppercase transition-colors ${isActive ? "is-active" : ""}`}
-                                >
-                                    {l.label}
-                                </Link>
-                            </motion.div>
-                        );
-                    })}
-                </nav>
-
-                {/* Ações da direita: Redes Sociais (Desktop) + Theme Toggle + Menu Hamburger (Mobile) */}
-                <div className="flex items-center gap-4 md:gap-5">
-                    <div className="header-socials hidden items-center gap-5 md:flex">
-                        <a href="https://www.linkedin.com/in/paulohenriquefranca/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-                        <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
-                        <a href="mailto:paulohenriqueferreirafranca2@gmail.com" aria-label="Enviar e-mail">@</a>
-                    </div>
-
-                    <button
-                        type="button"
-                        className="theme-toggle"
-                        aria-label={isLight ? "Ativar tema escuro" : "Ativar tema claro"}
-                        title={isLight ? "Tema escuro" : "Tema claro"}
-                        onClick={() => setIsLight((value) => !value)}
-                    >
-                        {isLight ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
-                    </button>
-
-                    <button
-                        type="button"
-                        className="site-nav__toggle md:hidden"
-                        aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
-                        aria-expanded={isOpen}
-                        onClick={() => setIsOpen((open) => !open)}
-                    >
-                        {isOpen ? <X size={22} /> : <Menu size={22} />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Menu Mobile */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.nav
-                        className="site-nav-mobile md:hidden"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                    >
-                        <ul className="site-nav-mobile__list">
-                            {links.map((l) => {
-                                const isActive = isActiveLink(l.to);
-                                return (
-                                    <li key={l.to}>
-                                        <Link
-                                            to={l.to}
-                                            className={`site-nav-mobile__link ${isActive ? "is-active" : ""}`}
-                                        >
-                                            {l.label}
-                                        </Link>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                        <div className="site-nav-mobile__socials">
-                            <a href="https://www.linkedin.com/in/paulohenriquefranca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                            <a href="https://github.com/PauloHenrique993940" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="mailto:paulohenriqueferreirafranca2@gmail.com">E-mail</a>
-                        </div>
-                    </motion.nav>
-                )}
-            </AnimatePresence>
-        </header>
-    );
+  const [open, setOpen] = useState(false);
+  return (
+    <header className="site-header">
+      <div className="wrap header-inner">
+        <a href="/#inicio" className="brand" aria-label="Paulo Henrique, início">
+          ph<span>.</span>
+          <small>
+            PAULO HENRIQUE
+            <br />
+            <span>DESENVOLVEDOR FULLSTACK</span>
+          </small>
+        </a>
+        <nav className="desktop-nav" aria-label="Navegação principal">
+          {links.map((l) => (
+            <a key={l.href} href={`/${l.href}`}>
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <a className="header-contact" href="/#contato">
+          Vamos conversar <ArrowUpRight size={16} />
+        </a>
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+      </div>
+      {open && (
+        <nav
+          className="mobile-nav"
+          id="mobile-menu"
+          aria-label="Navegação móvel"
+          onKeyDown={(e) => {
+            if (e.key === "Escape") setOpen(false);
+          }}
+        >
+          {[...links, { href: "#contato", label: "Contato" }].map((l) => (
+            <a key={l.href} href={`/${l.href}`} onClick={() => setOpen(false)}>
+              {l.label}
+              <ArrowUpRight size={17} />
+            </a>
+          ))}
+        </nav>
+      )}
+    </header>
+  );
 }
