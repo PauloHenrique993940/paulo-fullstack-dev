@@ -1,5 +1,14 @@
 ﻿import { useState } from "react";
-import { ArrowUpRight, ArrowDown, Braces, Database, Terminal, Mail, MapPin } from "lucide-react";
+import {
+  ArrowUpRight,
+  ArrowDown,
+  Braces,
+  Database,
+  Terminal,
+  Mail,
+  MapPin,
+  Cloud,
+} from "lucide-react";
 import { SiGithub as Github } from "react-icons/si";
 import { FaLinkedinIn as Linkedin } from "react-icons/fa";
 import portrait from "@/assets/minhaFotoClara.jpg";
@@ -62,6 +71,21 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-visual">
+          <div className="sonix-panel" aria-hidden="true">
+            <div className="sonix-panel-top">
+              <span>EM CONSTRUÇÃO</span>
+              <i />
+            </div>
+            <div className="sonix-wave">
+              {Array.from({ length: 18 }, (_, index) => (
+                <i key={index} />
+              ))}
+            </div>
+            <div className="sonix-panel-bottom">
+              <span>FULLSTACK JOURNEY</span>
+              <strong>01:42</strong>
+            </div>
+          </div>
           <div className="portrait">
             <img
               src={portrait}
@@ -91,7 +115,7 @@ export default function Home() {
       <div className="tech-strip">
         <div className="wrap">
           <span>MINHA STACK PRINCIPAL</span>
-          {["React", "TypeScript", "Node.js", "PostgreSQL", "Git"].map((t) => (
+          {["React", "TypeScript", "Node.js", "Prisma ORM", "CI/CD", "Vercel"].map((t) => (
             <strong key={t}>{t}</strong>
           ))}
         </div>
@@ -293,7 +317,13 @@ export default function Home() {
               icon: Database,
               title: "Dados & ferramentas",
               text: "Uma base organizada para evoluir.",
-              tags: ["PostgreSQL", "Prisma", "MySQL", "Git & GitHub", "Docker"],
+              tags: ["PostgreSQL", "Neon", "Prisma ORM", "MySQL", "Git & GitHub", "Docker"],
+            },
+            {
+              icon: Cloud,
+              title: "Deploy & CI/CD",
+              text: "Do código à aplicação publicada.",
+              tags: ["CI/CD", "GitHub Actions", "Vercel", "Railway", "Render"],
             },
           ].map(({ icon: Icon, title, text, tags }) => (
             <article className="skill-card" key={title}>
