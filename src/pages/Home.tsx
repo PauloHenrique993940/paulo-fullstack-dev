@@ -8,6 +8,8 @@ import {
   Mail,
   MapPin,
   Cloud,
+  Gamepad2,
+  Zap,
 } from "lucide-react";
 import { SiGithub as Github } from "react-icons/si";
 import { FaLinkedinIn as Linkedin } from "react-icons/fa";
@@ -28,15 +30,48 @@ export default function Home() {
   return (
     <>
       <section className="hero wrap" id="inicio">
+        <div className="speed-trails" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <i />
+        </div>
+        <div className="game-clouds" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+        <div className="game-loop" aria-hidden="true">
+          <i />
+        </div>
+        <div className="speed-runner-track" aria-hidden="true">
+          <div className="speed-runner">
+            <span className="runner-spikes" />
+            <span className="runner-face" />
+            <span className="runner-shoe runner-shoe-one" />
+            <span className="runner-shoe runner-shoe-two" />
+          </div>
+          <i className="runner-trail trail-one" />
+          <i className="runner-trail trail-two" />
+          <i className="runner-trail trail-three" />
+        </div>
+        <div className="floating-rings" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
         <div className="hero-copy">
           <span className="availability">
             <i /> Disponível para estágio fullstack
           </span>
+          <div className="press-start">
+            <span>●</span> PRESS START — PORTFÓLIO 2026
+          </div>
           <p className="eyebrow intro">OLÁ, EU SOU PAULO HENRIQUE</p>
           <h1>
-            Conecto ideias.
+            Código em alta
             <br />
-            Construo <em>soluções.</em>
+            <em>velocidade.</em>
           </h1>
           <p className="hero-description">
             Desenvolvimento fullstack com propósito. Da interface ao banco de dados, transformo o
@@ -44,7 +79,7 @@ export default function Home() {
           </p>
           <div className="actions">
             <a className="button primary" href="#projetos">
-              Explore meus projetos <ArrowUpRight size={18} />
+              Start / Ver projetos <ArrowUpRight size={18} />
             </a>
             <a className="button secondary" href="#contato">
               Vamos conversar <ArrowUpRight size={18} />
@@ -71,9 +106,23 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-visual">
+          <div className="game-hud" aria-label="Status profissional">
+            <span>
+              <small>FASE</small> FULLSTACK
+            </span>
+            <span>
+              <small>XP</small> 2026
+            </span>
+            <span>
+              <small>STATUS</small> READY!
+            </span>
+            <span className="ring-score">
+              <small>RINGS</small> 099
+            </span>
+          </div>
           <div className="sonix-panel" aria-hidden="true">
             <div className="sonix-panel-top">
-              <span>EM CONSTRUÇÃO</span>
+              <span>SPEED MODE</span>
               <i />
             </div>
             <div className="sonix-wave">
@@ -82,7 +131,7 @@ export default function Home() {
               ))}
             </div>
             <div className="sonix-panel-bottom">
-              <span>FULLSTACK JOURNEY</span>
+              <span>FULLSTACK QUEST</span>
               <strong>01:42</strong>
             </div>
           </div>
@@ -104,9 +153,12 @@ export default function Home() {
             </div>
           </div>
           <p className="visual-caption">CURIOSIDADE COMO PONTO DE PARTIDA.</p>
+          <div className="level-badge" aria-hidden="true">
+            <Gamepad2 size={17} /> PLAYER 01
+          </div>
         </div>
         <div className="hero-bottom">
-          <span>INTERFACES CLARAS. LÓGICA BEM CONSTRUÍDA.</span>
+          <span>PLAYER 01 · INTERFACES CLARAS · LÓGICA BEM CONSTRUÍDA</span>
           <a href="#projetos">
             Conheça meu trabalho <ArrowDown size={15} />
           </a>
@@ -123,11 +175,13 @@ export default function Home() {
       <section className="section wrap" id="projetos">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">01 / PROJETOS SELECIONADOS</p>
+            <p className="eyebrow">
+              <Zap size={13} /> 01 / SELEÇÃO DE FASES
+            </p>
             <h2>
-              Aprendizado que
+              Escolha uma fase.
               <br />
-              vira <em>prática.</em>
+              Veja a <em>evolução.</em>
             </h2>
           </div>
           <p>
@@ -149,7 +203,9 @@ export default function Home() {
               </button>
             ))}
           </div>
-          <span aria-live="polite">{selected.length.toString().padStart(2, "0")} projetos</span>
+          <span className="ring-counter" aria-live="polite">
+            <i aria-hidden="true" /> × {selected.length.toString().padStart(2, "0")} FASES
+          </span>
         </div>
         <div className="project-grid">
           {selected.map((p, index) => (
@@ -224,7 +280,9 @@ export default function Home() {
       <section className="about-section" id="sobre">
         <div className="wrap about-grid" id="historia">
           <div>
-            <p className="eyebrow">02 / SOBRE MIM</p>
+            <p className="eyebrow">
+              <Zap size={13} /> 02 / HISTÓRIA DO PLAYER
+            </p>
             <h2>
               Além do código,
               <br />
@@ -287,7 +345,9 @@ export default function Home() {
       <section className="section wrap" id="stack">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">03 / TECNOLOGIAS & FERRAMENTAS</p>
+            <p className="eyebrow">
+              <Zap size={13} /> 03 / POWER-UPS & HABILIDADES
+            </p>
             <h2>
               Uma base para
               <br />
@@ -342,7 +402,9 @@ export default function Home() {
       <section className="contact-section" id="contato">
         <div className="wrap contact-grid">
           <div>
-            <p className="eyebrow">04 / VAMOS CONVERSAR</p>
+            <p className="eyebrow">
+              <Zap size={13} /> 04 / PRÓXIMO CHECKPOINT
+            </p>
             <h2>
               Uma oportunidade.
               <br />
