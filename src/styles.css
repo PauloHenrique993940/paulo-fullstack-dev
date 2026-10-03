@@ -1070,6 +1070,189 @@ h2 {
   }
 }
 
+/* Dark mode */
+:root {
+  color-scheme: dark;
+  --ink: #edf7ff;
+  --muted: #a9bed9;
+  --line: #23477d;
+}
+
+body {
+  color: #edf7ff;
+  background:
+    radial-gradient(circle at 82% 5%, #0b4ecf55 0, transparent 23rem),
+    linear-gradient(180deg, #030b22 0, #061634 48%, #030a1c 100%);
+}
+
+.portfolio-interface {
+  color: #edf7ff;
+  background: transparent;
+}
+
+.site-header {
+  background: #020817eb;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 78% 20%, #ffffff72 0 4px, transparent 5px),
+    radial-gradient(circle at 88% 11%, #ffffff60 0 3px, transparent 4px),
+    linear-gradient(172deg, #0c75cf 0 34%, #073f9f 34.3% 78%, #031c63 78.2% 100%);
+}
+
+.tech-strip {
+  background: repeating-linear-gradient(135deg, #020817 0 18px, #081b42 18px 36px);
+}
+
+.section {
+  position: relative;
+}
+
+.section-heading > p,
+.project-content > p,
+.project dd,
+.project summary,
+.skill-card p,
+.about-grid p {
+  color: #a9bed9;
+}
+
+.section-heading h2,
+.project-title h3,
+.skill-card h3,
+.about-grid h2 {
+  color: #f3f9ff;
+}
+
+.section-heading h2 em,
+.about-grid h2 em {
+  color: #5cdcff;
+}
+
+.toolbar {
+  background: #081b3d;
+  border-color: #1d5796;
+}
+
+.filters button {
+  color: #a9c3e3;
+}
+
+.filters button:hover {
+  color: white;
+  background: #12366a;
+}
+
+.ring-counter {
+  color: #8ee7ff !important;
+}
+
+.project,
+.skill-card {
+  color: #edf7ff;
+  background: linear-gradient(160deg, #0a1d40, #07142f);
+  border-color: #176bd9;
+  box-shadow: 7px 8px 0 #02091b;
+}
+
+.project:hover,
+.skill-card:hover {
+  box-shadow: 10px 13px 0 #010615;
+}
+
+.project details,
+.project-links {
+  border-color: #21436e;
+}
+
+.tags span {
+  color: #bfeeff;
+  background: #0b2c59;
+  border-color: #1c548f;
+}
+
+.project-links a {
+  color: #65dcff;
+}
+
+.about-section {
+  color: #edf7ff;
+  background:
+    radial-gradient(circle at 10% 20%, #ffffff20 0 4px, transparent 5px),
+    linear-gradient(180deg, #071a3c 0 74%, #123d2d 74.3% 81%, #082918 81.2% 100%);
+  background-size:
+    80px 80px,
+    auto;
+}
+
+.about-grid .about-lead {
+  color: #e4f5ff;
+}
+
+.journey {
+  color: #edf7ff;
+  background: linear-gradient(155deg, #0b234bfa, #06152ffa);
+  border-color: #1980e7;
+  box-shadow: 9px 10px 0 #02091b;
+}
+
+.journey article::before {
+  box-shadow: 0 0 0 3px #0a2148;
+}
+
+.journey article > span {
+  color: #72dbff;
+}
+
+.journey h3 {
+  color: white;
+}
+
+.learning-note {
+  background: linear-gradient(120deg, #075be8, #1237a4);
+}
+
+.secondary {
+  color: #dff5ff;
+  background: #071a38;
+  border-color: #2b65a3;
+}
+
+.secondary:hover {
+  background: #0b2c59;
+}
+
+.all-projects {
+  color: white;
+  background: var(--game-blue);
+}
+
+.contact-section {
+  background:
+    radial-gradient(circle at 80% 28%, #37c9ff35 0 3px, transparent 4px),
+    repeating-linear-gradient(135deg, #020817 0 28px, #071838 28px 56px);
+}
+
+.contact-card {
+  background: #071a3dbd;
+}
+
+footer {
+  background: #010612;
+}
+
+.footer-inner p,
+.footer-inner p span {
+  color: #8eacd0;
+}
+
+@media (max-width: 720px) {
+  .mobile-nav {
+    background: #020817;
+  }
+}
+
 .press-start {
   position: absolute;
   top: 18px;
@@ -2053,5 +2236,145 @@ footer {
   }
   .journey article::before {
     left: -43px;
+  }
+}
+
+/* Final dark palette overrides */
+body,
+.portfolio-interface {
+  color: #edf7ff;
+  background:
+    radial-gradient(circle at 82% 5%, #0b4ecf55 0, transparent 23rem),
+    linear-gradient(180deg, #030b22 0, #061634 48%, #030a1c 100%);
+}
+
+.site-header {
+  background: #020817eb;
+}
+.hero {
+  background:
+    radial-gradient(circle at 78% 20%, #ffffff4d 0 4px, transparent 5px),
+    radial-gradient(circle at 88% 11%, #ffffff38 0 3px, transparent 4px),
+    linear-gradient(172deg, #075cae 0 34%, #082f7e 34.3% 78%, #03143f 78.2% 100%);
+}
+.tech-strip {
+  background: repeating-linear-gradient(135deg, #020817 0 18px, #081b42 18px 36px);
+}
+.section-heading > p,
+.project-content > p,
+.project dd,
+.project summary,
+.skill-card p,
+.about-grid p {
+  color: #a9bed9;
+}
+.section-heading h2,
+.project-title h3,
+.skill-card h3,
+.about-grid h2 {
+  color: #f3f9ff;
+}
+.section-heading h2 em,
+.about-grid h2 em {
+  color: #5cdcff;
+}
+.toolbar {
+  background: #081b3d;
+  border-color: #1d5796;
+}
+.filters button {
+  color: #a9c3e3;
+}
+.filters button:hover {
+  color: white;
+  background: #12366a;
+}
+.ring-counter {
+  color: #8ee7ff !important;
+}
+.project,
+.skill-card {
+  color: #edf7ff;
+  background: linear-gradient(160deg, #0a1d40, #07142f);
+  border-color: #176bd9;
+  box-shadow: 7px 8px 0 #02091b;
+}
+.project:hover,
+.skill-card:hover {
+  box-shadow: 10px 13px 0 #010615;
+}
+.project details,
+.project-links {
+  border-color: #21436e;
+}
+.tags span {
+  color: #bfeeff;
+  background: #0b2c59;
+  border-color: #1c548f;
+}
+.project-links a {
+  color: #65dcff;
+}
+.about-section {
+  color: #edf7ff;
+  background:
+    radial-gradient(circle at 10% 20%, #ffffff20 0 4px, transparent 5px),
+    linear-gradient(180deg, #071a3c 0 74%, #123d2d 74.3% 81%, #082918 81.2% 100%);
+  background-size:
+    80px 80px,
+    auto;
+}
+.about-grid .about-lead {
+  color: #e4f5ff;
+}
+.journey {
+  color: #edf7ff;
+  background: linear-gradient(155deg, #0b234bfa, #06152ffa);
+  border-color: #1980e7;
+  box-shadow: 9px 10px 0 #02091b;
+}
+.journey article::before {
+  box-shadow: 0 0 0 3px #0a2148;
+}
+.journey article > span {
+  color: #72dbff;
+}
+.journey h3 {
+  color: white;
+}
+.learning-note {
+  background: linear-gradient(120deg, #075be8, #1237a4);
+}
+.secondary {
+  color: #dff5ff;
+  background: #071a38;
+  border-color: #2b65a3;
+}
+.secondary:hover {
+  background: #0b2c59;
+}
+.all-projects {
+  color: white;
+  background: var(--game-blue);
+}
+.contact-section {
+  background:
+    radial-gradient(circle at 80% 28%, #37c9ff35 0 3px, transparent 4px),
+    repeating-linear-gradient(135deg, #020817 0 28px, #071838 28px 56px);
+}
+.contact-card {
+  background: #071a3dbd;
+}
+footer {
+  background: #010612;
+}
+.footer-inner p,
+.footer-inner p span {
+  color: #8eacd0;
+}
+
+@media (max-width: 720px) {
+  .mobile-nav {
+    background: #020817;
   }
 }
