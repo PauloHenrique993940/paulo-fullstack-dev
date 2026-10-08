@@ -1,9 +1,10 @@
 ﻿import { useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 const links = [
-  { href: "#projetos", label: "Projetos" },
-  { href: "#sobre", label: "Sobre mim" },
+  { href: "#projetos", label: "Trabalho" },
+  { href: "#sobre", label: "Sobre" },
   { href: "#stack", label: "Tecnologias" },
+  { href: "#contato", label: "Contato" },
 ];
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -11,12 +12,7 @@ export function Nav() {
     <header className="site-header">
       <div className="wrap header-inner">
         <a href="/#inicio" className="brand" aria-label="Paulo Henrique, início">
-          ph<span>.</span>
-          <small>
-            PAULO HENRIQUE
-            <br />
-            <span>DESENVOLVEDOR FULLSTACK</span>
-          </small>
+          <span className="brand-mark">©</span> Paulo Henrique
         </a>
         <nav className="desktop-nav" aria-label="Navegação principal">
           {links.map((l) => (
@@ -25,9 +21,6 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <a className="header-contact" href="/#contato">
-          Vamos conversar <ArrowUpRight size={16} />
-        </a>
         <button
           className="menu-toggle"
           type="button"
@@ -36,7 +29,7 @@ export function Nav() {
           aria-controls="mobile-menu"
           onClick={() => setOpen(!open)}
         >
-          {open ? <X /> : <Menu />}
+          Menu {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
       {open && (
@@ -48,10 +41,10 @@ export function Nav() {
             if (e.key === "Escape") setOpen(false);
           }}
         >
-          {[...links, { href: "#contato", label: "Contato" }].map((l) => (
+          {links.map((l) => (
             <a key={l.href} href={`/${l.href}`} onClick={() => setOpen(false)}>
               {l.label}
-              <ArrowUpRight size={17} />
+              <ArrowUpRight size={20} />
             </a>
           ))}
         </nav>

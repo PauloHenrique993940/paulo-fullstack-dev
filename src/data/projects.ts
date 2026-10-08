@@ -188,14 +188,14 @@ export const projects = [
   {
     n: "17",
     title: "Sistema de Informações APS/AFM",
-    sub: "Dashboard operacional para acompanhamento de processos e materiais",
+    sub: "Sistema fullstack para acompanhamento de processos e materiais",
     problem:
       "Dar visibilidade ao andamento de processos, materiais recebidos, atrasos e próximos recebimentos em uma única visão operacional.",
     solution:
       "Estruturei um dashboard com navegação por módulos, indicadores de status e áreas de análise para apoiar o acompanhamento da operação.",
     result:
       "O projeto demonstra capacidade de transformar dados operacionais em uma interface clara para leitura rápida e tomada de decisão.",
-    tags: ["React", "TypeScript", "Dashboard", "UX/UI", "Indicadores"],
+    tags: ["React", "TypeScript", "Fullstack", "Dashboard", "UX/UI", "Indicadores"],
     year: "2026",
     img: sistemaInformacaoImage,
     deploy: "https://sistema-informacao-nmp.vercel.app/",
