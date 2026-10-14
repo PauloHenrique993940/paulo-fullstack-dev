@@ -1,7 +1,7 @@
 ﻿import { useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 const links = [
-  { href: "#projetos", label: "Trabalho" },
+  { href: "#projetos", label: "Projetos" },
   { href: "#sobre", label: "Sobre" },
   { href: "#stack", label: "Tecnologias" },
   { href: "#contato", label: "Contato" },

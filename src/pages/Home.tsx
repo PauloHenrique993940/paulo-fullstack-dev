@@ -6,60 +6,60 @@ import {
   SiNextdotjs,
   SiTypescript,
   SiJavascript,
-  SiHtml5,
   SiTailwindcss,
   SiNodedotjs,
   SiExpress,
-  SiSwagger,
-  SiJsonwebtokens,
   SiPostgresql,
   SiPrisma,
-  SiMysql,
-  SiGithub,
   SiDocker,
-  SiGithubactions,
+  SiGithub,
   SiVercel,
+  SiHtml5,
+  SiSwagger,
+  SiJsonwebtokens,
+  SiMysql,
+  SiGithubactions,
   SiRailway,
   SiRender,
 } from "react-icons/si";
-import { Braces, FlaskConical } from "lucide-react";
-import type { IconType } from "react-icons";
 import portrait from "@/assets/minhaFotoClara.jpg";
 import { projects } from "@/data/projects";
 const fullstack = (tags: string[]) =>
   tags.some((tag) => /fullstack|node|express|php|postgresql/i.test(tag));
-const technologyIcons: Record<string, IconType> = {
-  React: SiReact,
-  "Next.js": SiNextdotjs,
-  TypeScript: SiTypescript,
-  JavaScript: SiJavascript,
-  "HTML & CSS": SiHtml5,
-  "Tailwind CSS": SiTailwindcss,
-  "Node.js": SiNodedotjs,
-  Express: SiExpress,
-  Swagger: SiSwagger,
-  JWT: SiJsonwebtokens,
-  PostgreSQL: SiPostgresql,
-  "Prisma ORM": SiPrisma,
-  MySQL: SiMysql,
-  "Git & GitHub": SiGithub,
-  Docker: SiDocker,
-  "GitHub Actions": SiGithubactions,
-  Vercel: SiVercel,
-  Railway: SiRailway,
-  Render: SiRender,
-};
 const reveal = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.15 },
   transition: { duration: 0.6 },
 };
+const technologies = [
+  { name: "React", Icon: SiReact },
+  { name: "Next.js", Icon: SiNextdotjs },
+  { name: "TypeScript", Icon: SiTypescript },
+  { name: "JavaScript", Icon: SiJavascript },
+  { name: "Tailwind CSS", Icon: SiTailwindcss },
+  { name: "Node.js", Icon: SiNodedotjs },
+  { name: "Express", Icon: SiExpress },
+  { name: "PostgreSQL", Icon: SiPostgresql },
+  { name: "Prisma", Icon: SiPrisma },
+  { name: "Docker", Icon: SiDocker },
+  { name: "GitHub", Icon: SiGithub },
+  { name: "Vercel", Icon: SiVercel },
+  { name: "HTML & CSS", Icon: SiHtml5 },
+  { name: "Swagger", Icon: SiSwagger },
+  { name: "JWT", Icon: SiJsonwebtokens },
+  { name: "MySQL", Icon: SiMysql },
+  { name: "GitHub Actions", Icon: SiGithubactions },
+  { name: "Railway", Icon: SiRailway },
+  { name: "Render", Icon: SiRender },
+];
 export default function Home() {
   const [filter, setFilter] = useState("Destaques");
   const selected = projects.filter((p) =>
     filter === "Destaques"
-      ? ["Almoxarif", "Clarity Finanças", "Syntax Wear"].includes(p.title)
+      ? ["Almoxarif", "Sistema de Informações APS/AFM", "Rastreio de Encomendas", "Efood"].includes(
+          p.title,
+        )
       : filter === "Fullstack"
         ? fullstack(p.tags)
         : filter === "Front-end"
@@ -86,150 +86,39 @@ export default function Home() {
         <div className="hero-role">
           <ArrowDownRight size={40} strokeWidth={1} />
           <h1 id="hero-title">
-            Desenvolvedor
+            Ideias que ganham
             <br />
-            web full stack
+            forma na web.
           </h1>
           <p>
-            Da ideia ? interface.
+            Desenvolvimento web com cuidado
             <br />
-            Da l?gica ? solu??o.
+            em cada detalhe.
           </p>
         </div>
         <div className="name-marquee" aria-hidden="true">
           <div className="name-track">
-            <span>Paulo Henrique ? Paulo Henrique ?&nbsp;</span>
-            <span>Paulo Henrique ? Paulo Henrique ?&nbsp;</span>
+            <span>Paulo Henrique</span>
           </div>
         </div>
         <div className="hero-bottom">
           <span className="availability">
-            <i /> Dispon?vel para est?gio fullstack
+            <i /> Portfólio de desenvolvimento web
           </span>
-          <a href="#sobre">
-            Explore o portf?lio <ArrowDownRight size={20} />
+          <a href="#projetos">
+            Explore o portfólio <ArrowDownRight size={20} />
           </a>
-        </div>
-      </section>
-      <section className="about-section section wrap" id="sobre">
-        <motion.div className="about-intro" {...reveal}>
-          <div>
-            <p className="eyebrow">01 / SOBRE MIM</p>
-            <h2>
-              Transformando aprendizado em soluções digitais. Com curiosidade, propósito e atenção a
-              cada detalhe.
-            </h2>
-          </div>
-          <div className="about-aside">
-            <p>
-              Sou Paulo Henrique, desenvolvedor em formação, de Salvador. Construo aplicações que
-              conectam interfaces claras, lógica bem estruturada e dados.
-            </p>
-            <a className="circle-button" href="#historia">
-              Minha história <ArrowUpRight size={19} />
-            </a>
-          </div>
-        </motion.div>
-        <motion.div className="dev-editor" {...reveal}>
-          <div className="dev-editor-bar">
-            <span className="dev-editor-dots" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-            </span>
-            <span>developer.ts</span>
-            <span className="dev-editor-language">TypeScript</span>
-          </div>
-          <pre aria-label="Perfil de Paulo Henrique em formato de código">
-            <code>
-              <span className="dev-comment">// Aprender. Construir. Evoluir.</span>
-              {"\n"}
-              <span className="dev-keyword">const</span>{" "}
-              <span className="dev-variable">developer</span>
-              {" = "}
-              <span className="dev-bracket">{"{"}</span>
-              {"\n  "}
-              <span className="dev-property">name</span>
-              {": "}
-              <span className="dev-string">"Paulo Henrique"</span>
-              {",\n"}
-              {"  "}
-              <span className="dev-property">role</span>
-              {": "}
-              <span className="dev-string">"Fullstack Developer"</span>
-              {",\n"}
-              {"  "}
-              <span className="dev-property">stack</span>
-              {": "}
-              <span className="dev-bracket">[</span>
-              <span className="dev-string">"React"</span>
-              {", "}
-              <span className="dev-string">"Next.js"</span>
-              {", "}
-              <span className="dev-string">"Node.js"</span>
-              <span className="dev-bracket">]</span>
-              {",\n  "}
-              <span className="dev-property">mindset</span>
-              {": "}
-              <span className="dev-string">"Um projeto de cada vez"</span>
-              {"\n"}
-              <span className="dev-bracket">{"}"}</span>
-              {";"}
-            </code>
-          </pre>
-          <div className="dev-editor-status">
-            <span>
-              <Braces size={14} aria-hidden="true" /> Código com propósito
-            </span>
-            <span>UTF-8</span>
-          </div>
-        </motion.div>
-        <div className="about-history" id="historia">
-          <div>
-            <p className="eyebrow">UM POUCO DA MINHA TRAJETÓRIA</p>
-            <p>
-              Sou formado em Análise e Desenvolvimento de Sistemas e curso uma pós-graduação em
-              Desenvolvimento Front-end na Anhanguera. Exploro aplicações completas com React,
-              Node.js e bancos de dados relacionais.
-            </p>
-            <p>
-              Minha experiência na Secretaria da Segurança Pública da Bahia trouxe responsabilidade,
-              organização e uma visão prática de processos. Busco um estágio fullstack para aprender
-              com uma equipe e contribuir em projetos reais.
-            </p>
-          </div>
-          <div className="journey">
-            {[
-              {
-                year: "2026 · EM ANDAMENTO",
-                title: "Pós em Desenvolvimento Front-end",
-                text: "Anhanguera",
-              },
-              {
-                year: "2024 · CONCLUÍDO",
-                title: "Análise e Desenvolvimento de Sistemas",
-                text: "Formação tecnológica",
-              },
-              {
-                year: "2020 — ATUAL",
-                title: "Secretaria da Segurança Pública da Bahia",
-                text: "Organização, processos e operação",
-              },
-            ].map((item) => (
-              <article key={item.year}>
-                <span>{item.year}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
       <section className="projects-section section wrap" id="projetos">
         <div className="section-top">
-          <h2 className="eyebrow">02 / TRABALHOS SELECIONADOS</h2>
+          <p className="eyebrow">01 / TRABALHOS SELECIONADOS</p>
           <span aria-live="polite">{String(selected.length).padStart(2, "0")} projetos</span>
         </div>
+        <h2 className="work-heading">Uma seleção do que construí.</h2>
+        <p className="work-description">
+          Sites, interfaces e aplicações. Explore cada projeto para conhecer a ideia e a solução.
+        </p>
         <div className="filters" role="group" aria-label="Filtrar projetos">
           {["Destaques", "Todos", "Fullstack", "Front-end"].map((item) => (
             <button
@@ -266,9 +155,6 @@ export default function Home() {
                     <span className="project-open">
                       <Plus size={25} strokeWidth={1} />
                     </span>
-                  </span>
-                  <span className="project-hover-image" aria-hidden="true">
-                    <img src={p.img} alt="" loading="lazy" />
                   </span>
                 </summary>
                 <div className="project-detail">
@@ -315,78 +201,47 @@ export default function Home() {
           </div>
         )}
       </section>
-      <div className="project-gallery" aria-label="Galeria de projetos">
-        {projects.slice(0, 8).map((p, index) => (
-          <a
-            href="#projetos"
-            className={`gallery-item gallery-tone-${index % 4}`}
-            key={p.title}
-            aria-label={`Explorar projetos como ${p.title}`}
-          >
-            <img src={p.img} alt={p.title} loading="lazy" />
-          </a>
-        ))}
-      </div>
-      <section className="stack-section section wrap" id="stack">
-        <motion.div {...reveal}>
-          <p className="eyebrow">03 / TECNOLOGIAS</p>
-          <div className="stack-heading">
-            <h2>
-              As ferramentas.
-              <br />
-              As possibilidades.
-            </h2>
-            <p>
-              Tecnologias que estudo e aplico nos meus projetos, com espaço para continuar
-              aprendendo.
-            </p>
+      <section className="about-section section wrap" id="sobre" aria-labelledby="about-title">
+        <motion.div className="about-intro" {...reveal}>
+          <div>
+            <p className="eyebrow">02 / POR TRÁS DOS PROJETOS</p>
+            <h2 id="about-title">Boas ideias merecem uma experiência à altura.</h2>
           </div>
-          <div className="skill-grid">
-            {[
-              {
-                title: "Front-end",
-                tags: [
-                  "React",
-                  "Next.js",
-                  "TypeScript",
-                  "JavaScript",
-                  "HTML & CSS",
-                  "Tailwind CSS",
-                ],
-              },
-              {
-                title: "Back-end",
-                tags: ["Node.js", "Express", "APIs REST", "JWT", "Swagger", "Testes"],
-              },
-              {
-                title: "Dados & ferramentas",
-                tags: ["PostgreSQL", "Prisma ORM", "MySQL", "Git & GitHub", "Docker"],
-              },
-              { title: "Deploy & CI/CD", tags: ["GitHub Actions", "Vercel", "Railway", "Render"] },
-            ].map((skill, index) => (
-              <article key={skill.title}>
-                <span className="skill-number">0{index + 1}</span>
-                <h3>{skill.title}</h3>
-                <ul className="technology-stack" aria-label={`Stack de ${skill.title}`}>
-                  {skill.tags.map((tag) => {
-                    const Icon = technologyIcons[tag] ?? (tag === "Testes" ? FlaskConical : Braces);
-                    return (
-                      <li key={tag}>
-                        <Icon size={18} aria-hidden="true" />
-                        <span>{tag}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </article>
-            ))}
+          <div className="about-aside">
+            <p>
+              Sou Paulo Henrique, desenvolvedor em Salvador. Crio sites e aplicações que combinam
+              interfaces cuidadosas com soluções para o dia a dia.
+            </p>
+            <p>
+              Este espaço reúne o que gosto de construir: produtos úteis, experiências simples e
+              atenção aos detalhes.
+            </p>
+            <a className="about-link" href="#contato">
+              Vamos conversar <ArrowUpRight size={18} />
+            </a>
           </div>
         </motion.div>
+      </section>
+      <section
+        className="portfolio-technologies section wrap"
+        id="stack"
+        aria-labelledby="technologies-title"
+      >
+        <p className="eyebrow">03 / TECNOLOGIAS</p>
+        <h2 id="technologies-title">Ferramentas que dão vida aos projetos.</h2>
+        <ul className="portfolio-technology-list">
+          {technologies.map(({ name, Icon }) => (
+            <li key={name}>
+              <Icon size={26} aria-hidden="true" />
+              <span>{name}</span>
+            </li>
+          ))}
+        </ul>
       </section>
       <section className="contact-section" id="contato">
         <motion.div className="wrap contact-inner" {...reveal}>
           <p className="availability">
-            <i /> Aberto a oportunidades
+            <i /> Tem um projeto em mente?
           </p>
           <h2>
             Vamos construir
@@ -394,7 +249,7 @@ export default function Home() {
             algo juntos.
           </h2>
           <p className="contact-description">
-            Uma oportunidade para aprender, colaborar e transformar ideias em aplicações.
+            Uma ideia, um novo site ou uma aplicação. Vamos conversar sobre o que você quer criar.
           </p>
           <a
             className="contact-button"

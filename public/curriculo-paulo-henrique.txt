@@ -1,0 +1,101 @@
+PAULO HENRIQUE FERREIRA FRANÇA
+DESENVOLVEDOR FULL STACK | REACT.JS | NODE.JS | TYPESCRIPT | POSTGRESQL
+Salvador – BA | Contato: (71) 9341-1990
+E-mail: paulohenriqueferreirafranca2@gmail.com | LinkedIn: linkedin.com/in/paulohenriquefranca
+GitHub: github.com/PauloHenrique993940 | Portfólio: paulo-fullstack-dev.vercel.app
+
+RESUMO PROFISSIONAL
+
+Desenvolvedor Full Stack, com formação em Análise e Desenvolvimento de Sistemas e experiência prática na construção de aplicações web. Conhecimentos em React.js, Next.js, TypeScript, JavaScript, Node.js, Express.js, PostgreSQL, Prisma ORM e APIs REST. Experiência no desenvolvimento de interfaces responsivas, integração de sistemas, autenticação, modelagem de dados, testes automatizados e deploy de aplicações com Docker, Vercel e Railway. Portfólio com projetos Full Stack publicados, incluindo plataformas de gestão de almoxarifado, monitoramento operacional, rastreamento de entregas e e-commerce. Vivência profissional em logística e gestão de materiais, com conhecimento de processos operacionais aplicado ao desenvolvimento de soluções tecnológicas.
+
+OBJETIVO PROFISSIONAL
+
+Atuar como Desenvolvedor Full Stack, com foco em React.js, Node.js, TypeScript, desenvolvimento de aplicações web, APIs REST e integração de sistemas.
+
+PRINCIPAIS ENTREGAS TÉCNICAS
+
+•	Desenvolvimento de plataforma Full Stack para gestão de estoque, patrimônio e inventário. 
+•	Implementação de painel operacional com dashboards, autenticação e APIs REST. 
+•	Automação de regras de status para controle digital de processos, materiais e entregas. 
+•	Desenvolvimento de aplicações com testes automatizados, documentação de APIs e deploy. 
+
+EXPERIÊNCIA PROFISSIONAL
+
+SECRETARIA DA SEGURANÇA PÚBLICA DO ESTADO DA BAHIA (SSP-BA)
+Coordenador IV | Gestão de Almoxarifado e Controle Patrimonial | mar/2020 – atual
+•	Executo processos administrativos de almoxarifado, logística e gestão de materiais. 
+•	Controlo recebimento, armazenamento, movimentação e distribuição de materiais. 
+•	Registro entradas, saídas e movimentações para garantir a rastreabilidade do estoque. 
+•	Monitoro níveis de estoque e identifico necessidades de reposição de materiais. 
+•	Elaboro Termos de Transferência e Responsabilidade para controle patrimonial. 
+•	Utilizo Excel e SIMPAS para acompanhamento de informações e processos administrativos. 
+•	Acompanho atividades operacionais das equipes e a organização dos estoques. 
+
+PROJETOS DE DESENVOLVIMENTO DE SOFTWARE
+
+PAINEL OPERACIONAL DE PROCESSOS, MATERIAIS E ENTREGAS
+Full Stack | Next.js | React.js | PostgreSQL | Docker
+•	Desenvolvi painel Full Stack para monitoramento de processos, materiais e entregas. 
+•	Implementei dashboards interativos, autenticação e APIs REST com Next.js. 
+•	Automatizei regras de status para digitalizar o acompanhamento dos processos. 
+•	Estruturei banco PostgreSQL com consultas parametrizadas e validações de segurança. 
+•	Configurei Docker, documentação Swagger e deploy da aplicação na Vercel. 
+
+Projeto: https://sistema-informacao-nmp.vercel.app/
+
+PLATAFORMA FULL STACK DE GESTÃO DE ALMOXARIFADO
+React.js | TypeScript | Node.js | Express.js | PostgreSQL | Prisma ORM
+•	Desenvolvi plataforma Full Stack para gestão de estoque, patrimônio e materiais. 
+•	Implementei módulos de inventário, fornecedores, empréstimos e movimentações. 
+•	Desenvolvi APIs REST com Node.js, Express.js, PostgreSQL e Prisma ORM. 
+•	Implementei autenticação JWT, controle de acesso e validação de dados. 
+•	Integrei Socket.IO e mapas para rastreamento de entregas em tempo real. 
+•	Executei testes com Jest e Cypress e publiquei serviços na Vercel e Railway e Neon. 
+
+Projeto: https://gestao-almoxarifado-frontend.vercel.app/login 
+
+SISTEMA FULL STACK DE RASTREAMENTO DE ENTREGAS
+React.js | TypeScript | Node.js | Express.js | PostgreSQL | Supabase
+•	Desenvolvi sistema Full Stack para rastreamento e acompanhamento de entregas. 
+•	Implementei APIs REST para consulta e atualização de informações logísticas. 
+•	Integrei front-end, back-end e PostgreSQL utilizando Prisma ORM e Supabase. 
+•	Desenvolvi interface responsiva com atualização dinâmica dos status de entrega. 
+
+Projeto: https://sistemarastreio-front.vercel.app/
+
+EFOOD – PLATAFORMA DE DELIVERY
+React.js | TypeScript | Redux Toolkit | Styled Components | APIs REST
+•	Desenvolvi aplicação de delivery com React.js, TypeScript e componentes reutilizáveis. 
+•	Implementei catálogo, carrinho de compras e gerenciamento de estado com Redux Toolkit. 
+•	Desenvolvi checkout em três etapas com validação de formulários usando Formik e Yup. 
+•	Integrei APIs REST com Axios e implementei testes automatizados com Jest e Cypress. 
+
+FORMAÇÃO ACADÊMICA
+
+•	Tecnologia em Desenvolvimento Full Stack | Universidade Cruzeiro do Sul | Conclusão prevista: 1º sem/2028 
+•	Tecnologia em Análise e Desenvolvimento de Sistemas | Unifatecie | Concluído em 2024
+
+CURSOS E QUALIFICAÇÕES
+
+•	DevQuest Full Stack Web Developer | Dev em Dobro | 2026 
+•	DevQuest 2.0 Front-end | Dev em Dobro | 2025 
+•	Arquitetura e Programação Front-end | Faculdade Focus | 2025 
+•	JavaScript Developer | Jornada do Dev | 2025 
+•	Git e GitHub | Refatorando | 2025 
+•	Programação Full Stack | Infinity School | 2024 
+
+IDIOMAS
+
+Inglês – Básico
+
+SISTEMAS E FERRAMENTAS
+
+Front-end: React.js | Next.js | TypeScript | JavaScript | HTML5 | CSS3 | Tailwind CSS | Redux Toolkit | Bootstrap | Sass/SCSS
+Back-end: Node.js | Express.js | Python | APIs REST | Prisma ORM | WebSocket | Socket.IO
+Banco de Dados: PostgreSQL | MySQL | Supabase
+Testes e Qualidade: Jest | Cypress | Swagger | Zod | React Hook Form
+DevOps e Ferramentas: Docker | Docker Compose | Git | GitHub | Vercel | Railway | Excel | Word | SIMPAS
+
+HABILIDADES E COMPETÊNCIAS
+
+Desenvolvimento Full Stack | Desenvolvimento Front-end | Desenvolvimento Back-end | Integração de APIs | Modelagem de Dados | Banco de Dados Relacional | Autenticação e Controle de Acesso | Interfaces Responsivas | Testes Automatizados | Versionamento de Código | Deploy de Aplicações | Componentização | Clean Code | Resolução de Problemas
