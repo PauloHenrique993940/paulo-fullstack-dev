@@ -5,7 +5,7 @@ const projectSections: Array<{ title: string; description: string; projectTitles
   {
     title: "Sistemas",
     description: "Plataformas, produtos digitais e ferramentas para operações reais.",
-    projectTitles: ["Almoxarif", "Clarity Finanças", "Hacker Platform", "Syntax Wear", "Ativo Control", "Sistema de Informações APS/AFM", "Gerenciador de Tarefas Kanban", "Biblioteca Digital", "Efood", "Eplay", "Indústrias Wayne"],
+    projectTitles: ["Nexus Games", "Almoxarif", "Clarity Finanças", "Hacker Platform", "Syntax Wear", "Ativo Control", "Sistema de Informações APS/AFM", "Gerenciador de Tarefas Kanban", "Biblioteca Digital", "Efood", "Eplay", "Indústrias Wayne"],
   },
   {
     title: "Sites",

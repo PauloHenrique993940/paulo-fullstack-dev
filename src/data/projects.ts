@@ -22,8 +22,25 @@ import disneyPlusImage from "@/assets/disney+.png";
 import ghibliImage from "@/assets/ghibli.png";
 import eplayImage from "@/assets/eplay.png";
 import industriaWayneImage from "@/assets/industriaWayne.png";
+import nexusImage from "@/assets/nexus.png";
 
 export const projects = [
+  {
+    n: "24",
+    title: "Nexus Games",
+    sub: "Loja demonstrativa de jogos com catálogo e checkout",
+    problem:
+      "Reunir descoberta de jogos, ofertas e jornada de compra em uma experiência organizada e envolvente.",
+    solution:
+      "Desenvolvi uma loja com React, TypeScript e Sass, integrada a uma API REST em Express com documentação Swagger. O catálogo reúne 100 jogos, pesquisa, filtros e ordenação, além de favoritos, carrinho persistente no navegador e checkout demonstrativo com validação de produtos e cálculo de totais no servidor.",
+    result:
+      "Aplicação full stack que conecta navegação de catálogo e simulação de compra, com identidade visual gamer e interface responsiva.",
+    tags: ["React", "TypeScript", "Sass", "Node.js", "Express", "APIs REST", "Swagger", "E-commerce"],
+    year: "2026",
+    img: nexusImage,
+    deploy: "https://nexus-games-theta.vercel.app/",
+    ribbon: "E-commerce",
+  },
   {
     n: "01",
     title: "Almoxarif",
