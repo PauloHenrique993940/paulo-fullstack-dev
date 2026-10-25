@@ -1,11 +1,11 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
 
 const projectSections: Array<{ title: string; description: string; projectTitles: string[] }> = [
   {
     title: "Sistemas",
     description: "Plataformas, produtos digitais e ferramentas para operações reais.",
-    projectTitles: ["Nexus Games", "Almoxarif", "Clarity Finanças", "Hacker Platform", "Syntax Wear", "Ativo Control", "Sistema de Informações APS/AFM", "Gerenciador de Tarefas Kanban", "Biblioteca Digital", "Efood", "Eplay", "Indústrias Wayne"],
+    projectTitles: ["playPipoca", "Nexus Games", "Almoxarif", "Clarity Finanças", "Hacker Platform", "Syntax Wear", "Ativo Control", "Sistema de Informações APS/AFM", "Gerenciador de Tarefas Kanban", "Biblioteca Digital", "Efood", "Eplay", "Indústrias Wayne"],
   },
   {
     title: "Sites",

@@ -23,8 +23,25 @@ import ghibliImage from "@/assets/ghibli.png";
 import eplayImage from "@/assets/eplay.png";
 import industriaWayneImage from "@/assets/industriaWayne.png";
 import nexusImage from "@/assets/nexus.png";
+import playPipocaImage from "@/assets/playPipoca.png";
 
 export const projects = [
+  {
+    n: "25",
+    title: "playPipoca",
+    sub: "Plataforma de descoberta de filmes e séries",
+    problem:
+      "Facilitar a descoberta de filmes e séries, reunindo informações e títulos favoritos em uma experiência organizada.",
+    solution:
+      "Desenvolvi uma interface com React, TypeScript e Sass, com catálogo de 24 títulos, busca por título, gênero e direção, filtros e ordenação por avaliação. Incluí detalhes dos títulos, trailers no YouTube e favoritos persistidos no localStorage.",
+    result:
+      "Aplicação front-end responsiva que reúne descoberta de conteúdo, consulta de detalhes e organização de uma lista pessoal de filmes e séries.",
+    tags: ["React", "TypeScript", "Sass", "Vite", "localStorage", "UI Responsiva"],
+    year: "2026",
+    img: playPipocaImage,
+    deploy: "https://playpipoca.vercel.app/",
+    ribbon: "Front-end",
+  },
   {
     n: "24",
     title: "Nexus Games",

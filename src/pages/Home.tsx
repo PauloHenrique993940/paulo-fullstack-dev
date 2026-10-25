@@ -1,6 +1,6 @@
-﻿import { useState } from "react";
-import { ArrowDownRight, ArrowUpRight, Globe2, Plus } from "lucide-react";
-import { motion } from "framer-motion";
+﻿import { useEffect, useState } from "react";
+import { ArrowUpRight, ArrowLeft, ArrowRight, Pause, Play, Plus, Target, Layers3, Lightbulb } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   SiReact,
   SiNextdotjs,
@@ -26,6 +26,8 @@ import portrait from "@/assets/minhaFotoClara.jpg";
 import { projects } from "@/data/projects";
 const fullstack = (tags: string[]) =>
   tags.some((tag) => /fullstack|node|express|php|postgresql/i.test(tag));
+const featuredTitles = ["playPipoca", "Almoxarif", "Sistema de Informações APS/AFM", "Rastreio de Encomendas", "Efood"];
+const featuredProjects = projects.filter((project) => featuredTitles.includes(project.title));
 const reveal = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -55,9 +57,24 @@ const technologies = [
 ];
 export default function Home() {
   const [filter, setFilter] = useState("Destaques");
+  const [activeProject, setActiveProject] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const featured = featuredProjects[activeProject];
+  const rotating = !paused && !hovered && !focused && !reducedMotion;
+  useEffect(() => {
+    if (!rotating || featuredProjects.length < 2) return;
+    const timer = window.setInterval(() => {
+      if (!document.hidden) setActiveProject((current) => (current + 1) % featuredProjects.length);
+    }, 6500);
+    return () => window.clearInterval(timer);
+  }, [rotating, activeProject]);
+  const changeProject = (index: number) => setActiveProject((index + featuredProjects.length) % featuredProjects.length);
   const selected = projects.filter((p) =>
     filter === "Destaques"
-      ? ["Almoxarif", "Sistema de Informações APS/AFM", "Rastreio de Encomendas", "Efood"].includes(
+      ? ["playPipoca", "Almoxarif", "Sistema de Informações APS/AFM", "Rastreio de Encomendas", "Efood"].includes(
           p.title,
         )
       : filter === "Fullstack"
@@ -69,53 +86,66 @@ export default function Home() {
   return (
     <>
       <section className="hero" id="inicio" aria-labelledby="hero-title">
-        <div className="hero-photo">
-          <img src={portrait} alt="Paulo Henrique, desenvolvedor fullstack" fetchPriority="high" />
+        <div className="hero-layout wrap">
+        <div className="hero-copy">
+          <span className="hero-kicker">DESENVOLVEDOR FULLSTACK</span>
+          <h1 id="hero-title">Produtos<br />digitais que<br /><em>resolvem.</em></h1>
         </div>
-        <div className="hero-shade" aria-hidden="true" />
-        <div className="hero-location">
-          <span>
-            Localizado em
-            <br />
-            Salvador,
-            <br />
-            Bahia, Brasil
-          </span>
-          <Globe2 size={32} strokeWidth={1} />
+        <div className="hero-introduction">
+          <p>Do planejamento ao deploy, desenvolvo aplicações web com foco em problemas reais e soluções completas.</p>
+          <span>Paulo Henrique · Salvador, Bahia</span>
+          <a className="secondary-action" href="#projetos">Explore meu trabalho <ArrowUpRight size={19} /></a>
         </div>
-        <div className="hero-role">
-          <ArrowDownRight size={40} strokeWidth={1} />
-          <h1 id="hero-title">
-            Ideias que ganham
-            <br />
-            forma na web.
-          </h1>
-          <p>
-            Desenvolvimento web com cuidado
-            <br />
-            em cada detalhe.
-          </p>
-        </div>
-        <div className="name-marquee" aria-hidden="true">
-          <div className="name-track">
-            <span>Paulo Henrique</span>
-          </div>
-        </div>
-        <div className="hero-bottom">
-          <span className="availability">
-            <i /> Portfólio de desenvolvimento web
-          </span>
-          <a href="#projetos">
-            Explore o portfólio <ArrowDownRight size={20} />
-          </a>
         </div>
       </section>
+      {featured && (
+        <section className="featured-case wrap" aria-label="Principais projetos" aria-roledescription="carrossel"
+          onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+          onFocusCapture={() => setFocused(true)}
+          onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+          <div className="carousel-toolbar">
+            <span className="carousel-label">PROJETOS EM DESTAQUE</span>
+            <div className="carousel-controls">
+              <span className="carousel-count">{String(activeProject + 1).padStart(2, "0")} / {String(featuredProjects.length).padStart(2, "0")}</span>
+              {!reducedMotion && <button type="button" onClick={() => setPaused(!paused)} aria-label={paused ? "Reproduzir carrossel" : "Pausar carrossel"}>{paused ? <Play size={16} /> : <Pause size={16} />}</button>}
+              <button type="button" onClick={() => changeProject(activeProject - 1)} aria-label="Projeto anterior"><ArrowLeft size={18} /></button>
+              <button type="button" onClick={() => changeProject(activeProject + 1)} aria-label="Próximo projeto"><ArrowRight size={18} /></button>
+            </div>
+          </div>
+          <div aria-live={rotating ? "off" : "polite"} aria-atomic="true">
+          <motion.div key={featured.title} initial={{ opacity: reducedMotion ? 1 : 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}
+            role="group" aria-roledescription="slide" aria-label={`${activeProject + 1} de ${featuredProjects.length}: ${featured.title}`}>
+          <div className="featured-presentation">
+            <div className="featured-copy">
+              <p className="eyebrow">PROJETO EM DESTAQUE</p>
+              <h2 id="featured-title">{featured.title === "playPipoca" ? "PlayPipoca" : featured.title}</h2>
+              <p>{featured.sub}</p>
+              <span className="case-type">{featured.tags.slice(0, 3).join(" · ")} · {featured.year}</span>
+              <a className="case-visit" href={featured.deploy} target="_blank" rel="noopener noreferrer" aria-label={`Acessar o projeto ${featured.title}`}><ArrowUpRight size={27} /></a>
+            </div>
+            <a className="featured-image" href={featured.deploy} target="_blank" rel="noopener noreferrer" aria-label={`Ver ${featured.title} em funcionamento`}>
+              <img src={featured.img} alt={`Interface de ${featured.title}`} fetchPriority="high" />
+              <span>Explorar projeto <ArrowUpRight size={17} /></span>
+            </a>
+          </div>
+          <div className="case-insights">
+            <article><Target size={27} strokeWidth={1.4} /><div><h3>Desafio</h3><p>{featured.problem}</p></div></article>
+            <article><Layers3 size={27} strokeWidth={1.4} /><div><h3>Solução</h3><p>{featured.solution}</p></div></article>
+            <article><Lightbulb size={27} strokeWidth={1.4} /><div><h3>Resultado</h3><p>{featured.result}</p></div></article>
+          </div>
+          </motion.div>
+          </div>
+          <div className="carousel-indicators" role="group" aria-label="Escolher projeto em destaque">
+            {featuredProjects.map((project, index) => <button key={project.title} type="button" className={index === activeProject ? "active" : ""} aria-label={`Mostrar ${project.title}`} aria-pressed={index === activeProject} onClick={() => changeProject(index)}><span /></button>)}
+          </div>
+        </section>
+      )}
       <section className="projects-section section wrap" id="projetos">
         <div className="section-top">
           <p className="eyebrow">01 / TRABALHOS SELECIONADOS</p>
           <span aria-live="polite">{String(selected.length).padStart(2, "0")} projetos</span>
         </div>
-        <h2 className="work-heading">Uma seleção do que construí.</h2>
+        <h2 className="work-heading">Ideias na prática.<br /><em>Detalhes que fazem diferença.</em></h2>
         <p className="work-description">
           Sites, interfaces e aplicações. Explore cada projeto para conhecer a ideia e a solução.
         </p>
@@ -206,6 +236,7 @@ export default function Home() {
           <div>
             <p className="eyebrow">02 / POR TRÁS DOS PROJETOS</p>
             <h2 id="about-title">Boas ideias merecem uma experiência à altura.</h2>
+            <img className="about-portrait" src={portrait} alt="Paulo Henrique, desenvolvedor fullstack" loading="lazy" />
           </div>
           <div className="about-aside">
             <p>
@@ -278,3 +309,4 @@ export default function Home() {
     </>
   );
 }
+
