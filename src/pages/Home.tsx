@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ArrowRight, Mail, X, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Mail, X, ExternalLink, Flame, Swords, Sparkles } from "lucide-react";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiExpress, SiPostgresql,
   SiPrisma, SiDocker, SiGithub, SiVercel, SiHtml5, SiSwagger, SiJsonwebtokens, SiMysql, SiGithubactions,
   SiRailway, SiRender,
 } from "react-icons/si";
 import { FaLinkedin as SiLinkedin } from "react-icons/fa";
-import portrait from "@/assets/minhaFotoClara.jpg";
+import { FaWhatsapp } from "react-icons/fa";
+import portrait from "@/assets/paulo-fighter.png";
 import { projects } from "@/data/projects";
 import { profile, timeline, courses, skills, deliveries } from "@/data/profile";
 import { goTo } from "@/components/Nav";
@@ -16,6 +17,7 @@ import { Tilt } from "@/components/Tilt";
 type Project = (typeof projects)[number];
 
 const EMAIL = "paulohenriqueferreirafranca2@gmail.com";
+const WHATSAPP = "557193411990";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const technologies = [
@@ -103,18 +105,18 @@ function Hero({ ready }: { ready: boolean }) {
       <div className="container hero-grid">
         <div className="hero-copy">
           <motion.span className="kicker" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: d, duration: 1 }}>
-            <i className="dot" /> Disponível para novos projetos
+            <i className="dot" /> PLAYER 1 ONLINE
           </motion.span>
           <h1 id="hero-title">
-            <Lines delay={d + 0.1}>{["Construo produtos", "digitais com", "precisão e"]}</Lines>
-            <span className="mask"><motion.em initial={{ y: "105%" }} animate={{ y: 0 }} transition={{ duration: 1, ease, delay: d + 0.46 }}>elegância.</motion.em></span>
+            <Lines delay={d + 0.1}>{["Paulo Henrique", "desenvolvedor", "Full Stack"]}</Lines>
+            <span className="mask"><motion.em initial={{ y: "105%" }} animate={{ y: 0 }} transition={{ duration: 1, ease, delay: d + 0.46 }}>PRONTO PARA O PRÓXIMO ROUND</motion.em></span>
           </h1>
           <motion.p className="hero-lead" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: d + 0.7 }}>
             {profile.objective}
           </motion.p>
           <motion.div className="hero-actions" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: d + 0.85 }}>
-            <button type="button" className="btn btn-solid" onClick={() => goTo("projetos")}>Ver projetos <ArrowRight size={16} /></button>
-            <button type="button" className="btn btn-ghost" onClick={() => goTo("contato")}>Fale comigo</button>
+            <button type="button" className="btn btn-solid" onClick={() => goTo("projetos")}>Ver minhas lutas <ArrowRight size={16} /></button>
+            <button type="button" className="btn btn-ghost" onClick={() => goTo("contato")}>Desafiar</button>
           </motion.div>
         </div>
 
@@ -123,17 +125,17 @@ function Hero({ ready }: { ready: boolean }) {
             <img src={portrait} alt="Retrato de Paulo Henrique" />
             <figcaption>
               <strong>Paulo Henrique</strong>
-              <span>Full Stack · Salvador, BA</span>
+              <span>PLAYER 1 | FULL STACK | SALVADOR, BA</span>
             </figcaption>
           </motion.figure>
         </Tilt>
       </div>
 
       <motion.ul className="container stats" {...reveal()}>
-        <li><strong><Counter to={projects.length} /></strong><span>Projetos publicados</span></li>
-        <li><strong><Counter to={technologies.length} /></strong><span>Tecnologias</span></li>
-        <li><strong><Counter to={6} suffix="+" /></strong><span>Anos em gestão e processos</span></li>
-        <li><strong><Counter to={courses.length} /></strong><span>Formações complementares</span></li>
+        <li><strong><Counter to={projects.length} /></strong><span>Lutas vencidas</span></li>
+        <li><strong><Counter to={technologies.length} /></strong><span>Golpes no arsenal</span></li>
+        <li><strong><Counter to={6} suffix="+" /></strong><span>Anos de experiência em operações</span></li>
+        <li><strong><Counter to={courses.length} /></strong><span>Cursos concluidos</span></li>
       </motion.ul>
     </section>
   );
@@ -201,7 +203,8 @@ function Projects() {
   return (
     <section className="section" id="projetos" aria-labelledby="projetos-title">
       <div className="container">
-        <SectionTitle index="01" kicker="Trabalhos selecionados"><span id="projetos-title">Projetos que unem <em>design</em> e engenharia</span></SectionTitle>
+        <SectionTitle index="01" kicker="SELECT YOUR OPPONENT"><span id="projetos-title">Lutas <em>vencidas</em></span></SectionTitle>
+        <p className="section-intro">Cada projeto trouxe um novo desafio. Escolha um card para ver o golpe final e os detalhes da solução.</p>
         <motion.div className="filters" role="tablist" aria-label="Filtrar projetos" {...reveal(0.1)}>
           {filters.map((f) => (
             <button key={f} role="tab" aria-selected={filter === f} onClick={() => setFilter(f)} className={filter === f ? "is-on" : ""}>
@@ -220,7 +223,7 @@ function Projects() {
                   <button type="button" className="card" onClick={() => setOpen(p)} aria-label={`Abrir detalhes de ${p.title}`}>
                     <Img src={p.img} alt="" />
                     <div className="card-body">
-                      <span className="card-meta">{p.year} · {p.n}</span>
+                      <span className="card-meta"><Flame size={13} /> Chefe {p.n} | {p.year}</span>
                       <h3>{p.title}</h3>
                       <p>{p.sub}</p>
                       <span className="card-arrow"><ArrowUpRight size={18} /></span>
@@ -242,7 +245,7 @@ function Stack() {
   return (
     <section className="section" id="stack" aria-labelledby="stack-title">
       <div className="container">
-        <SectionTitle index="02" kicker="Ferramentas"><span id="stack-title">Uma stack completa, do <em>front</em> ao deploy</span></SectionTitle>
+        <SectionTitle index="02" kicker="Habilidades"><span id="stack-title">Meu arsenal <em>de tecnologia</em></span></SectionTitle>
       </div>
       <div className="carousel3d" role="img" aria-label={`Tecnologias: ${technologies.map((t) => t.name).join(", ")}`}>
         <div className="carousel3d-ring">
@@ -258,7 +261,7 @@ function Stack() {
         {skills.map((s, i) => (
           <motion.div key={s.title} className="skill" {...reveal(i * 0.08)}>
             <h3>{s.title}</h3>
-            <ul>{s.tags.map((t) => <li key={t}>{t}</li>)}</ul>
+            <ul>{s.tags.map((t) => <li key={t}><Swords size={13} /> {t}</li>)}</ul>
           </motion.div>
         ))}
       </div>
@@ -270,7 +273,7 @@ function About() {
   return (
     <section className="section" id="sobre" aria-labelledby="sobre-title">
       <div className="container">
-        <SectionTitle index="03" kicker="Sobre"><span id="sobre-title">Trajetória e <em>formação</em></span></SectionTitle>
+        <SectionTitle index="03" kicker="História"><span id="sobre-title">Minha torre de <em>batalhas</em></span></SectionTitle>
         <div className="about">
           <motion.div {...reveal()}>
             <p className="about-lead">{profile.summary}</p>
@@ -318,7 +321,10 @@ function Contact() {
         <motion.span className="kicker" {...reveal()}><b>04</b> Contato</motion.span>
         <motion.h2 id="contato-title" {...reveal(0.1)}>Vamos criar algo <em>extraordinário</em> juntos?</motion.h2>
         <motion.div className="contact-actions" {...reveal(0.2)}>
-          <a className="btn btn-solid btn-lg" href={`mailto:${EMAIL}`}><Mail size={18} /> Enviar e-mail</a>
+          <a className="btn btn-solid btn-lg" href={`mailto:${EMAIL}`}><Mail size={18} /> Fatality: enviar e-mail</a>
+          <a className="btn btn-whatsapp btn-lg" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer" aria-label="Chamar Paulo no WhatsApp">
+            <FaWhatsapp size={20} /> WhatsApp: 71 93411-990 <Flame size={17} className="whatsapp-flame" aria-hidden="true" />
+          </a>
           <button type="button" className="btn btn-ghost btn-lg" onClick={copy}>{copied ? "E-mail copiado ✓" : EMAIL}</button>
         </motion.div>
         <motion.div className="socials" {...reveal(0.3)}>

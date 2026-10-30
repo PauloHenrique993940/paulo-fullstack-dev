@@ -30,6 +30,11 @@ export function Preloader({ onDone }: { onDone: () => void }) {
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 0.95, ease: [0.76, 0, 0.24, 1] }}
         >
+          <div className="preloader-portal" aria-hidden="true">
+            <span className="portal-ring portal-ring-outer" />
+            <span className="portal-ring portal-ring-inner" />
+            <span className="portal-core" />
+          </div>
           <div className="preloader-name" aria-hidden="true">
             {name.split("").map((c, i) => (
               <motion.span

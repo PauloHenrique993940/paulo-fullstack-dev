@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Heart, Bug } from "lucide-react";
 
 export const sections = [
   { id: "inicio", label: "Início" },
-  { id: "projetos", label: "Projetos" },
-  { id: "stack", label: "Tecnologias" },
-  { id: "sobre", label: "Sobre" },
+  { id: "projetos", label: "Lutas" },
+  { id: "stack", label: "Arsenal" },
+  { id: "sobre", label: "História" },
 ];
 
 export function goTo(id: string) {
@@ -16,9 +16,14 @@ export function goTo(id: string) {
 export function Nav() {
   const [active, setActive] = useState("inicio");
   const [scrolled, setScrolled] = useState(false);
+  const [life, setLife] = useState(100);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setLife(max > 0 ? Math.round(Math.max(0, 100 - (window.scrollY / max) * 100)) : 100);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     const obs = new IntersectionObserver(
@@ -42,6 +47,10 @@ export function Nav() {
 
   return (
     <header className={`nav ${scrolled ? "is-scrolled" : ""}`}>
+      <div className="fight-hud" aria-hidden="true">
+        <strong><Heart size={14} /> DEV</strong><div className="life-bar"><i /></div><b>1P</b>
+        <div className="life-bar enemy"><i style={{ transform: `scaleX(${life / 100})` }} /></div><strong><Bug size={14} /> BUG</strong>
+      </div>
       <a href="#inicio" className="nav-brand" onClick={click("inicio")}>
         <span>P</span>aulo <em>Henrique</em>
       </a>

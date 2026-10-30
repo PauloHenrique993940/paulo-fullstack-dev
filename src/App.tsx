@@ -17,7 +17,7 @@ function hasWebGL() {
 }
 
 export default function App() {
-  const [ready, setReady] = useState(() => sessionStorage.getItem("phf-ready") === "1");
+  const [ready, setReady] = useState(false);
   const [webgl] = useState(hasWebGL);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24 });
@@ -34,7 +34,6 @@ export default function App() {
       {!ready && (
         <Preloader
           onDone={() => {
-            sessionStorage.setItem("phf-ready", "1");
             setReady(true);
           }}
         />
