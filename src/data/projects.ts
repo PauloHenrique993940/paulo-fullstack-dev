@@ -24,8 +24,42 @@ import eplayImage from "@/assets/eplay.png";
 import industriaWayneImage from "@/assets/industriaWayne.png";
 import nexusImage from "@/assets/nexus.png";
 import playPipocaImage from "@/assets/playPipoca.png";
+import vanguardImage from "@/assets/vanguard.png";
+import almoxarifado3DImage from "@/assets/almox3d.png";
 
 export const projects = [
+  {
+    n: "27",
+    title: "Almoxarifado 3D",
+    sub: "Planejador 3D para organização de almoxarifado",
+    problem:
+      "Planejar a disposição de prateleiras, equipamentos e móveis em um almoxarifado antes de organizar o espaço físico.",
+    solution:
+      "Criei uma interface para montar um ambiente 3D, adicionar estruturas e itens de estoque e visualizar sua distribuição no espaço usando Three.js.",
+    result:
+      "Uma ferramenta visual interativa que ajuda a testar e comunicar diferentes configurações para o ambiente do almoxarifado.",
+    tags: ["Three.js", "3D", "Visualização Interativa", "UI Responsiva"],
+    year: "2026",
+    img: almoxarifado3DImage,
+    deploy: "https://paulohenrique993940.github.io/almoxarifado3D/",
+    ribbon: "3D",
+  },
+  {
+    n: "26",
+    title: "Vanguard",
+    sub: "Landing page para um estúdio de marcas digitais",
+    problem:
+      "Apresentar um estúdio de branding com uma identidade marcante e comunicar seus serviços de forma direta.",
+    solution:
+      "Desenvolvi uma landing page de alto impacto visual, com navegação por projetos, estúdio, playbook e serviços, além de chamadas para contato.",
+    result:
+      "Uma presença digital responsiva que destaca a identidade do estúdio e conduz visitantes para conhecer o trabalho e iniciar uma conversa.",
+    tags: ["Landing Page", "Branding", "UI/UX", "Design Responsivo", "Netlify"],
+    year: "2026",
+    img: vanguardImage,
+    deploy: "https://boisterous-phoenix-9d9353.netlify.app/",
+    ribbon: "UI/UX",
+  },
   {
     n: "25",
     title: "playPipoca",

@@ -28,7 +28,7 @@ const technologies = [
   { name: "Render", Icon: SiRender },
 ];
 
-const featuredTitles = ["playPipoca", "Almoxarif", "Sistema de Informações APS/AFM", "Rastreio de Encomendas", "Efood"];
+const featuredTitles = ["Almoxarifado 3D", "Vanguard", "playPipoca", "Almoxarif", "Sistema de Informações APS/AFM", "Rastreio de Encomendas", "Efood"];
 const isFullstack = (tags: string[]) => tags.some((t) => /fullstack|node|express|php|postgresql/i.test(t));
 const filters = ["Destaques", "Full Stack", "Front-end", "Todos"] as const;
 type Filter = (typeof filters)[number];
