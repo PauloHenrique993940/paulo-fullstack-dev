@@ -32,8 +32,13 @@ const technologies = [
 
 const featuredTitles = ["Almoxarifado 3D", "Vanguard", "playPipoca", "Almoxarif", "Sistema de Informações APS/AFM", "Rastreio de Encomendas", "Efood"];
 const isFullstack = (tags: string[]) => tags.some((t) => /fullstack|node|express|php|postgresql/i.test(t));
-const filters = ["Destaques", "Full Stack", "Front-end", "Todos"] as const;
-type Filter = (typeof filters)[number];
+type Filter = "Destaques" | "Full Stack" | "Front-end" | "Todos";
+const portals: { label: Filter; note: string; Icon: typeof Flame }[] = [
+  { label: "Front-end", note: "Reino da interface", Icon: Sparkles },
+  { label: "Full Stack", note: "Portal completo", Icon: Swords },
+  { label: "Destaques", note: "Arena principal", Icon: Flame },
+  { label: "Todos", note: "Todos os reinos", Icon: ArrowRight },
+];
 
 const reveal = (delay = 0) => ({
   initial: { opacity: 0, y: 40, rotateX: 16, transformPerspective: 1200 },
@@ -105,19 +110,20 @@ function Hero({ ready }: { ready: boolean }) {
       <div className="container hero-grid">
         <div className="hero-copy">
           <motion.span className="kicker" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: d, duration: 1 }}>
-            <i className="dot" /> PLAYER 1 ONLINE
+            <i className="dot" /> FIGHTER SELECTED · PLAYER 1
           </motion.span>
           <h1 id="hero-title">
             <Lines delay={d + 0.1}>{["Paulo Henrique", "desenvolvedor", "Full Stack"]}</Lines>
-            <span className="mask"><motion.em initial={{ y: "105%" }} animate={{ y: 0 }} transition={{ duration: 1, ease, delay: d + 0.46 }}>PRONTO PARA O PRÓXIMO ROUND</motion.em></span>
+            <span className="mask"><motion.em initial={{ y: "105%" }} animate={{ y: 0 }} transition={{ duration: 1, ease, delay: d + 0.46 }}>READY FOR THE NEXT FIGHT?</motion.em></span>
           </h1>
           <motion.p className="hero-lead" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: d + 0.7 }}>
             {profile.objective}
           </motion.p>
           <motion.div className="hero-actions" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: d + 0.85 }}>
-            <button type="button" className="btn btn-solid" onClick={() => goTo("projetos")}>Ver minhas lutas <ArrowRight size={16} /></button>
-            <button type="button" className="btn btn-ghost" onClick={() => goTo("contato")}>Desafiar</button>
+            <button type="button" className="btn btn-solid" onClick={() => goTo("projetos")}>Choose your fighter <ArrowRight size={16} /></button>
+            <button type="button" className="btn btn-ghost" onClick={() => goTo("contato")}>Fight me</button>
           </motion.div>
+          <p className="drive-hint"><span>ENTER</span> SELECT <span>↓ ↑</span> MOVE <span>ESC</span> BACK</p>
         </div>
 
         <Tilt className="photo-tilt" max={8}>
@@ -125,15 +131,15 @@ function Hero({ ready }: { ready: boolean }) {
             <img src={portrait} alt="Retrato de Paulo Henrique" />
             <figcaption>
               <strong>Paulo Henrique</strong>
-              <span>PLAYER 1 | FULL STACK | SALVADOR, BA</span>
+              <span>FULL STACK WARRIOR · SALVADOR, BA</span>
             </figcaption>
           </motion.figure>
         </Tilt>
       </div>
 
       <motion.ul className="container stats" {...reveal()}>
-        <li><strong><Counter to={projects.length} /></strong><span>Lutas vencidas</span></li>
-        <li><strong><Counter to={technologies.length} /></strong><span>Golpes no arsenal</span></li>
+        <li><strong><Counter to={projects.length} /></strong><span>Projetos</span></li>
+        <li><strong><Counter to={technologies.length} /></strong><span>Tecnologias</span></li>
         <li><strong><Counter to={6} suffix="+" /></strong><span>Anos de experiência em operações</span></li>
         <li><strong><Counter to={courses.length} /></strong><span>Cursos concluidos</span></li>
       </motion.ul>
@@ -203,37 +209,42 @@ function Projects() {
   return (
     <section className="section" id="projetos" aria-labelledby="projetos-title">
       <div className="container">
-        <SectionTitle index="01" kicker="SELECT YOUR OPPONENT"><span id="projetos-title">Lutas <em>vencidas</em></span></SectionTitle>
-        <p className="section-intro">Cada projeto trouxe um novo desafio. Escolha um card para ver o golpe final e os detalhes da solução.</p>
-        <motion.div className="filters" role="tablist" aria-label="Filtrar projetos" {...reveal(0.1)}>
-          {filters.map((f) => (
-            <button key={f} role="tab" aria-selected={filter === f} onClick={() => setFilter(f)} className={filter === f ? "is-on" : ""}>
-              {filter === f && <motion.span layoutId="filter-pill" className="pill" transition={{ duration: 0.45, ease }} />}
-              <span>{f}</span>
+        <SectionTitle index="01" kicker="SELECT YOUR OPPONENT"><span id="projetos-title">Choose your <em>fighter</em></span></SectionTitle>
+        <p className="section-intro">Cada projeto traz um desafio diferente. Escolha um combatente para conhecer suas habilidades, estratégia e resultado.</p>
+        <motion.div className="portal-route" role="tablist" aria-label="Portais de projetos" {...reveal(0.1)}>
+          <div className="portal-bridge" aria-hidden="true"><i /><i /><i /></div>
+          {portals.map(({ label, note, Icon }, index) => (
+            <button key={label} type="button" role="tab" aria-selected={filter === label} onClick={() => setFilter(label)} className={`project-portal ${filter === label ? "is-active" : ""}`}>
+              <span className="portal-art" aria-hidden="true"><i className="portal-halo" /><i className="portal-core" /><i className="portal-sparks" /><Icon className="portal-icon" size={21} /></span>
+              <span className="portal-step">PORTAL 0{index + 1}</span>
+              <strong>{label}</strong>
+              <small>{note}</small>
             </button>
           ))}
-          <span className="count">{String(list.length).padStart(2, "0")} projetos</span>
         </motion.div>
 
-        <motion.ul className="grid" layout>
-          <AnimatePresence mode="popLayout">
-            {list.map((p, i) => (
-              <motion.li key={p.title} layout initial={{ opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.6, ease, delay: Math.min(i, 5) * 0.05 }}>
-                <Tilt className="card-tilt" max={7}>
-                  <button type="button" className="card" onClick={() => setOpen(p)} aria-label={`Abrir detalhes de ${p.title}`}>
-                    <Img src={p.img} alt="" />
-                    <div className="card-body">
-                      <span className="card-meta"><Flame size={13} /> Chefe {p.n} | {p.year}</span>
-                      <h3>{p.title}</h3>
-                      <p>{p.sub}</p>
-                      <span className="card-arrow"><ArrowUpRight size={18} /></span>
-                    </div>
-                  </button>
-                </Tilt>
-              </motion.li>
-            ))}
-          </AnimatePresence>
-        </motion.ul>
+        <div className="portal-interior">
+          <div className="portal-interior-title"><span className="portal-live" /><div><small>PORTAL ABERTO</small><h3>{filter} <em>·</em> {String(list.length).padStart(2, "0")} projetos</h3></div></div>
+          <motion.ul className="grid" layout>
+            <AnimatePresence mode="popLayout">
+              {list.map((p, i) => (
+                <motion.li key={p.title} layout initial={{ opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.6, ease, delay: Math.min(i, 5) * 0.05 }}>
+                  <Tilt className="card-tilt" max={7}>
+                    <button type="button" className="card" onClick={() => setOpen(p)} aria-label={`Abrir detalhes de ${p.title}`}>
+                      <Img src={p.img} alt="" />
+                      <div className="card-body">
+                        <span className="card-meta"><Flame size={13} /> PORTAL {p.n} | {p.year}</span>
+                        <h3>{p.title}</h3>
+                        <p>{p.sub}</p>
+                        <span className="card-arrow"><ArrowUpRight size={18} /></span>
+                      </div>
+                    </button>
+                  </Tilt>
+                </motion.li>
+              ))}
+            </AnimatePresence>
+          </motion.ul>
+        </div>
       </div>
       <AnimatePresence>{open && <ProjectModal project={open} onClose={() => setOpen(null)} />}</AnimatePresence>
     </section>
@@ -245,7 +256,7 @@ function Stack() {
   return (
     <section className="section" id="stack" aria-labelledby="stack-title">
       <div className="container">
-        <SectionTitle index="02" kicker="Habilidades"><span id="stack-title">Meu arsenal <em>de tecnologia</em></span></SectionTitle>
+        <SectionTitle index="02" kicker="SPECIAL MOVES"><span id="stack-title">My <em>arsenal</em></span></SectionTitle>
       </div>
       <div className="carousel3d" role="img" aria-label={`Tecnologias: ${technologies.map((t) => t.name).join(", ")}`}>
         <div className="carousel3d-ring">
@@ -273,7 +284,7 @@ function About() {
   return (
     <section className="section" id="sobre" aria-labelledby="sobre-title">
       <div className="container">
-        <SectionTitle index="03" kicker="História"><span id="sobre-title">Minha torre de <em>batalhas</em></span></SectionTitle>
+        <SectionTitle index="03" kicker="FIGHTER BIO"><span id="sobre-title">My <em>story</em></span></SectionTitle>
         <div className="about">
           <motion.div {...reveal()}>
             <p className="about-lead">{profile.summary}</p>
