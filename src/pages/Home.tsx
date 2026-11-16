@@ -8,7 +8,7 @@ import {
 } from "react-icons/si";
 import { FaLinkedin as SiLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
-import portrait from "@/assets/paulo-fighter.png";
+import portrait from "@/assets/minhaFotoClara.jpg";
 import { projects } from "@/data/projects";
 import { profile, timeline, courses, skills, deliveries } from "@/data/profile";
 import { goTo } from "@/components/Nav";
@@ -113,15 +113,14 @@ function Hero({ ready }: { ready: boolean }) {
             <i className="dot" /> FIGHTER SELECTED · PLAYER 1
           </motion.span>
           <h1 id="hero-title">
-            <Lines delay={d + 0.1}>{["Paulo Henrique", "desenvolvedor", "Full Stack"]}</Lines>
-            <span className="mask"><motion.em initial={{ y: "105%" }} animate={{ y: 0 }} transition={{ duration: 1, ease, delay: d + 0.46 }}>READY FOR THE NEXT FIGHT?</motion.em></span>
+            <Lines delay={d + 0.1}>{["Paulo Henrique", "Desenvolvedor", "Full Stack"]}</Lines>
           </h1>
           <motion.p className="hero-lead" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: d + 0.7 }}>
             {profile.objective}
           </motion.p>
           <motion.div className="hero-actions" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: d + 0.85 }}>
-            <button type="button" className="btn btn-solid" onClick={() => goTo("projetos")}>Choose your fighter <ArrowRight size={16} /></button>
-            <button type="button" className="btn btn-ghost" onClick={() => goTo("contato")}>Fight me</button>
+            <button type="button" className="btn btn-solid" onClick={() => goTo("projetos")}>Ver projetos <ArrowRight size={16} /></button>
+            <button type="button" className="btn btn-ghost" onClick={() => goTo("contato")}>Vamos conversar</button>
           </motion.div>
           <p className="drive-hint"><span>ENTER</span> SELECT <span>↓ ↑</span> MOVE <span>ESC</span> BACK</p>
         </div>
